@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1F0E">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Jugend-Zentrale · Spvgg 1910 Warmbronn</title>
+<link rel="manifest" href="https://vdjmsqfjjqhjgjyadcmd.supabase.co/functions/v1/app/manifest.webmanifest">
+<link rel="apple-touch-icon" href="https://vdjmsqfjjqhjgjyadcmd.supabase.co/functions/v1/app/icon.png">
+<link rel="icon" type="image/png" href="https://vdjmsqfjjqhjgjyadcmd.supabase.co/functions/v1/app/icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--nacht:#0A1F0E;--gd:#0E3B17;--gruen:#1B5E20;--rasen:#3E9142;--hell:#E8F2E9;--papier:#F4F6F4;--tinte:#161D17;--grau:#59645B;--linie:#D9E1DA;--signal:#C8E63C;--rot:#C0392B;--amber:#D99A2B;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--papier);color:var(--tinte);font-size:15px;line-height:1.55;min-height:100vh}
+h1,h2,h3,.disp{font-family:'Archivo',sans-serif;font-stretch:114%;font-weight:900;text-transform:uppercase;line-height:1.05}
+button{font:inherit;cursor:pointer}
+input,select,textarea{width:100%;border:1.5px solid var(--linie);border-radius:12px;padding:12px 13px;font:inherit;background:#fff;color:var(--tinte)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rasen);box-shadow:0 0 0 3px rgba(62,145,66,.15)}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grau);margin:13px 0 5px}
+
+/* ===== Screens & Cinematik ===== */
+#app{min-height:100vh;position:relative}
+.screen{min-height:100vh;animation:sIn .5s cubic-bezier(.22,.9,.3,1) both;position:relative}
+@keyframes sIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.raus{animation:sOut .28s ease both}
+@keyframes sOut{to{opacity:0;transform:translateY(-14px)}}
+.st{animation:sIn .55s cubic-bezier(.22,.9,.3,1) both}
+.st1{animation-delay:.05s}.st2{animation-delay:.12s}.st3{animation-delay:.2s}.st4{animation-delay:.28s}.st5{animation-delay:.36s}
+.wasser{position:fixed;left:50%;top:52%;transform:translate(-50%,-50%);width:min(78vw,430px);opacity:.05;pointer-events:none;z-index:0;filter:grayscale(35%)}
+.inhalt>*{position:relative;z-index:1}
+
+/* ===== Hero ===== */
+.held{min-height:100vh;background:var(--nacht);color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.held-bg{position:absolute;inset:-40%;background-image:linear-gradient(rgba(200,230,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,230,60,.05) 1px,transparent 1px);background-size:64px 64px;animation:drift 34s linear infinite;pointer-events:none}
+@keyframes drift{to{transform:translate(64px,64px)}}
+.held-halo{position:absolute;left:50%;top:30%;width:130vw;max-width:820px;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(62,145,66,.4),transparent 62%);pointer-events:none}
+.held-kreis{position:absolute;left:50%;top:30%;width:78vw;max-width:460px;aspect-ratio:1;transform:translate(-50%,-50%);border:1.5px solid rgba(200,230,60,.22);border-radius:50%;animation:atmen 5.5s ease-in-out infinite;pointer-events:none}
+@keyframes atmen{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.55}50%{transform:translate(-50%,-50%) scale(1.06);opacity:1}}
+.held-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;max-width:640px;margin:0 auto;width:100%;padding:52px 26px 30px;text-align:center}
+.wappen{width:118px;margin:0 auto 20px;filter:drop-shadow(0 14px 34px rgba(0,0,0,.5));border-radius:10px;animation:schweben 6s ease-in-out infinite}
+@keyframes schweben{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.eyebrow{font-family:'Archivo',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--signal);display:flex;align-items:center;justify-content:center;gap:10px}
+.eyebrow:before,.eyebrow:after{content:"";width:26px;height:2px;background:var(--signal)}
+.held h1{font-size:clamp(36px,10.5vw,58px);margin-top:10px}
+.held h1 em{font-style:normal;color:var(--signal)}
+.held p.sub{margin-top:12px;color:rgba(255,255,255,.72);font-size:15px}
+.rollen{margin-top:30px;display:grid;gap:12px;text-align:left}
+.rolle-k{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px);border-radius:16px;padding:16px 18px;color:#fff;transition:transform .18s ease,background .18s ease}
+.rolle-k:active{transform:scale(.975)}
+.rolle-k .ic{width:44px;height:44px;border-radius:12px;background:rgba(200,230,60,.14);display:flex;align-items:center;justify-content:center;color:var(--signal);flex-shrink:0}
+.rolle-k b{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.03em;display:block}
+.rolle-k small{color:rgba(255,255,255,.62);font-size:12.5px}
+.held .fuss{position:relative;z-index:2;text-align:center;padding:0 26px 30px;font-size:11.5px;color:rgba(255,255,255,.42)}
+
+/* ===== App-Rahmen ===== */
+.kopf{background:linear-gradient(160deg,var(--nacht),#12341A);color:#fff;padding:16px 16px 14px;position:sticky;top:0;z-index:40;box-shadow:0 6px 24px rgba(10,31,14,.28)}
+.kopf-in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.kopf img{width:38px;border-radius:6px}
+.kopf .tt{flex:1;min-width:0}
+.kopf .ey{font-family:'Archivo',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+.kopf h1{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kbtn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:600;flex-shrink:0}
+.inhalt{max-width:640px;margin:0 auto;padding:16px 16px 104px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,31,14,.97);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.1);z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+.tabbar-in{max-width:640px;margin:0 auto;display:flex}
+.tab{flex:1;background:none;border:none;color:rgba(255,255,255,.48);padding:10px 2px 9px;font-family:'Archivo',sans-serif;font-weight:800;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .2s}
+.tab svg{width:21px;height:21px;stroke-width:2}
+.tab.aktiv{color:var(--signal)}
+.tab .pille{width:18px;height:3px;border-radius:2px;background:transparent;transition:background .2s}
+.tab.aktiv .pille{background:var(--signal)}
+
+/* ===== Bausteine ===== */
+.karte{background:#fff;border:1px solid var(--linie);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 2px 10px rgba(10,31,14,.04)}
+.karte.dunkel{background:linear-gradient(155deg,var(--gd),var(--nacht));border:none;color:#fff;box-shadow:0 10px 30px rgba(10,31,14,.3)}
+.sec{font-family:'Archivo',sans-serif;font-weight:900;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--rasen);display:flex;align-items:center;gap:10px;margin:22px 0 10px}
+.sec:after{content:"";flex:1;height:1px;background:var(--linie)}
+.meta{display:inline-block;background:var(--hell);color:var(--gruen);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:3px 8px;vertical-align:middle}
+.meta.sig{background:var(--signal);color:var(--gd)}
+.meta.warn{background:#FDF3E3;color:var(--amber)}
+.meta.rot{background:#FBE9E7;color:var(--rot)}
+.btn{background:var(--gruen);color:#fff;border:none;border-radius:12px;padding:13px 16px;font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;justify-content:center;transition:transform .15s ease,filter .15s}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.45}
+.btn.voll{width:100%}
+.btn.hell{background:var(--hell);color:var(--gruen)}
+.btn.sig{background:var(--signal);color:var(--gd)}
+.btn.geist{background:none;border:1.5px solid var(--linie);color:var(--grau)}
+.btn.gefahr{background:none;border:1.5px solid #F0C7C0;color:var(--rot)}
+.zeile{display:flex;gap:10px}.zeile>*{flex:1}
+.hinweis{background:var(--hell);border-left:4px solid var(--rasen);border-radius:0 12px 12px 0;padding:12px 14px;font-size:13px;margin:12px 0}
+.leer{text-align:center;padding:36px 16px;color:var(--grau)}
+.leer .disp{font-size:16px;color:var(--gd);margin-bottom:6px}
+.kachel{display:flex;align-items:center;gap:13px;width:100%;background:#fff;border:1px solid var(--linie);border-radius:16px;padding:15px 16px;text-align:left;margin-bottom:10px;box-shadow:0 2px 10px rgba(10,31,14,.04);transition:transform .15s}
+.kachel:active{transform:scale(.98)}
+.kachel .ic{width:42px;height:42px;border-radius:11px;background:var(--hell);color:var(--gruen);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kachel b{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;color:var(--gd);display:block;text-transform:uppercase;letter-spacing:.02em}
+.kachel small{color:var(--grau);font-size:12.5px;display:block;margin-top:1px}
+.stat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.stat{background:#fff;border:1px solid var(--linie);border-radius:14px;padding:13px 6px;text-align:center}
+.stat b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:25px;color:var(--gd);line-height:1.1}
+.stat span{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grau)}
+.balken-w{background:var(--hell);border-radius:6px;height:10px;overflow:hidden}
+.balken{height:100%;background:linear-gradient(90deg,var(--rasen),var(--gruen));border-radius:6px;transition:width .7s cubic-bezier(.22,.9,.3,1)}
+.lz{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--linie)}
+.lz:last-child{border-bottom:none}
+.chip{display:inline-flex;align-items:center;border:1.5px solid var(--linie);background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;margin:0 6px 6px 0;color:var(--grau);transition:all .15s}
+.chip.an{background:var(--gd);border-color:var(--gd);color:#fff}
+.seg{display:flex;background:var(--hell);border-radius:12px;padding:4px;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.seg button{flex:1;min-width:70px;border:none;background:none;border-radius:9px;padding:9px 4px;font-family:'Archivo',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--grau);transition:all .2s}
+.seg button.an{background:#fff;color:var(--gd);box-shadow:0 2px 8px rgba(10,31,14,.12)}
+.rsvp-btns{display:flex;gap:9px}
+.rsvp{flex:1;border:1.5px solid var(--linie);background:#fff;border-radius:12px;padding:12px;font-weight:800;font-size:14px;color:var(--grau);transition:all .18s}
+.rsvp.ja.an{background:var(--rasen);border-color:var(--rasen);color:#fff;box-shadow:0 4px 14px rgba(62,145,66,.35)}
+.rsvp.nein.an{background:var(--rot);border-color:var(--rot);color:#fff;box-shadow:0 4px 14px rgba(192,57,43,.3)}
+.anw{width:40px;height:40px;border-radius:50%;border:2px solid var(--linie);background:#fff;font-weight:800;color:var(--grau);flex-shrink:0;transition:all .15s}
+.anw.da{background:var(--rasen);border-color:var(--rasen);color:#fff}
+.anw.fehlt{background:#FBE9E7;border-color:var(--rot);color:var(--rot)}
+.typ-training{background:var(--hell);color:var(--gruen)}
+.typ-spiel{background:var(--signal);color:var(--gd)}
+.typ-turnier{background:#FDF3E3;color:var(--amber)}
+.typ-event{background:#EDE7F6;color:#5E35B1}
+.jbadge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:22px;border-radius:6px;padding:0 6px;font-family:'Archivo',sans-serif;font-weight:900;font-size:11px;color:#fff;letter-spacing:.04em}
+.monat{font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin:20px 0 8px;display:flex;align-items:center;gap:10px}
+.monat:after{content:"";flex:1;height:1px;background:var(--linie)}
+.ferienchip{display:inline-block;background:#FDF3E3;border:1px dashed var(--amber);color:var(--amber);border-radius:8px;padding:4px 9px;font-size:11.5px;font-weight:700;margin:0 6px 6px 0}
+.pitch{position:relative;background:repeating-linear-gradient(0deg,#2E7D32 0 44px,#2a7530 44px 88px);border-radius:16px;aspect-ratio:3/4;overflow:hidden;border:3px solid var(--gd);box-shadow:inset 0 0 60px rgba(0,0,0,.25)}
+.pitch:before{content:"";position:absolute;left:8%;right:8%;top:50%;height:2px;background:rgba(255,255,255,.4)}
+.pitch:after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:27%;aspect-ratio:1;border:2px solid rgba(255,255,255,.4);border-radius:50%}
+.pitch .sr{position:absolute;left:24%;width:52%;height:13%;border:2px solid rgba(255,255,255,.4)}
+.pos{position:absolute;transform:translate(-50%,-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;border:none;background:none;padding:0}
+.pos .kreis{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.13);border:2px dashed rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:900;font-size:11px;color:#fff;transition:all .2s}
+.pos.belegt .kreis{background:var(--signal);border:2px solid #fff;color:var(--gd);font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.pos .pname{font-size:10px;font-weight:700;color:#fff;background:rgba(10,31,14,.6);border-radius:5px;padding:1px 7px;max-width:82px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.note-grid{display:grid;grid-template-columns:1fr repeat(3,46px);gap:7px;align-items:center;font-size:13px}
+.note-in{width:100%;text-align:center;padding:9px 2px;border:1.5px solid var(--linie);border-radius:9px;font-weight:800}
+.phase{position:relative;padding:0 0 24px 30px}
+.phase:before{content:"";position:absolute;left:8px;top:8px;bottom:0;width:2px;background:var(--linie)}
+.phase:last-child:before{display:none}
+.phase .pkt{position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50%;background:var(--papier);border:3px solid var(--rasen);transition:all .2s}
+.phase.offen .pkt{background:var(--signal);border-color:var(--gd)}
+.modal-bg{position:fixed;inset:0;background:rgba(10,31,14,.66);z-index:100;display:flex;align-items:flex-end;justify-content:center;animation:mb .25s ease}
+@keyframes mb{from{opacity:0}}
+.modal{background:var(--papier);border-radius:22px 22px 0 0;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;padding:18px 16px calc(22px + env(safe-area-inset-bottom));animation:mh .35s cubic-bezier(.22,.9,.3,1)}
+@keyframes mh{from{transform:translateY(60px);opacity:.4}}
+.griff{width:42px;height:4px;background:var(--linie);border-radius:2px;margin:0 auto 14px}
+.spinner{width:18px;height:18px;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:dreh .8s linear infinite;display:inline-block;vertical-align:middle}
+.spinner.gruen{border-color:rgba(27,94,32,.25);border-top-color:var(--gruen)}
+@keyframes dreh{to{transform:rotate(360deg)}}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:var(--nacht);color:#fff;border-radius:12px;padding:12px 18px;font-size:13.5px;font-weight:600;z-index:200;opacity:0;pointer-events:none;transition:all .3s;max-width:88vw;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#toast.zeig{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+/* ================= KONFIG ================= */
+var SUPA = 'https://vdjmsqfjjqhjgjyadcmd.supabase.co';
+var KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkam1zcWZqanFoamdqeWFkY21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyNDM2MjcsImV4cCI6MjA5OTgxOTYyN30.QaIvVr33WWTX8QpAhtd7eNpkJF--IKKp3iCD4fifiJU';
+var BASE = 'https://vdjmsqfjjqhjgjyadcmd.supabase.co/functions/v1/app';
+var LOGO = BASE + '/logo.png';
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+/* Jugenden des Vereins - Reihenfolge = Anzeige */
+var JUGENDEN = [
+  {kz:'G', name:'Bambini',  farbe:'#8E24AA'},
+  {kz:'F', name:'F-Jugend', farbe:'#039BE5'},
+  {kz:'E', name:'E-Jugend', farbe:'#00897B'},
+  {kz:'D', name:'D-Jugend', farbe:'#3E9142'},
+  {kz:'C', name:'C-Jugend', farbe:'#F9A825'},
+  {kz:'B', name:'B-Jugend', farbe:'#F4511E'},
+  {kz:'A', name:'A-Jugend', farbe:'#C0392B'}
+];
+function jInfo(kz){for(var i=0;i<JUGENDEN.length;i++)if(JUGENDEN[i].kz===kz)return JUGENDEN[i];return {kz:kz,name:kz,farbe:'#59645B'}}
+function jBadge(kz){var j=jInfo(kz);return '<span class="jbadge" style="background:'+j.farbe+'">'+esc(kz==='G'?'Bam':kz)+'</span>'}
+
+/* Saisonlogik: Saison startet am 1. August des Startjahres.
+   Fuer Saison Y gilt (Beispiel Y=2026):
+   A: Jahrgang Y-18/Y-17 · B: Y-16/Y-15 · C: Y-14/Y-13 · D: Y-12/Y-11
+   E: Y-10/Y-9 · F: Y-8/Y-7 · Bambini (G): Y-6 und juenger */
+var KONF = {saison:2026, ferien:[], pins:{}};
+function jugendAusJahrgang(jahrgang, startjahr){
+  var d = startjahr - jahrgang;
+  if(d>=17)return 'A';
+  if(d>=15)return 'B';
+  if(d>=13)return 'C';
+  if(d>=11)return 'D';
+  if(d>=9)return 'E';
+  if(d>=7)return 'F';
+  return 'G';
+}
+function jugendIndex(kz){for(var i=0;i<JUGENDEN.length;i++)if(JUGENDEN[i].kz===kz)return i;return -1}
+function saisonName(y){return y+'/'+String((y+1)%100).padStart(2,'0')}
+function saisonEnde(y){return (y+1)+'-07-31'}
+function jahrgangOptionen(){var o='';for(var j=KONF.saison-3;j>=KONF.saison-18;j--)o+='<option value="'+j+'">'+j+'</option>';return o}
+function inFerien(iso){
+  for(var i=0;i<KONF.ferien.length;i++){var f=KONF.ferien[i];if(iso>=f.von&&iso<=f.bis)return f.name}
+  return null;
+}
+async function konfLaden(){
+  var rows = await api('konfig?select=key,value');
+  rows.forEach(function(r){
+    if(r.key==='saison')KONF.saison=r.value.startjahr;
+    if(r.key==='ferien')KONF.ferien=r.value;
+    if(r.key==='pins')KONF.pins=r.value;
+  });
+}
+async function konfSpeichern(key, value){
+  await api('konfig?on_conflict=key',{method:'POST',prefer:'resolution=merge-duplicates',body:{key:key,value:value}});
+}
+
+var KATEGORIEN = ['1v1 offensiv','1v1 defensiv','Passspiel & 1. Kontakt','Torschuss / Abschluss','Spielaufbau','Umschalten','Spielverständnis','Athletik / Schnelligkeit','Koordination','Torwart','Standards'];
+var KRITERIEN = ['Technik','Spielverständnis','Athletik','Mentalität','Teamverhalten'];
+var TESTPUNKTE = ['Sep','Dez','Mai'];
+var KEYWORDS = [
+  ['1v1 offensiv', /1[\s-]?(gegen|vs?\.?|v)[\s-]?1|dribb|finte|übersteiger|ausspielen des gegners/i],
+  ['1v1 defensiv', /verteidig|zweikampf|ball\s?(ab)?gewinn|abwehr|lenken/i],
+  ['Torschuss / Abschluss', /minitor|torerfolg|abschl(uss|üsse)|schie(ß|ss)|torschuss|schuss aufs tor/i],
+  ['Passspiel & 1. Kontakt', /pass(spiel|en|folge)?|ballannahme|erster? kontakt|an- und mitnahme|annahme/i],
+  ['Spielaufbau', /spielaufbau|aufbauspiel|dreierkette|herausspielen|aufbau gegen/i],
+  ['Umschalten', /umschalt|konter|gegenpressing|nach ballgewinn|nach ballverlust/i],
+  ['Spielverständnis', /überzahl|unterzahl|entscheidung|spiel über den dritten|verlagerung|freilaufen|anspielstation/i],
+  ['Athletik / Schnelligkeit', /sprint|schnelligkeit|antritt|sprungkraft|tempo/i],
+  ['Koordination', /koordinat|lauf-?abc|leiter|rhythmus/i],
+  ['Torwart', /torwart|torhüter|keeper|fangen|hechten/i],
+  ['Standards', /eckball|freisto(ß|ss)|einwurf|standard/i]
+];
+var FORMATION = [
+  {key:'TW',label:'TW',x:50,y:90},{key:'LV',label:'LV',x:20,y:70},{key:'ZV',label:'ZV',x:50,y:74},{key:'RV',label:'RV',x:80,y:70},
+  {key:'L6',label:'6L',x:34,y:48},{key:'R6',label:'6R',x:66,y:48},{key:'LA',label:'LA',x:18,y:22},{key:'ST',label:'ST',x:50,y:16},{key:'RA',label:'RA',x:82,y:22}
+];
+var WOCHENTAGE = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+
+/* ================= HELFER ================= */
+function $(s,el){return (el||document).querySelector(s)}
+function $$(s,el){return Array.prototype.slice.call((el||document).querySelectorAll(s))}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('zeig');clearTimeout(t._x);t._x=setTimeout(function(){t.classList.remove('zeig')},2800)}
+function heute(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function fmtDat(iso){if(!iso)return '–';var d=new Date(iso+'T12:00:00');return d.toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit',year:'2-digit'})}
+function fmtMonat(iso){var d=new Date(iso+'T12:00:00');return d.toLocaleDateString('de-DE',{month:'long',year:'numeric'})}
+function alterVon(iso){if(!iso)return null;var g=new Date(iso),h=new Date(),a=h.getFullYear()-g.getFullYear();var m=h.getMonth()-g.getMonth();if(m<0||(m===0&&h.getDate()<g.getDate()))a--;return a}
+async function sha256(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.prototype.map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,'0')}).join('')}
+function uuid(){if(crypto.randomUUID)return crypto.randomUUID();return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16)})}
+async function api(pfad,opts){
+  opts=opts||{};
+  var h={'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'};
+  if(opts.prefer)h['Prefer']=opts.prefer;
+  var r=await fetch(SUPA+'/rest/v1/'+pfad,{method:opts.method||'GET',headers:h,body:opts.body?JSON.stringify(opts.body):undefined});
+  if(!r.ok){var t='';try{t=await r.text()}catch(e){}throw new Error('API '+r.status+': '+t.slice(0,200))}
+  if(r.status===204)return null;
+  var txt=await r.text();
+  return txt?JSON.parse(txt):null;
+}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+function typName(t){return t==='training'?'Training':(t==='spiel'?'Spiel':(t==='turnier'?'Turnier':'Event'))}
+function terminTitel(t){
+  if(t.typ==='spiel')return (t.heim?'vs. ':'@ ')+(t.titel||'?');
+  if(t.typ==='turnier')return t.titel||'Turnier';
+  if(t.typ==='event')return t.titel||'Event';
+  return t.schwerpunkt?('Training · '+t.schwerpunkt):'Training';
+}
+/* Termine einer Jugend inkl. uebergreifender Events, die diese Jugend betreffen */
+function termineFuer(alle, kz){
+  return alle.filter(function(t){
+    if(t.jugend===kz)return true;
+    if(t.typ==='event'&&!t.jugend&&Array.isArray(t.jugenden))return t.jugenden.indexOf(kz)>=0;
+    return false;
+  });
+}
+
+/* Icons */
+var IC={
+  cone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M12 3 6 20h12L12 3z"/><path d="M4 20h16"/><path d="M9 12h6"/></svg>',
+  team:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><circle cx="8" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M2.5 20c.6-3.4 2.9-5 5.5-5s4.9 1.6 5.5 5"/><path d="M14.5 19.5c.4-2.6 1.9-4 4-4 1.6 0 2.7.7 3 2"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>',
+  flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M5 21V4c4-2 8 2 12 0v10c-4 2-8-2-12 0"/></svg>',
+  kal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  ball:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/></svg>',
+  buch:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M4 4h9a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H4z"/><path d="M20 8v12"/></svg>',
+  chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg>',
+  stern:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9L6.6 19.6l1.1-6L3.2 9.4l6.1-.8z"/></svg>',
+  zurueck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18"><path d="M15 18l-6-6 6-6"/></svg>'
+};
+
+/* ================= NAVIGATION ================= */
+var S={rolle:null,kindId:null,kindName:'',kindJugend:null,trainerJugend:null,trainerTab:'start',jlTab:'kalender'};
+function zeige(fn){
+  var alt=$('#app').firstElementChild;
+  if(alt){alt.classList.add('raus');setTimeout(function(){ $('#app').innerHTML='';fn()},240)}
+  else fn();
+  window.scrollTo(0,0);
+}
+function boot(){
+  S.rolle=lsGet('jz_rolle');S.kindId=lsGet('jz_kind');S.kindName=lsGet('jz_kindname')||'';S.kindJugend=lsGet('jz_kindjugend');S.trainerJugend=lsGet('jz_trainerjugend');
+  konfLaden().then(function(){
+    if(S.rolle==='trainer'&&S.trainerJugend)zeige(sTrainer);
+    else if(S.rolle==='jl')zeige(sJL);
+    else if(S.rolle==='eltern'&&S.kindId)zeige(sEltern);
+    else zeige(sHero);
+  }).catch(function(e){console.error(e);zeige(sHero)});
+}
+function abmelden(){['jz_rolle','jz_kind','jz_kindname','jz_kindjugend','jz_trainerjugend'].forEach(lsDel);S.rolle=null;S.kindId=null;S.trainerJugend=null;zeige(sHero)}
+
+/* ================= HERO ================= */
+function sHero(){
+  $('#app').innerHTML=
+  '<div class="screen held"><div class="held-bg"></div><div class="held-halo"></div><div class="held-kreis"></div>'+
+  '<div class="held-in">'+
+    '<img class="wappen st st1" src="'+LOGO+'" alt="Spvgg 1910 Warmbronn">'+
+    '<div class="eyebrow st st2">Spvgg 1910 Warmbronn</div>'+
+    '<h1 class="st st2">Jugend-<br><em>Zentrale</em></h1>'+
+    '<p class="sub st st3">Saison '+saisonName(KONF.saison)+' · Von den Bambini bis zur A-Jugend: Termine, Zusagen, Ziele &amp; Entwicklung – eine App für den ganzen Verein.</p>'+
+    '<div class="rollen">'+
+      '<button class="rolle-k st st3" id="bEltern"><span class="ic">'+IC.team+'</span><span><b>Eltern</b><small>Kind anlegen · Termine sehen · zu-/absagen</small></span></button>'+
+      '<button class="rolle-k st st4" id="bTrainer"><span class="ic">'+IC.cone+'</span><span><b>Trainerstab</b><small>Jugend wählen · Planung &amp; Analyse · PIN-geschützt</small></span></button>'+
+      '<button class="rolle-k st st5" id="bJL"><span class="ic">'+IC.stern+'</span><span><b>Jugendleitung</b><small>Übersichtskalender · Events · Ferien &amp; Saison</small></span></button>'+
+    '</div>'+
+  '</div>'+
+  '<div class="fuss">Tipp: Über „Teilen → Zum Startbildschirm hinzufügen“ wird die Seite zur App mit Vereinswappen.</div></div>';
+  $('#bEltern').onclick=function(){zeige(sElternWahl)};
+  $('#bTrainer').onclick=function(){zeige(sTrainerJugendWahl)};
+  $('#bJL').onclick=function(){zeige(sJLPin)};
+}
+
+/* ================= ELTERN: EINSTIEG ================= */
+function sElternWahl(){
+  $('#app').innerHTML=
+  '<div class="screen held"><div class="held-bg"></div><div class="held-halo"></div>'+
+  '<div class="held-in" style="text-align:left">'+
+    '<div class="eyebrow st st1" style="justify-content:flex-start">Elternbereich</div>'+
+    '<h1 class="st st1" style="font-size:34px">Euer Kind</h1>'+
+    '<p class="sub st st2" style="margin-top:8px">Einmal anlegen, überall nutzen: Ihr legt euer Kind mit Jahrgang an – die App ordnet es automatisch der richtigen Jugend zu. Eine Familien-PIN schützt den Zugang.</p>'+
+    '<div class="rollen st st3">'+
+      '<button class="rolle-k" id="bNeu"><span class="ic">＋</span><span><b>Kind neu anlegen</b><small>Name, Geburtsdatum + eigene Familien-PIN</small></span></button>'+
+      '<button class="rolle-k" id="bDa"><span class="ic">'+IC.team+'</span><span><b>Kind ist schon angelegt</b><small>Aus der Liste wählen und mit Familien-PIN öffnen</small></span></button>'+
+    '</div>'+
+    '<button class="btn voll st st4" style="margin-top:18px;background:none;color:rgba(255,255,255,.6)" id="bZur">Zurück</button>'+
+  '</div></div>';
+  $('#bNeu').onclick=function(){zeige(sKindAnlegen)};
+  $('#bDa').onclick=function(){zeige(sKindOeffnen)};
+  $('#bZur').onclick=function(){zeige(sHero)};
+}
+
+function sKindAnlegen(){
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">Elternbereich</div><h1>Kind anlegen</h1></div><button class="kbtn" id="bZur">Zurück</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div class="karte st st1">'+
+    '<label>Vorname</label><input id="fV" autocomplete="off">'+
+    '<label>Nachname</label><input id="fN" autocomplete="off">'+
+    '<label>Jahrgang (Geburtsjahr)</label><select id="fG"><option value="">Bitte wählen …</option>'+jahrgangOptionen()+'</select>'+
+    '<div id="jugendVorschlag"></div>'+
+    '<label>Familien-PIN (mind. 4 Zeichen)</label><input id="fP1" type="password" inputmode="numeric" placeholder="z. B. 4-stellige Zahl">'+
+    '<label>PIN wiederholen</label><input id="fP2" type="password" inputmode="numeric">'+
+    '<div class="hinweis">Die PIN gehört eurer Familie – mit ihr öffnet ihr euer Kind auch auf einem zweiten Handy. Bitte merken!</div>'+
+    '<button class="btn voll" id="bSpeichern">Kind anlegen</button>'+
+  '</div></main></div>';
+  $('#bZur').onclick=function(){zeige(sElternWahl)};
+  var gewaehlteJugend=null;
+  $('#fG').onchange=function(){
+    var g=this.value;if(!g){$('#jugendVorschlag').innerHTML='';return}
+    var jahrgang=parseInt(g.slice(0,4),10);
+    var natur=jugendAusJahrgang(jahrgang,KONF.saison);
+    gewaehlteJugend=natur;
+    var idx=jugendIndex(natur);
+    var optionen=[natur];
+    for(var i=idx+1;i<JUGENDEN.length&&i<=idx+2;i++)optionen.push(JUGENDEN[i].kz);
+    $('#jugendVorschlag').innerHTML='<label>Jugend (Jahrgang '+jahrgang+')</label>'+
+      '<div id="jWahl">'+optionen.map(function(kz,i){
+        var j=jInfo(kz);
+        return '<button class="chip'+(i===0?' an':'')+'" data-kz="'+kz+'">'+jBadge(kz)+' '+esc(j.name)+(i===0?' · passend':' · hochgezogen')+'</button>';
+      }).join('')+'</div>'+
+      '<div style="font-size:12px;color:var(--grau)">Standard ist die zum Jahrgang passende Jugend. „Hochgezogen“ nur wählen, wenn es mit dem Trainer so besprochen ist.</div>';
+    $$('#jWahl .chip').forEach(function(c){c.onclick=function(){$$('#jWahl .chip').forEach(function(x){x.classList.remove('an')});c.classList.add('an');gewaehlteJugend=c.getAttribute('data-kz')}});
+  };
+  $('#bSpeichern').onclick=async function(){
+    var v=$('#fV').value.trim(),n=$('#fN').value.trim(),g=$('#fG').value,p1=$('#fP1').value,p2=$('#fP2').value;
+    if(!v||!n){toast('Bitte Vor- und Nachname eintragen.');return}
+    if(!g){toast('Bitte Jahrgang wählen.');return}
+    if(p1.length<4){toast('Die PIN braucht mindestens 4 Zeichen.');return}
+    if(p1!==p2){toast('Die PINs stimmen nicht überein.');return}
+    var jahrgang=parseInt(g.slice(0,4),10);
+    var jugend=gewaehlteJugend||jugendAusJahrgang(jahrgang,KONF.saison);
+    this.disabled=true;this.innerHTML='<span class="spinner"></span> Wird angelegt …';
+    try{
+      var vorhandene=await api('kinder?select=id&vorname=ilike.'+encodeURIComponent(v)+'&nachname=ilike.'+encodeURIComponent(n));
+      if(vorhandene.length){toast(v+' '+n+' ist schon angelegt – bitte „Kind ist schon angelegt“ nutzen.');this.disabled=false;this.textContent='Kind anlegen';return}
+      var hash=await sha256(p1);
+      var rows=await api('kinder',{method:'POST',prefer:'return=representation',body:{vorname:v,nachname:n,jahrgang:jahrgang,jugend:jugend,pin_hash:hash}});
+      var kind=rows[0];
+      lsSet('jz_rolle','eltern');lsSet('jz_kind',kind.id);lsSet('jz_kindname',v+' '+n);lsSet('jz_kindjugend',jugend);
+      S.rolle='eltern';S.kindId=kind.id;S.kindName=v+' '+n;S.kindJugend=jugend;
+      toast('Willkommen in der '+jInfo(jugend).name+', '+v+'! ⚽');
+      zeige(sEltern);
+    }catch(e){console.error(e);toast('Speichern fehlgeschlagen – bitte Internet prüfen und erneut versuchen.');this.disabled=false;this.textContent='Kind anlegen'}
+  };
+}
+
+function sKindOeffnen(){
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">Elternbereich</div><h1>Kind öffnen</h1></div><button class="kbtn" id="bZur">Zurück</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div id="liste"><div class="leer"><span class="spinner gruen"></span></div></div></main></div>';
+  $('#bZur').onclick=function(){zeige(sElternWahl)};
+  (async function(){
+    try{
+      var kinder=await api('kinder?select=id,vorname,nachname,jugend&order=vorname');
+      if(!kinder.length){$('#liste').innerHTML='<div class="karte leer"><div class="disp">Noch kein Kind angelegt</div>Legt euer Kind über „Kind neu anlegen“ an – dauert eine Minute.</div>';return}
+      var html='<div class="hinweis st st1">Tippt euer Kind an und gebt eure Familien-PIN ein.</div>';
+      JUGENDEN.forEach(function(j){
+        var gr=kinder.filter(function(k){return k.jugend===j.kz});
+        if(!gr.length)return;
+        html+='<div class="sec">'+esc(j.name)+'</div>';
+        gr.forEach(function(k){
+          html+='<button class="kachel" data-id="'+k.id+'" data-name="'+esc(k.vorname+' '+k.nachname)+'" data-jugend="'+esc(k.jugend||'')+'"><span class="ic">'+IC.team+'</span><span style="flex:1"><b>'+esc(k.vorname)+' '+esc(k.nachname.charAt(0))+'.</b><small>Mit Familien-PIN öffnen</small></span>'+jBadge(j.kz)+'</button>';
+        });
+      });
+      var ohne=kinder.filter(function(k){return !k.jugend||jugendIndex(k.jugend)<0});
+      if(ohne.length){html+='<div class="sec">Ohne Jugend</div>'+ohne.map(function(k){return '<button class="kachel" data-id="'+k.id+'" data-name="'+esc(k.vorname+' '+k.nachname)+'" data-jugend=""><span class="ic">'+IC.team+'</span><span style="flex:1"><b>'+esc(k.vorname)+' '+esc(k.nachname.charAt(0))+'.</b><small>Mit Familien-PIN öffnen</small></span></button>'}).join('')}
+      $('#liste').innerHTML=html;
+      $$('#liste .kachel').forEach(function(b){b.onclick=function(){pinAbfrage(b.getAttribute('data-id'),b.getAttribute('data-name'),b.getAttribute('data-jugend'))}});
+    }catch(e){$('#liste').innerHTML='<div class="karte leer">Liste konnte nicht geladen werden – bitte Internet prüfen.</div>'}
+  })();
+  function pinAbfrage(id,name,jugend){
+    var m=document.createElement('div');m.className='modal-bg';
+    m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:18px;color:var(--gd)">Familien-PIN für '+esc(name.split(' ')[0])+'</div>'+
+      '<input id="pinEin" type="password" inputmode="numeric" style="margin-top:14px;font-size:22px;text-align:center;letter-spacing:.35em;font-weight:800" placeholder="••••">'+
+      '<div id="pinFehler" style="color:var(--rot);font-size:13px;margin-top:8px;display:none">PIN falsch – bitte erneut versuchen.</div>'+
+      '<button class="btn voll" id="pinOk" style="margin-top:12px">Öffnen</button>'+
+      '<button class="btn geist voll" id="pinAbbr" style="margin-top:8px">Abbrechen</button></div>';
+    document.body.appendChild(m);
+    $('#pinEin').focus();
+    $('#pinAbbr').onclick=function(){m.remove()};
+    m.onclick=function(e){if(e.target===m)m.remove()};
+    $('#pinOk').onclick=async function(){
+      var p=$('#pinEin').value;if(p.length<4){$('#pinFehler').style.display='block';return}
+      this.disabled=true;
+      try{
+        var hash=await sha256(p);
+        var rows=await api('kinder?select=id,vorname,nachname,jugend&id=eq.'+id+'&pin_hash=eq.'+hash);
+        if(!rows.length){$('#pinFehler').style.display='block';this.disabled=false;return}
+        lsSet('jz_rolle','eltern');lsSet('jz_kind',id);lsSet('jz_kindname',name);lsSet('jz_kindjugend',rows[0].jugend||'');
+        S.rolle='eltern';S.kindId=id;S.kindName=name;S.kindJugend=rows[0].jugend||'';
+        m.remove();zeige(sEltern);
+      }catch(e){toast('Verbindung fehlgeschlagen.');this.disabled=false}
+    };
+  }
+}
+
+/* ================= ELTERN: HOME ================= */
+async function sEltern(){
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">'+esc(jInfo(S.kindJugend).name)+' · Saison '+saisonName(KONF.saison)+'</div><h1>'+esc(S.kindName.split(' ')[0])+'</h1></div><button class="kbtn" id="bAb">Wechseln</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div id="ehalt"><div class="leer"><span class="spinner gruen"></span></div></div></main></div>';
+  $('#bAb').onclick=function(){abmelden()};
+  var h=$('#ehalt');
+  try{
+    var res=await Promise.all([
+      api('termine?select=*&order=datum.asc'),
+      api('zusagen?select=termin_id,status&kind_id=eq.'+S.kindId),
+      api('anwesenheit?select=termin_id,da&kind_id=eq.'+S.kindId+''),
+      api('ziele?select=*&jugend=eq.'+encodeURIComponent(S.kindJugend||'')+'&order=reihenfolge')
+    ]);
+    var termine=termineFuer(res[0],S.kindJugend);
+    var zus={};res[1].forEach(function(z){zus[z.termin_id]=z.status});
+    var anwRows=res[2];
+    var ziele=res[3];
+    var kommend=termine.filter(function(t){return t.datum>=heute()});
+    var vergangen=termine.filter(function(t){return t.datum<heute()});
+    var trIds={};termine.forEach(function(t){if(t.typ==='training')trIds[t.id]=true});
+    var trVergangen=vergangen.filter(function(t){return t.typ==='training'}).length;
+    var da=anwRows.filter(function(a){return a.da&&trIds[a.termin_id]}).length;
+    var zugesagt=res[1].filter(function(z){return z.status==='ja'}).length;
+
+    var html='<div class="karte dunkel st st1"><span class="meta sig">'+esc(jInfo(S.kindJugend).name)+'</span>'+
+      '<div class="disp" style="font-size:19px;margin-top:8px">Hallo '+esc(S.kindName.split(' ')[0])+'! 👋</div>'+
+      '<p style="font-size:13.5px;color:rgba(255,255,255,.75);margin-top:6px">Sagt bei jedem Termin kurz zu oder ab – so kann der Trainer verlässlich planen.</p>'+
+      '<div class="stat-g" style="margin-top:12px">'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#fff">'+kommend.length+'</b><span style="color:rgba(255,255,255,.6)">Kommende</span></div>'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#fff">'+zugesagt+'</b><span style="color:rgba(255,255,255,.6)">Zusagen</span></div>'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#fff">'+(trVergangen?Math.round(da/trVergangen*100)+'%':'–')+'</b><span style="color:rgba(255,255,255,.6)">Training da</span></div>'+
+      '</div></div>';
+
+    html+='<div class="sec st st2">Kommende Termine</div>';
+    if(!kommend.length)html+='<div class="karte leer st st2"><div class="disp">Gerade nichts geplant</div>Sobald der Trainer Termine anlegt, erscheinen sie hier.</div>';
+    var letzterMonat='';
+    kommend.forEach(function(t){
+      var mon=fmtMonat(t.datum);
+      if(mon!==letzterMonat){html+='<div class="monat">'+esc(mon)+'</div>';letzterMonat=mon}
+      var fer=t.typ!=='event'?inFerien(t.datum):null;
+      var st=zus[t.id];
+      html+='<div class="karte"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="meta typ-'+t.typ+'">'+typName(t.typ)+'</span><span class="meta">'+fmtDat(t.datum)+(t.uhrzeit?' · '+esc(t.uhrzeit):'')+'</span>'+(t.typ==='event'&&!t.jugend?'<span class="meta sig">Verein</span>':'')+(fer?'<span class="ferienchip">'+esc(fer)+'</span>':'')+'</div>'+
+        '<div class="disp" style="font-size:16.5px;color:var(--gd);margin-top:7px">'+esc(terminTitel(t))+'</div>'+
+        (t.ort?'<div style="font-size:12.5px;color:var(--grau);margin-top:2px">📍 '+esc(t.ort)+'</div>':'')+
+        '<div class="rsvp-btns" style="margin-top:11px"><button class="rsvp ja'+(st==='ja'?' an':'')+'" data-tid="'+t.id+'" data-st="ja">✓ Zusagen</button><button class="rsvp nein'+(st==='nein'?' an':'')+'" data-tid="'+t.id+'" data-st="nein">✗ Absagen</button></div></div>';
+    });
+
+    if(ziele.length){
+      html+='<div class="sec st st3">Unser Weg durch die Saison</div>';
+      var heuteD=heute();
+      html+='<div class="karte st st3">'+ziele.map(function(z,i){
+        return '<div class="phase'+(i===0?' offen':'')+'"><span class="pkt"></span>'+
+        '<div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rasen)">'+esc(z.nr||'')+' · '+esc(z.zeitraum||'')+'</div>'+
+        '<div class="disp" style="font-size:16px;color:var(--gd);margin:3px 0 2px">'+esc(z.titel||'')+'</div>'+
+        '<div style="font-size:13px;color:var(--grau);font-style:italic">„'+esc(z.motto||'')+'“</div></div>';
+      }).join('')+'</div>';
+    }
+
+    if(vergangen.length){
+      html+='<div class="sec">Vergangene Termine</div>'+vergangen.slice(-8).reverse().map(function(t){
+        return '<div class="karte" style="padding:12px 16px"><span class="meta typ-'+t.typ+'">'+typName(t.typ)+'</span> <span class="meta">'+fmtDat(t.datum)+'</span> <b style="font-size:14px">'+esc(terminTitel(t))+'</b>'+(t.ergebnis?' <span class="meta sig">'+esc(t.ergebnis)+'</span>':'')+'</div>';
+      }).join('');
+    }
+    h.innerHTML=html;
+    $$('.rsvp',h).forEach(function(b){
+      b.onclick=async function(){
+        var tid=b.getAttribute('data-tid'),st=b.getAttribute('data-st');
+        try{
+          await api('zusagen?on_conflict=termin_id,kind_id',{method:'POST',prefer:'resolution=merge-duplicates',body:{termin_id:tid,kind_id:S.kindId,status:st}});
+          $$('.rsvp[data-tid="'+tid+'"]',h).forEach(function(x){x.classList.remove('an')});
+          b.classList.add('an');
+          toast(st==='ja'?'Zugesagt – bis bald! ⚽':'Abgesagt – danke für die Info.');
+        }catch(e){toast('Nicht gespeichert – bitte erneut tippen.')}
+      };
+    });
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Daten konnten nicht geladen werden.</div>'}
+}
+
+/* ================= TRAINER: EINSTIEG ================= */
+function sTrainerJugendWahl(){
+  $('#app').innerHTML=
+  '<div class="screen held"><div class="held-bg"></div><div class="held-halo"></div>'+
+  '<div class="held-in" style="text-align:left">'+
+    '<div class="eyebrow st st1" style="justify-content:flex-start">Trainerstab</div>'+
+    '<h1 class="st st1" style="font-size:34px">Deine Jugend</h1>'+
+    '<p class="sub st st2" style="margin-top:8px">Wähle deine Mannschaft – danach meldest du dich mit deinem persönlichen Trainer-Zugang an.</p>'+
+    '<div class="rollen st st3" style="grid-template-columns:1fr 1fr;gap:10px">'+JUGENDEN.map(function(j){
+      return '<button class="rolle-k jWahl" data-kz="'+j.kz+'" style="padding:14px"><span class="ic" style="background:'+j.farbe+'33;color:'+j.farbe+';font-family:Archivo;font-weight:900">'+esc(j.kz==='G'?'Bam':j.kz)+'</span><span><b style="font-size:14px">'+esc(j.name)+'</b></span></button>';
+    }).join('')+'</div>'+
+    '<button class="btn voll st st4" style="margin-top:18px;background:none;color:rgba(255,255,255,.6)" id="bZur">Zurück</button>'+
+  '</div></div>';
+  $$('.jWahl').forEach(function(b){b.onclick=function(){zeige(function(){sTrainerLogin(b.getAttribute('data-kz'))})}});
+  $('#bZur').onclick=function(){zeige(sHero)};
+}
+
+function sTrainerLogin(kz){
+  var j=jInfo(kz);
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">'+esc(j.name)+'</div><h1>Trainer-Anmeldung</h1></div><button class="kbtn" id="bZur">Zurück</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div id="thalt"><div class="leer"><span class="spinner gruen"></span></div></div></main></div>';
+  $('#bZur').onclick=function(){zeige(sTrainerJugendWahl)};
+  (async function(){
+    try{
+      var trainer=await api('trainer?select=id,name&jugend=eq.'+kz+'&order=name');
+      var html='';
+      if(trainer.length){
+        html+='<div class="sec st st1">Wer bist du?</div>'+trainer.map(function(t){
+          return '<button class="kachel trWahl" data-id="'+t.id+'" data-name="'+esc(t.name)+'"><span class="ic">'+IC.cone+'</span><span style="flex:1"><b>'+esc(t.name)+'</b><small>Mit persönlicher PIN anmelden</small></span></button>';
+        }).join('');
+      } else {
+        html+='<div class="karte leer st st1"><div class="disp">Noch kein Trainer angelegt</div>Lege unten deinen persönlichen Zugang für die '+esc(j.name)+' an.</div>';
+      }
+      html+='<div class="sec st st2">Neu im Trainerteam?</div>'+
+      '<div class="karte st st2"><label>Dein Name</label><input id="tName" placeholder="z. B. Kim">'+
+      '<label>Team-Code der '+esc(j.name)+'</label><input id="tCode" type="password" inputmode="numeric" placeholder="bekommst du von der Jugendleitung">'+
+      '<label>Deine persönliche PIN (mind. 4 Zeichen)</label><input id="tP1" type="password" inputmode="numeric">'+
+      '<label>PIN wiederholen</label><input id="tP2" type="password" inputmode="numeric">'+
+      '<button class="btn voll" id="tNeu" style="margin-top:12px">Trainer-Zugang anlegen</button>'+
+      '<div style="font-size:12px;color:var(--grau);margin-top:8px">Der Team-Code schützt vor fremden Anmeldungen. Standard ist 1910 – die Jugendleitung kann ihn ändern.</div></div>';
+      $('#thalt').innerHTML=html;
+      $$('.trWahl').forEach(function(b){b.onclick=function(){trainerPinAbfrage(kz,b.getAttribute('data-id'),b.getAttribute('data-name'))}});
+      $('#tNeu').onclick=async function(){
+        var name=$('#tName').value.trim(),code=$('#tCode').value,p1=$('#tP1').value,p2=$('#tP2').value;
+        if(!name){toast('Bitte Namen eintragen.');return}
+        if(p1.length<4){toast('Die PIN braucht mindestens 4 Zeichen.');return}
+        if(p1!==p2){toast('Die PINs stimmen nicht überein.');return}
+        this.disabled=true;
+        try{
+          var codeHash=await sha256(code);
+          if(codeHash!==KONF.pins[kz]){toast('Team-Code falsch – bitte bei der Jugendleitung nachfragen.');this.disabled=false;return}
+          var hash=await sha256(p1);
+          var rows=await api('trainer',{method:'POST',prefer:'return=representation',body:{jugend:kz,name:name,pin_hash:hash}});
+          trainerAnmelden(kz,rows[0].id,name);
+        }catch(e){console.error(e);toast('Anlegen fehlgeschlagen.');this.disabled=false}
+      };
+    }catch(e){$('#thalt').innerHTML='<div class="karte leer">Trainerliste konnte nicht geladen werden.</div>'}
+  })();
+  function trainerPinAbfrage(kz,id,name){
+    var m=document.createElement('div');m.className='modal-bg';
+    m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:18px;color:var(--gd)">PIN für '+esc(name)+'</div>'+
+      '<input id="pinEin" type="password" inputmode="numeric" style="margin-top:14px;font-size:22px;text-align:center;letter-spacing:.35em;font-weight:800" placeholder="••••">'+
+      '<div id="pinFehler" style="color:var(--rot);font-size:13px;margin-top:8px;display:none">PIN falsch.</div>'+
+      '<button class="btn voll" id="pinOk" style="margin-top:12px">Anmelden</button>'+
+      '<button class="btn geist voll" id="pinAbbr" style="margin-top:8px">Abbrechen</button></div>';
+    document.body.appendChild(m);$('#pinEin').focus();
+    $('#pinAbbr').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+    $('#pinOk').onclick=async function(){
+      var p=$('#pinEin').value;this.disabled=true;
+      try{
+        var hash=await sha256(p);
+        var rows=await api('trainer?select=id&id=eq.'+id+'&pin_hash=eq.'+hash);
+        if(!rows.length){$('#pinFehler').style.display='block';this.disabled=false;return}
+        m.remove();trainerAnmelden(kz,id,name);
+      }catch(e){toast('Verbindung fehlgeschlagen.');this.disabled=false}
+    };
+  }
+}
+function trainerAnmelden(kz,id,name){
+  lsSet('jz_rolle','trainer');lsSet('jz_trainerjugend',kz);lsSet('jz_trainerid',id);lsSet('jz_trainername',name);
+  S.rolle='trainer';S.trainerJugend=kz;S.trainerId=id;S.trainerName=name;S.trainerTab='start';
+  toast('Willkommen, '+name+'!');
+  zeige(sTrainer);
+}
+
+/* ================= TRAINER: RAHMEN ================= */
+function sTrainer(){
+  S.trainerId=S.trainerId||lsGet('jz_trainerid');S.trainerName=S.trainerName||lsGet('jz_trainername')||'Trainer';
+  var j=jInfo(S.trainerJugend);
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">'+esc(j.name)+' · '+esc(S.trainerName)+'</div><h1>Trainerbereich</h1></div><button class="kbtn" id="bAb">Abmelden</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div id="thalt"></div></main>'+
+  '<nav class="tabbar"><div class="tabbar-in">'+
+    '<button class="tab" data-t="start">'+IC.home+'Start<span class="pille"></span></button>'+
+    '<button class="tab" data-t="ziele">'+IC.flag+'Ziele<span class="pille"></span></button>'+
+    '<button class="tab" data-t="termine">'+IC.kal+'Termine<span class="pille"></span></button>'+
+    '<button class="tab" data-t="team">'+IC.team+'Team<span class="pille"></span></button>'+
+    '<button class="tab" data-t="uebungen">'+IC.buch+'Übungen<span class="pille"></span></button>'+
+  '</div></nav></div>';
+  $('#bAb').onclick=function(){abmelden()};
+  $$('.tab').forEach(function(b){
+    b.onclick=function(){S.trainerTab=b.getAttribute('data-t');tabAktiv();tabRender()};
+  });
+  function tabAktiv(){$$('.tab').forEach(function(b){b.classList.toggle('aktiv',b.getAttribute('data-t')===S.trainerTab)})}
+  tabAktiv();tabRender();
+}
+function tabRender(){
+  var t=S.trainerTab;
+  if(t==='start')tStart();
+  else if(t==='ziele')tZiele();
+  else if(t==='termine')tTermine();
+  else if(t==='team')tTeam();
+  else tUebungen();
+}
+
+/* ---------- Trainer: Start ---------- */
+async function tStart(){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([
+      api('termine?select=*&order=datum.asc'),
+      api('kinder?select=id,vorname,nachname,jahrgang,jugend,rolle&jugend=eq.'+kz+'&order=vorname'),
+      api('zusagen?select=termin_id,status'),
+      api('notizen?select=text,kategorie,created_at&order=created_at.desc&limit=60'),
+      api('termin_uebungen?select=termin_id,uebungen(kategorien)')
+    ]);
+    var termine=termineFuer(res[0],kz);
+    var kinder=res[1],zus=res[2];
+    var kommend=termine.filter(function(t){return t.datum>=heute()});
+    var naechster=kommend[0];
+    var html='';
+
+    /* Saisonwechsel-Assistent: Kinder, deren Jahrgang in der aktuellen Saison eine andere Jugend vorsieht */
+    var wechsler=kinder.filter(function(k){return k.jahrgang&&jugendAusJahrgang(k.jahrgang,KONF.saison)!==k.jugend});
+    if(wechsler.length){
+      html+='<div class="karte st st1" style="border-left:4px solid var(--amber)"><span class="meta warn">Saisonwechsel</span>'+
+      '<div class="disp" style="font-size:16px;color:var(--gd);margin-top:6px">'+wechsler.length+' Kind'+(wechsler.length>1?'er':'')+' zum Prüfen</div>'+
+      '<p style="font-size:13px;color:var(--grau);margin-top:4px">Für Saison '+saisonName(KONF.saison)+' sieht der Jahrgang eine andere Jugend vor. Entscheide pro Kind: geht hoch oder bleibt (hochgezogen).</p>'+
+      '<button class="btn voll" id="bWechsel" style="margin-top:10px">Jetzt entscheiden</button></div>';
+    }
+
+    if(naechster){
+      var ja=zus.filter(function(z){return z.termin_id===naechster.id&&z.status==='ja'}).length;
+      var nein=zus.filter(function(z){return z.termin_id===naechster.id&&z.status==='nein'}).length;
+      var offen=Math.max(0,kinder.length-ja-nein);
+      html+='<div class="karte dunkel st st1"><span class="meta sig">Nächster Termin</span>'+
+      '<div class="disp" style="font-size:19px;margin-top:8px">'+esc(terminTitel(naechster))+'</div>'+
+      '<div style="font-size:13px;color:rgba(255,255,255,.75);margin-top:4px">'+fmtDat(naechster.datum)+(naechster.uhrzeit?' · '+esc(naechster.uhrzeit):'')+(naechster.ort?' · '+esc(naechster.ort):'')+'</div>'+
+      '<div class="stat-g" style="margin-top:12px">'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#C8E63C">'+ja+'</b><span style="color:rgba(255,255,255,.6)">Zusagen</span></div>'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#fff">'+nein+'</b><span style="color:rgba(255,255,255,.6)">Absagen</span></div>'+
+        '<div class="stat" style="background:rgba(255,255,255,.08);border:none"><b style="color:#fff">'+offen+'</b><span style="color:rgba(255,255,255,.6)">Offen</span></div>'+
+      '</div></div>';
+    } else {
+      html+='<div class="karte leer st st1"><div class="disp">Noch nichts geplant</div>Lege unter „Termine“ Training, Spiele oder eine ganze Trainings-Serie an.</div>';
+    }
+
+    /* Trainings-Kompass (Kurzfassung) */
+    var kompass=trainingsKompass(termine,res[4],res[3]);
+    if(kompass.tipps.length){
+      html+='<div class="sec st st2">Trainings-Kompass</div><div class="karte st st2">'+
+      '<p style="font-size:13px;color:var(--grau)">Automatische Auswertung aus Trainingsabdeckung und euren Notizen – Vorschläge für die nächsten Wochen:</p>'+
+      kompass.tipps.slice(0,3).map(function(t){return '<div class="lz"><span style="font-size:13.5px"><b>'+esc(t.kat)+'</b><br><span style="font-size:12px;color:var(--grau)">'+esc(t.grund)+'</span></span><span class="meta '+(t.stufe==='hoch'?'rot':'warn')+'">'+(t.stufe==='hoch'?'Priorität':'Empfohlen')+'</span></div>'}).join('')+
+      '<button class="btn hell voll" id="bKompass" style="margin-top:8px">Details &amp; passende Übungen</button></div>';
+    }
+
+    html+='<div class="sec st st3">Team</div><div class="stat-g st st3">'+
+      '<div class="stat"><b>'+kinder.length+'</b><span>Spieler</span></div>'+
+      '<div class="stat"><b>'+kommend.length+'</b><span>Kommende</span></div>'+
+      '<div class="stat"><b>'+kinder.filter(function(k){return k.rolle}).length+'</b><span>Captains</span></div></div>';
+
+    html+='<div class="sec st st4">Dein Zugang</div><div class="karte st st4">'+
+      '<div class="lz"><span style="font-size:14px">Angemeldet als <b>'+esc(S.trainerName)+'</b></span></div>'+
+      '<button class="btn geist voll" id="bPinNeu" style="margin-top:6px">Persönliche PIN ändern</button></div>';
+
+    h.innerHTML=html;
+    if($('#bWechsel'))$('#bWechsel').onclick=function(){saisonAssistent(wechsler)};
+    if($('#bKompass'))$('#bKompass').onclick=function(){S.trainerTab='uebungen';$$('.tab').forEach(function(b){b.classList.toggle('aktiv',b.getAttribute('data-t')==='uebungen')});tUebungen()};
+    if($('#bPinNeu'))$('#bPinNeu').onclick=function(){
+      var m=document.createElement('div');m.className='modal-bg';
+      m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:17px;color:var(--gd)">Neue persönliche PIN</div>'+
+      '<label>Neue PIN (mind. 4 Zeichen)</label><input id="np1" type="password" inputmode="numeric">'+
+      '<label>Wiederholen</label><input id="np2" type="password" inputmode="numeric">'+
+      '<button class="btn voll" id="npOk" style="margin-top:12px">Speichern</button>'+
+      '<button class="btn geist voll" id="npAbbr" style="margin-top:8px">Abbrechen</button></div>';
+      document.body.appendChild(m);
+      $('#npAbbr').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+      $('#npOk').onclick=async function(){
+        var a=$('#np1').value,b=$('#np2').value;
+        if(a.length<4){toast('Mindestens 4 Zeichen.');return}
+        if(a!==b){toast('PINs stimmen nicht überein.');return}
+        try{await api('trainer?id=eq.'+S.trainerId,{method:'PATCH',body:{pin_hash:await sha256(a)}});m.remove();toast('PIN geändert.')}catch(e){toast('Fehler beim Speichern.')}
+      };
+    };
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Start konnte nicht geladen werden.</div>'}
+}
+
+/* Saisonwechsel: pro Kind entscheiden */
+function saisonAssistent(wechsler){
+  var m=document.createElement('div');m.className='modal-bg';
+  var html='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:17px;color:var(--gd);margin-bottom:4px">Saisonwechsel '+saisonName(KONF.saison)+'</div>'+
+  '<p style="font-size:13px;color:var(--grau);margin-bottom:10px">Entscheide pro Kind. „Bleibt“ heißt: Es spielt weiter (hochgezogen) in deiner Jugend.</p>';
+  wechsler.forEach(function(k){
+    var ziel=jugendAusJahrgang(k.jahrgang,KONF.saison);
+    html+='<div class="karte" style="margin-bottom:10px"><b style="font-size:15px">'+esc(k.vorname+' '+k.nachname)+'</b> <span class="meta">Jg. '+k.jahrgang+'</span>'+
+    '<div class="zeile" style="margin-top:9px"><button class="btn sig wSet" data-kid="'+k.id+'" data-ziel="'+ziel+'">→ '+esc(jInfo(ziel).name)+'</button>'+
+    '<button class="btn geist wSet" data-kid="'+k.id+'" data-ziel="'+esc(k.jugend)+'">Bleibt</button></div></div>';
+  });
+  html+='<button class="btn geist voll" id="wZu">Schließen</button></div>';
+  m.innerHTML=html;document.body.appendChild(m);
+  $('#wZu').onclick=function(){m.remove();tStart()};m.onclick=function(e){if(e.target===m){m.remove();tStart()}};
+  $$('.wSet',m).forEach(function(b){b.onclick=async function(){
+    try{
+      await api('kinder?id=eq.'+b.getAttribute('data-kid'),{method:'PATCH',body:{jugend:b.getAttribute('data-ziel'),rolle:null}});
+      b.closest('.karte').style.opacity='.45';b.closest('.karte').querySelectorAll('button').forEach(function(x){x.disabled=true});
+      toast('Gespeichert.');
+    }catch(e){toast('Nicht gespeichert.')}
+  }});
+}
+
+/* Kompass-Logik: Abdeckung + Notizen-Signale */
+function trainingsKompass(termine,tuRows,notizen){
+  var zaehler={};KATEGORIEN.forEach(function(k){zaehler[k]=0});
+  var terminIds={};termine.forEach(function(t){terminIds[t.id]=true});
+  tuRows.forEach(function(r){
+    if(!terminIds[r.termin_id]||!r.uebungen)return;
+    (r.uebungen.kategorien||[]).forEach(function(k){if(k in zaehler)zaehler[k]++});
+  });
+  var werte=Object.keys(zaehler).map(function(k){return zaehler[k]});
+  var max=Math.max.apply(null,[1].concat(werte));
+  var summe=werte.reduce(function(a,b){return a+b},0);
+  var notizText=notizen.map(function(n){return (n.text||'')+' '+(n.kategorie||'')}).join(' ');
+  var tipps=[];
+  KATEGORIEN.forEach(function(k){
+    var n=zaehler[k];
+    var kw=null;for(var i=0;i<KEYWORDS.length;i++)if(KEYWORDS[i][0]===k)kw=KEYWORDS[i][1];
+    var notizTreffer=kw?(notizText.match(new RegExp(kw.source,'gi'))||[]).length:0;
+    if(summe>=3&&n===0)tipps.push({kat:k,grund:'In den geplanten Trainings bisher gar nicht abgedeckt.',stufe:notizTreffer?'hoch':'mittel',score:3+notizTreffer});
+    else if(summe>=5&&n<=max*0.25&&notizTreffer)tipps.push({kat:k,grund:'Wenig trainiert und '+notizTreffer+'× in Notizen aufgefallen.',stufe:'hoch',score:2+notizTreffer});
+    else if(notizTreffer>=2&&n<=max*0.5)tipps.push({kat:k,grund:notizTreffer+'× in euren Notizen erwähnt – lohnt einen Schwerpunkt.',stufe:'mittel',score:notizTreffer});
+  });
+  tipps.sort(function(a,b){return b.score-a.score});
+  return {zaehler:zaehler,max:max,summe:summe,tipps:tipps};
+}
+
+/* ---------- Trainer: Ziele (Roadmap-Editor) ---------- */
+async function tZiele(){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var ziele=await api('ziele?select=*&jugend=eq.'+kz+'&order=reihenfolge');
+    var html='<div class="hinweis st st1">Definiert hier eure Saisonziele als Phasen – die Eltern sehen daraus automatisch die Roadmap („Unser Weg durch die Saison“). Bewertungen und Notizen bleiben für Eltern unsichtbar.</div>'+
+    '<button class="btn voll st st1" id="bNeuZ">＋ Phase hinzufügen</button>';
+    if(!ziele.length)html+='<div class="karte leer st st2"><div class="disp">Noch keine Ziele</div>Lege die erste Phase an – z. B. „Phase 1 · Fundament“.</div>';
+    ziele.forEach(function(z,i){
+      html+='<div class="karte st st'+Math.min(i+2,5)+'">'+
+      '<div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div>'+
+      '<span class="meta">'+esc(z.nr||('Phase '+i))+'</span> <span class="meta sig">'+esc(z.zeitraum||'')+'</span></div>'+
+      '<div style="display:flex;gap:6px">'+
+      (i>0?'<button class="zHoch" data-id="'+z.id+'" style="background:none;border:1px solid var(--linie);border-radius:8px;padding:4px 9px;font-weight:800">↑</button>':'')+
+      '<button class="zEdit" data-id="'+z.id+'" style="background:none;border:1px solid var(--linie);border-radius:8px;padding:4px 9px;font-size:12px;font-weight:700">Bearbeiten</button>'+
+      '<button class="zWeg" data-id="'+z.id+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div></div>'+
+      '<div class="disp" style="font-size:17px;color:var(--gd);margin-top:7px">'+esc(z.titel||'')+'</div>'+
+      (z.motto?'<div style="font-size:13px;color:var(--grau);font-style:italic;margin-top:2px">„'+esc(z.motto)+'“</div>':'')+
+      ((z.punkte||[]).length?'<ul style="list-style:none;margin-top:8px">'+z.punkte.map(function(p){return '<li style="padding:2px 0 2px 16px;position:relative;font-size:13px"><span style="position:absolute;left:0;color:var(--rasen);font-weight:800">›</span>'+esc(p)+'</li>'}).join('')+'</ul>':'')+
+      (z.trainer_name?'<div style="font-size:11px;color:var(--grau);margin-top:8px">Zuletzt bearbeitet von '+esc(z.trainer_name)+'</div>':'')+
+      '</div>';
+    });
+    h.innerHTML=html;
+    $('#bNeuZ').onclick=function(){zielEditor(null,ziele.length)};
+    $$('.zEdit').forEach(function(b){b.onclick=function(){var z=ziele.find(function(x){return x.id===b.getAttribute('data-id')});zielEditor(z)}});
+    $$('.zWeg').forEach(function(b){b.onclick=async function(){if(!confirm('Phase löschen?'))return;try{await api('ziele?id=eq.'+b.getAttribute('data-id'),{method:'DELETE'});tZiele()}catch(e){toast('Fehler.')}}});
+    $$('.zHoch').forEach(function(b){b.onclick=async function(){
+      var id=b.getAttribute('data-id');var idx=ziele.findIndex(function(x){return x.id===id});if(idx<1)return;
+      try{
+        await api('ziele?id=eq.'+ziele[idx].id,{method:'PATCH',body:{reihenfolge:ziele[idx-1].reihenfolge}});
+        await api('ziele?id=eq.'+ziele[idx-1].id,{method:'PATCH',body:{reihenfolge:ziele[idx].reihenfolge}});
+        tZiele();
+      }catch(e){toast('Fehler.')}
+    }});
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Ziele konnten nicht geladen werden.</div>'}
+}
+function zielEditor(z,neueReihe){
+  var m=document.createElement('div');m.className='modal-bg';
+  m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:17px;color:var(--gd)">'+(z?'Phase bearbeiten':'Neue Phase')+'</div>'+
+  '<div class="zeile"><div><label>Bezeichnung</label><input id="zN" value="'+esc(z?z.nr:'Phase '+((neueReihe||0)))+'" placeholder="Phase 1"></div>'+
+  '<div><label>Zeitraum</label><input id="zZ" value="'+esc(z?z.zeitraum:'')+'" placeholder="Sep – Okt · 7 Wochen"></div></div>'+
+  '<label>Titel</label><input id="zT" value="'+esc(z?z.titel:'')+'" placeholder="Fundament">'+
+  '<label>Motto</label><input id="zM" value="'+esc(z?z.motto:'')+'" placeholder="Jeder gewinnt sein 1v1.">'+
+  '<label>Inhalte (eine Zeile pro Punkt)</label><textarea id="zP" rows="5">'+esc((z&&z.punkte?z.punkte:[]).join('\n'))+'</textarea>'+
+  '<button class="btn voll" id="zOk" style="margin-top:12px">Speichern</button>'+
+  '<button class="btn geist voll" id="zAbbr" style="margin-top:8px">Abbrechen</button></div>';
+  document.body.appendChild(m);
+  $('#zAbbr').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+  $('#zOk').onclick=async function(){
+    var body={jugend:S.trainerJugend,nr:$('#zN').value.trim(),zeitraum:$('#zZ').value.trim(),titel:$('#zT').value.trim(),
+      motto:$('#zM').value.trim(),punkte:$('#zP').value.split('\n').map(function(x){return x.trim()}).filter(Boolean),trainer_name:S.trainerName};
+    if(!body.titel){toast('Bitte einen Titel eintragen.');return}
+    this.disabled=true;
+    try{
+      if(z)await api('ziele?id=eq.'+z.id,{method:'PATCH',body:body});
+      else{body.reihenfolge=neueReihe||0;await api('ziele',{method:'POST',body:body})}
+      m.remove();toast('Gespeichert.');tZiele();
+    }catch(e){console.error(e);toast('Speichern fehlgeschlagen.');this.disabled=false}
+  };
+}
+
+/* ---------- Trainer: Termine ---------- */
+async function tTermine(){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([api('termine?select=*&order=datum.desc,uhrzeit.desc'),api('zusagen?select=termin_id,status'),api('anwesenheit?select=termin_id,da')]);
+    var termine=termineFuer(res[0],kz),zus=res[1],anw=res[2];
+    var html='<div class="zeile st st1"><button class="btn" id="bNeuT">＋ Termin</button><button class="btn hell" id="bSerie">⟳ Trainings-Serie</button></div><div id="formNeu"></div>';
+    var kommend=termine.filter(function(t){return t.datum>=heute()}).sort(function(a,b){return a.datum<b.datum?-1:1});
+    var vergangen=termine.filter(function(t){return t.datum<heute()});
+    function zeile(t){
+      var ja=zus.filter(function(z){return z.termin_id===t.id&&z.status==='ja'}).length;
+      var nein=zus.filter(function(z){return z.termin_id===t.id&&z.status==='nein'}).length;
+      var da=anw.filter(function(a){return a.termin_id===t.id&&a.da}).length;
+      var fremd=t.typ==='event'&&!t.jugend;
+      return '<button class="kachel" data-tid="'+t.id+'"><span class="ic">'+(t.typ==='training'?IC.cone:(t.typ==='event'?IC.stern:IC.ball))+'</span><span style="flex:1"><span class="meta typ-'+t.typ+'" style="float:right">'+typName(t.typ)+'</span><b>'+esc(terminTitel(t))+'</b><small>'+fmtDat(t.datum)+(t.uhrzeit?' · '+esc(t.uhrzeit):'')+' · ✓ '+ja+' · ✗ '+nein+(da?' · '+da+' da':'')+(t.serie_id?' · Serie':'')+(fremd?' · Jugendleitung':'')+'</small></span></button>';
+    }
+    html+='<div class="sec st st1">Kommend</div>';
+    if(!kommend.length)html+='<div class="karte leer st st2"><div class="disp">Nichts geplant</div>Leg oben einen Termin oder gleich eine ganze Trainings-Serie an.</div>';
+    var letzterMonat='';
+    kommend.forEach(function(t){var mon=fmtMonat(t.datum);if(mon!==letzterMonat){html+='<div class="monat">'+esc(mon)+'</div>';letzterMonat=mon}html+=zeile(t)});
+    if(vergangen.length){html+='<div class="sec">Vergangen</div>'+vergangen.map(zeile).join('')}
+    h.innerHTML=html;
+    $$('[data-tid]',h).forEach(function(b){b.onclick=function(){terminDetail(b.getAttribute('data-tid'))}});
+    $('#bNeuT').onclick=function(){neuTerminForm()};
+    $('#bSerie').onclick=function(){serieForm()};
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Termine konnten nicht geladen werden.</div>'}
+}
+function neuTerminForm(){
+  var f=$('#formNeu');
+  f.innerHTML='<div class="karte" style="margin-top:12px">'+
+    '<div class="seg"><button data-typ="training" class="an">Training</button><button data-typ="spiel">Spiel</button><button data-typ="turnier">Turnier</button><button data-typ="event">Event</button></div>'+
+    '<div id="fFelder"></div>'+
+    '<div class="zeile" style="margin-top:14px"><button class="btn geist" id="fAbbr">Abbrechen</button><button class="btn" id="fSp">Speichern</button></div></div>';
+  var typ='training';
+  function felder(){
+    var basis='<div class="zeile"><div><label>Datum</label><input id="fD" type="date" value="'+heute()+'"></div><div><label>Uhrzeit</label><input id="fU" type="time" value="'+(typ==='training'?'17:30':'10:30')+'"></div></div>';
+    if(typ==='training')basis+='<label>Schwerpunkt</label><input id="fS" placeholder="z. B. 1v1 offensiv">';
+    if(typ==='spiel')basis+='<label>Gegner</label><input id="fT" placeholder="z. B. TSV Nachbarort"><label>Heim / Auswärts</label><div class="zeile"><button class="rsvp ja an" id="fHeim">Heim</button><button class="rsvp ja" id="fAusw">Auswärts</button></div><label>Ort (optional)</label><input id="fO" placeholder="Sportzentrum …">';
+    if(typ==='turnier')basis+='<label>Turniername</label><input id="fT" placeholder="z. B. Hallenturnier Leonberg"><label>Ort</label><input id="fO" placeholder="Sporthalle …">';
+    if(typ==='event')basis+='<label>Was für ein Event?</label><input id="fT" placeholder="z. B. Saisonabschlussfest, Elternabend"><label>Ort</label><input id="fO" placeholder="Vereinsheim …">';
+    basis+='<div id="fFerienWarn"></div>';
+    $('#fFelder').innerHTML=basis;
+    $('#fD').onchange=function(){var fer=inFerien(this.value);$('#fFerienWarn').innerHTML=fer?'<div class="hinweis" style="border-color:var(--amber)">Achtung: '+esc(fer)+' – Termin ist trotzdem möglich (z. B. Feriencamp).</div>':''};
+    if(typ==='spiel'){var heim=true;$('#fHeim').onclick=function(){heim=true;$('#fHeim').classList.add('an');$('#fAusw').classList.remove('an')};$('#fAusw').onclick=function(){heim=false;$('#fAusw').classList.add('an');$('#fHeim').classList.remove('an')};$('#fFelder')._heim=function(){return heim}}
+  }
+  felder();
+  $$('.seg button',f).forEach(function(b){b.onclick=function(){$$('.seg button',f).forEach(function(x){x.classList.remove('an')});b.classList.add('an');typ=b.getAttribute('data-typ');felder()}});
+  $('#fAbbr').onclick=function(){f.innerHTML=''};
+  $('#fSp').onclick=async function(){
+    var body={typ:typ,datum:$('#fD').value,uhrzeit:$('#fU').value,jugend:S.trainerJugend,trainer_name:S.trainerName};
+    if(typ==='training')body.schwerpunkt=$('#fS').value.trim()||null;
+    else{
+      body.titel=$('#fT').value.trim();
+      if(!body.titel){toast(typ==='spiel'?'Bitte Gegner eintragen.':'Bitte einen Namen eintragen.');return}
+      body.ort=$('#fO').value.trim()||null;
+      if(typ==='spiel')body.heim=$('#fFelder')._heim();
+    }
+    this.disabled=true;
+    try{await api('termine',{method:'POST',body:body});toast('Termin angelegt – Eltern können jetzt zusagen.');tTermine()}
+    catch(e){toast('Speichern fehlgeschlagen.');this.disabled=false}
+  };
+}
+/* Dauerauftrag: woechentliches Training bis Saisonende, Ferien werden uebersprungen */
+function serieForm(){
+  var f=$('#formNeu');
+  var ferienListe=KONF.ferien.map(function(x){return '<span class="ferienchip">'+esc(x.name)+'</span>'}).join('');
+  f.innerHTML='<div class="karte" style="margin-top:12px"><span class="meta sig">Trainings-Serie</span>'+
+    '<p style="font-size:13px;color:var(--grau);margin-top:6px">Legt jede Woche automatisch ein Training an – bis zum Saisonende ('+fmtDat(saisonEnde(KONF.saison))+'). Termine in den Ferien werden übersprungen:</p>'+
+    '<div style="margin-top:8px">'+ferienListe+'</div>'+
+    '<div class="zeile"><div><label>Wochentag</label><select id="sW">'+[1,2,3,4,5,6,0].map(function(w){return '<option value="'+w+'">'+WOCHENTAGE[w]+'</option>'}).join('')+'</select></div>'+
+    '<div><label>Uhrzeit</label><input id="sU" type="time" value="17:30"></div></div>'+
+    '<div class="zeile"><div><label>Ab Datum</label><input id="sV" type="date" value="'+heute()+'"></div>'+
+    '<div><label>Bis (Standard: Saisonende)</label><input id="sB" type="date" value="'+saisonEnde(KONF.saison)+'"></div></div>'+
+    '<label>Schwerpunkt (optional, für alle)</label><input id="sS" placeholder="leer lassen und später pro Woche eintragen">'+
+    '<div id="sVorschau" style="margin-top:10px"></div>'+
+    '<div class="zeile" style="margin-top:12px"><button class="btn geist" id="sAbbr">Abbrechen</button><button class="btn" id="sOk">Serie anlegen</button></div></div>';
+  function daten(){
+    var w=parseInt($('#sW').value,10),von=$('#sV').value,bis=$('#sB').value;
+    var aus=[],uebersprungen=0;
+    var d=new Date(von+'T12:00:00');
+    while(d.getDay()!==w)d.setDate(d.getDate()+1);
+    while(true){
+      var iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      if(iso>bis)break;
+      if(inFerien(iso))uebersprungen++;else aus.push(iso);
+      d.setDate(d.getDate()+7);
+      if(aus.length+uebersprungen>120)break;
+    }
+    return {termine:aus,uebersprungen:uebersprungen};
+  }
+  function vorschau(){var x=daten();$('#sVorschau').innerHTML='<div class="hinweis">'+x.termine.length+' Trainings werden angelegt · '+x.uebersprungen+' Ferienwochen übersprungen.</div>'}
+  vorschau();
+  ['sW','sV','sB'].forEach(function(id){$('#'+id).onchange=vorschau});
+  $('#sAbbr').onclick=function(){f.innerHTML=''};
+  $('#sOk').onclick=async function(){
+    var x=daten();if(!x.termine.length){toast('Kein Termin im Zeitraum.');return}
+    this.disabled=true;this.innerHTML='<span class="spinner"></span> Lege '+x.termine.length+' Trainings an …';
+    var sid=uuid(),uhr=$('#sU').value,schwer=$('#sS').value.trim()||null;
+    var rows=x.termine.map(function(iso){return {typ:'training',datum:iso,uhrzeit:uhr,schwerpunkt:schwer,jugend:S.trainerJugend,serie_id:sid,trainer_name:S.trainerName}});
+    try{await api('termine',{method:'POST',body:rows});toast(x.termine.length+' Trainings angelegt. ⚽');tTermine()}
+    catch(e){console.error(e);toast('Serie konnte nicht angelegt werden.');this.disabled=false;this.textContent='Serie anlegen'}
+  };
+}
+
+async function terminDetail(id){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([
+      api('termine?select=*&id=eq.'+id),
+      api('kinder?select=id,vorname,nachname,rolle&jugend=eq.'+kz+'&order=vorname'),
+      api('zusagen?select=kind_id,status&termin_id=eq.'+id),
+      api('anwesenheit?select=kind_id,da&termin_id=eq.'+id),
+      api('notizen?select=*&termin_id=eq.'+id+'&order=created_at.desc'),
+      api('termin_uebungen?select=uebung_id,uebungen(id,name,kategorien)&termin_id=eq.'+id),
+      api('uebungen?select=id,name,kategorien&order=name')
+    ]);
+    var t=res[0][0];if(!t){toast('Termin nicht gefunden.');tTermine();return}
+    var fremd=t.typ==='event'&&!t.jugend;
+    var kinder=res[1],zus={},anw={};
+    res[2].forEach(function(z){zus[z.kind_id]=z.status});
+    res[3].forEach(function(a){anw[a.kind_id]=a.da});
+    var notizen=res[4],tu=res[5],alleUeb=res[6];
+    var kName={};kinder.forEach(function(k){kName[k.id]=k.vorname+' '+k.nachname.charAt(0)+'.'+(k.rolle==='captain'?' Ⓒ':(k.rolle==='vize'?' Ⓥ':''))});
+
+    var html='<button class="btn geist st st1" id="bZur">'+IC.zurueck+' Alle Termine</button>'+
+    '<div class="karte st st1" style="margin-top:12px"><span class="meta typ-'+t.typ+'">'+typName(t.typ)+'</span> <span class="meta">'+fmtDat(t.datum)+(t.uhrzeit?' · '+esc(t.uhrzeit):'')+'</span>'+(t.serie_id?' <span class="meta">Serie</span>':'')+(fremd?' <span class="meta sig">Jugendleitung</span>':'')+
+    '<div class="disp" style="font-size:21px;color:var(--gd);margin-top:8px">'+esc(terminTitel(t))+'</div>'+
+    (t.trainer_name?'<div style="font-size:11.5px;color:var(--grau);margin-top:2px">Angelegt von '+esc(t.trainer_name)+'</div>':'');
+    if(!fremd){
+      if(t.typ==='training')html+='<label>Schwerpunkt</label><input id="eS" value="'+esc(t.schwerpunkt||'')+'" placeholder="z. B. Umschalten nach Ballgewinn">';
+      if(t.typ==='spiel'||t.typ==='turnier')html+='<div class="zeile"><div><label>Ergebnis</label><input id="eE" value="'+esc(t.ergebnis||'')+'" placeholder="z. B. 3:2 / 2. Platz"></div><div><label>Ort</label><input id="eO" value="'+esc(t.ort||'')+'"></div></div>';
+      if(t.typ==='event')html+='<label>Ort</label><input id="eO" value="'+esc(t.ort||'')+'">';
+    } else if(t.ort){html+='<div style="font-size:13px;color:var(--grau);margin-top:4px">📍 '+esc(t.ort)+'</div>'}
+    html+='</div>';
+
+    if(t.typ==='training'&&!fremd){
+      html+='<div class="sec st st2">Übungen dieser Einheit</div><div class="karte st st2" id="ueBox">';
+      if(!tu.length)html+='<div style="color:var(--grau);font-size:13.5px;margin-bottom:8px">Noch keine Übungen eingeplant.</div>';
+      tu.forEach(function(r){var u=r.uebungen;html+='<div class="lz"><span style="font-size:14px"><b>'+esc(u.name)+'</b><br><span style="font-size:12px;color:var(--grau)">'+(u.kategorien||[]).map(esc).join(' · ')+'</span></span><button class="btn geist ueWeg" data-uid="'+u.id+'" style="padding:8px 12px">Entfernen</button></div>'});
+      html+='<button class="btn hell voll" id="ueAdd" style="margin-top:8px">＋ Übung aus Bibliothek</button></div>';
+    }
+    if((t.typ==='spiel'||t.typ==='turnier')&&!fremd){
+      html+='<div class="sec st st2">Startaufstellung · 3-2-3</div><div class="pitch st st2" id="pitch"><div class="sr" style="bottom:0"></div><div class="sr" style="top:0"></div></div>'+
+      '<div id="bank" style="font-size:13px;color:var(--grau);margin:10px 0 4px"></div>'+
+      '<div class="hinweis">Spielzeit-Grundsatz: min. 50 % über den Monat für jeden, der trainiert – konsequent rotieren.</div>';
+    }
+
+    html+='<div class="sec st st3">Zusagen &amp; Anwesenheit</div>'+
+    '<div class="hinweis st st3">Zusagen kommen automatisch von den Eltern. Anwesenheit: einmal tippen = da ✓, zweimal = gefehlt ✗, dreimal = leer.</div>'+
+    '<div class="karte st st3" id="anwBox">';
+    if(!kinder.length)html+='<div style="color:var(--grau);font-size:13.5px">Noch keine Kinder in dieser Jugend angelegt.</div>';
+    kinder.forEach(function(k){
+      var a=anw[k.id],z=zus[k.id];
+      html+='<div class="lz"><span style="font-size:14.5px;font-weight:600">'+esc(kName[k.id])+
+        (z==='ja'?' <span class="meta">zugesagt</span>':'')+(z==='nein'?' <span class="meta rot">abgesagt</span>':'')+'</span>'+
+        '<button class="anw'+(a===true?' da':(a===false?' fehlt':''))+'" data-kid="'+k.id+'">'+(a===true?'✓':(a===false?'✗':'·'))+'</button></div>';
+    });
+    html+='</div>';
+
+    html+='<div class="sec st st4">Notizen zum '+typName(t.typ)+'</div><div class="karte st st4">'+
+      '<textarea id="nText" rows="2" placeholder="Was ist aufgefallen? (Team oder einzelner Spieler)"></textarea>'+
+      '<div class="zeile" style="margin-top:8px"><select id="nKind"><option value="">Ganzes Team</option>'+kinder.map(function(k){return '<option value="'+k.id+'">'+esc(kName[k.id])+'</option>'}).join('')+'</select>'+
+      '<select id="nKat"><option value="">Kategorie …</option>'+KRITERIEN.concat(['Taktik / Struktur']).map(function(k){return '<option>'+k+'</option>'}).join('')+'</select></div>'+
+      '<button class="btn voll" id="nSp" style="margin-top:10px">Notiz speichern</button></div>'+
+      '<div id="nListe">'+notizen.map(function(n){
+        return '<div class="karte"><div style="display:flex;justify-content:space-between;gap:8px"><div>'+
+        (n.kind_id?'<span class="meta">'+esc(kName[n.kind_id]||'?')+'</span>':'<span class="meta">Team</span>')+
+        (n.kategorie?' <span class="meta sig">'+esc(n.kategorie)+'</span>':'')+
+        (n.trainer_name?' <span style="font-size:11px;color:var(--grau)">von '+esc(n.trainer_name)+'</span>':'')+'</div>'+
+        '<button class="nWeg" data-nid="'+n.id+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div>'+
+        '<p style="font-size:14px;margin-top:8px">'+esc(n.text)+'</p></div>';
+      }).join('')+'</div>';
+
+    if(!fremd){
+      html+='<button class="btn gefahr voll" id="tWeg" style="margin-top:8px">Termin löschen</button>';
+      if(t.serie_id)html+='<button class="btn gefahr voll" id="sWeg" style="margin-top:8px">Ganze Serie ab heute löschen</button>';
+    }
+    h.innerHTML=html;
+
+    $('#bZur').onclick=function(){tTermine()};
+    if($('#eS'))$('#eS').onchange=function(){api('termine?id=eq.'+id,{method:'PATCH',body:{schwerpunkt:this.value.trim()||null}}).catch(function(){toast('Nicht gespeichert.')})};
+    if($('#eE'))$('#eE').onchange=function(){api('termine?id=eq.'+id,{method:'PATCH',body:{ergebnis:this.value.trim()||null}}).catch(function(){toast('Nicht gespeichert.')})};
+    if($('#eO'))$('#eO').onchange=function(){api('termine?id=eq.'+id,{method:'PATCH',body:{ort:this.value.trim()||null}}).catch(function(){toast('Nicht gespeichert.')})};
+    $$('#anwBox .anw').forEach(function(b){
+      b.onclick=async function(){
+        var kid=b.getAttribute('data-kid');var jetzt=anw[kid];
+        var neu=jetzt===true?false:(jetzt===false?undefined:true);
+        try{
+          if(neu===undefined){await api('anwesenheit?termin_id=eq.'+id+'&kind_id=eq.'+kid,{method:'DELETE'});delete anw[kid]}
+          else{await api('anwesenheit?on_conflict=termin_id,kind_id',{method:'POST',prefer:'resolution=merge-duplicates',body:{termin_id:id,kind_id:kid,da:neu}});anw[kid]=neu}
+          b.className='anw'+(anw[kid]===true?' da':(anw[kid]===false?' fehlt':''));
+          b.textContent=anw[kid]===true?'✓':(anw[kid]===false?'✗':'·');
+        }catch(e){toast('Nicht gespeichert – erneut tippen.')}
+      };
+    });
+    $('#nSp').onclick=async function(){
+      var txt=$('#nText').value.trim();if(!txt){toast('Bitte erst Text eintragen.');return}
+      var body={termin_id:id,text:txt,kind_id:$('#nKind').value||null,kategorie:$('#nKat').value||null,trainer_name:S.trainerName};
+      try{await api('notizen',{method:'POST',body:body});toast('Notiz gespeichert.');terminDetail(id)}catch(e){toast('Nicht gespeichert.')}
+    };
+    $$('.nWeg').forEach(function(b){b.onclick=async function(){if(!confirm('Notiz löschen?'))return;try{await api('notizen?id=eq.'+b.getAttribute('data-nid'),{method:'DELETE'});terminDetail(id)}catch(e){toast('Fehler.')}}});
+    if(t.typ==='training'&&!fremd){
+      $$('.ueWeg').forEach(function(b){b.onclick=async function(){try{await api('termin_uebungen?termin_id=eq.'+id+'&uebung_id=eq.'+b.getAttribute('data-uid'),{method:'DELETE'});terminDetail(id)}catch(e){toast('Fehler.')}}});
+      $('#ueAdd').onclick=function(){
+        var m=document.createElement('div');m.className='modal-bg';
+        var inhalt=alleUeb.length?alleUeb.map(function(u){return '<button class="kachel ueW" data-uid="'+u.id+'"><span style="flex:1"><b>'+esc(u.name)+'</b><small>'+(u.kategorien||[]).map(esc).join(' · ')+'</small></span></button>'}).join(''):'<div class="leer">Bibliothek ist leer – lade unter „Übungen“ die erste PDF hoch.</div>';
+        m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:17px;color:var(--gd);margin-bottom:12px">Übung wählen</div>'+inhalt+'<button class="btn geist voll" id="mZu">Schließen</button></div>';
+        document.body.appendChild(m);
+        $('#mZu').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+        $$('.ueW',m).forEach(function(b){b.onclick=async function(){try{await api('termin_uebungen?on_conflict=termin_id,uebung_id',{method:'POST',prefer:'resolution=merge-duplicates',body:{termin_id:id,uebung_id:b.getAttribute('data-uid')}});m.remove();terminDetail(id)}catch(e){toast('Fehler.')}}});
+      };
+    }
+    if((t.typ==='spiel'||t.typ==='turnier')&&!fremd){
+      var auf=t.aufstellung||{};
+      function malePitch(){
+        var p=$('#pitch');
+        $$('.pos',p).forEach(function(x){x.remove()});
+        FORMATION.forEach(function(f){
+          var kid=auf[f.key];var b=document.createElement('button');
+          b.className='pos'+(kid?' belegt':'');b.style.left=f.x+'%';b.style.top=f.y+'%';
+          b.innerHTML='<span class="kreis">'+(kid?esc((kName[kid]||'??').slice(0,2).toUpperCase()):f.label)+'</span>'+(kid?'<span class="pname">'+esc(kName[kid]||'?')+'</span>':'');
+          b.onclick=function(){posWahl(f)};
+          p.appendChild(b);
+        });
+        var belegt=Object.keys(auf).map(function(k){return auf[k]});
+        var bank=kinder.filter(function(k){return belegt.indexOf(k.id)<0}).map(function(k){return kName[k.id]});
+        $('#bank').innerHTML='<b>Bank ('+bank.length+'):</b> '+(bank.map(esc).join(', ')||'–');
+      }
+      function posWahl(f){
+        var m=document.createElement('div');m.className='modal-bg';
+        m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:17px;color:var(--gd);margin-bottom:12px">Position '+f.label+' besetzen</div>'+
+        (auf[f.key]?'<button class="btn geist voll" id="posLeer" style="margin-bottom:10px">Position leeren</button>':'')+
+        kinder.map(function(k){return '<button class="kachel posW" data-kid="'+k.id+'"><span style="flex:1"><b>'+esc(kName[k.id])+'</b></span></button>'}).join('')+
+        '<button class="btn geist voll" id="mZu2">Schließen</button></div>';
+        document.body.appendChild(m);
+        $('#mZu2').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+        function speicher(){api('termine?id=eq.'+id,{method:'PATCH',body:{aufstellung:auf}}).catch(function(){toast('Aufstellung nicht gespeichert.')})}
+        if($('#posLeer'))$('#posLeer').onclick=function(){delete auf[f.key];speicher();m.remove();malePitch()};
+        $$('.posW',m).forEach(function(b){b.onclick=function(){
+          var kid=b.getAttribute('data-kid');
+          Object.keys(auf).forEach(function(k){if(auf[k]===kid)delete auf[k]});
+          auf[f.key]=kid;speicher();m.remove();malePitch();
+        }});
+      }
+      malePitch();
+    }
+    if($('#tWeg'))$('#tWeg').onclick=async function(){if(!confirm('Termin wirklich löschen? Zusagen, Anwesenheit und Notizen dazu werden mitgelöscht.'))return;try{await api('termine?id=eq.'+id,{method:'DELETE'});toast('Termin gelöscht.');tTermine()}catch(e){toast('Fehler beim Löschen.')}};
+    if($('#sWeg'))$('#sWeg').onclick=async function(){
+      if(!confirm('Alle zukünftigen Termine dieser Serie löschen? Vergangene bleiben erhalten.'))return;
+      try{await api('termine?serie_id=eq.'+t.serie_id+'&datum=gte.'+heute(),{method:'DELETE'});toast('Serie ab heute gelöscht.');tTermine()}catch(e){toast('Fehler beim Löschen.')}
+    };
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Termin konnte nicht geladen werden.</div>'}
+}
+
+/* ---------- Trainer: Team ---------- */
+function captainsErlaubt(kz){return ['D','C','B','A'].indexOf(kz)>=0}
+async function tTeam(){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([
+      api('kinder?select=*&jugend=eq.'+kz+'&order=vorname'),
+      api('anwesenheit?select=kind_id,da,termine(typ,jugend)')
+    ]);
+    var kinder=res[0];
+    var anw=res[1].filter(function(r){return r.termine&&r.termine.typ==='training'&&r.termine.jugend===kz});
+    var html='<div class="hinweis st st1">Eltern legen ihre Kinder selbst an – hier laufen alle deiner Jugend zusammen. Antippen für Spielerbogen, Bewertungen und Notizen (für Eltern unsichtbar).</div>';
+    var cap=kinder.find(function(k){return k.rolle==='captain'});
+    var vizes=kinder.filter(function(k){return k.rolle==='vize'});
+    if(captainsErlaubt(kz)){
+      html+='<div class="karte st st1"><span class="meta sig">Mannschaftsrat</span>'+
+      '<div style="margin-top:8px;font-size:14px">Ⓒ Captain: <b>'+(cap?esc(cap.vorname+' '+cap.nachname):'– noch offen –')+'</b><br>Ⓥ Vize: <b>'+(vizes.length?vizes.map(function(v){return esc(v.vorname+' '+v.nachname.charAt(0)+'.')}).join(', '):'– noch offen –')+'</b></div>'+
+      '<div style="font-size:12px;color:var(--grau);margin-top:6px">1 Captain + bis zu 2 Vize – im Spielerbogen festlegen.</div></div>';
+    }
+    html+='<div class="sec st st2">Kader · '+kinder.length+' Spieler</div>';
+    if(!kinder.length)html+='<div class="karte leer st st2"><div class="disp">Kader ist leer</div>Teile den Eltern den App-Link – sie legen ihre Kinder in einer Minute selbst an.</div>';
+    kinder.forEach(function(k,i){
+      var rows=anw.filter(function(r){return r.kind_id===k.id});
+      var da=rows.filter(function(r){return r.da}).length,ges=rows.length,q=ges?Math.round(da/ges*100):null;
+      var hoch=k.jahrgang&&jugendAusJahrgang(k.jahrgang,KONF.saison)!==kz;
+      html+='<button class="kachel st st'+Math.min(i+2,5)+'" data-kid="'+k.id+'"><span class="ic">'+IC.team+'</span><span style="flex:1"><b>'+esc(k.vorname+' '+k.nachname)+(k.rolle==='captain'?' Ⓒ':(k.rolle==='vize'?' Ⓥ':''))+'</b>'+
+        '<small>'+(k.jahrgang?'Jg. '+k.jahrgang:'')+(hoch?' · hochgezogen':'')+(q!=null?' · Training '+da+'/'+ges+' ('+q+'%)':' · noch keine Anwesenheit erfasst')+'</small>'+
+        (q!=null?'<div class="balken-w" style="margin-top:6px"><div class="balken" style="width:'+q+'%"></div></div>':'')+'</span></button>';
+    });
+    h.innerHTML=html;
+    $$('[data-kid]',h).forEach(function(b){b.onclick=function(){kindDetail(b.getAttribute('data-kid'))}});
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Kader konnte nicht geladen werden.</div>'}
+}
+async function kindDetail(id){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([
+      api('kinder?select=*&id=eq.'+id),
+      api('anwesenheit?select=da,termine(typ,datum,jugend)&kind_id=eq.'+id),
+      api('zusagen?select=status&kind_id=eq.'+id),
+      api('bewertungen?select=*&kind_id=eq.'+id),
+      api('notizen?select=*,termine(typ,datum,titel,heim,schwerpunkt)&kind_id=eq.'+id+'&order=created_at.desc'),
+      api('kinder?select=id,rolle&jugend=eq.'+kz)
+    ]);
+    var k=res[0][0];if(!k){tTeam();return}
+    var tr=res[1].filter(function(r){return r.termine&&r.termine.typ==='training'});
+    var da=tr.filter(function(r){return r.da}).length,ges=tr.length,q=ges?Math.round(da/ges*100):null;
+    var zusJa=res[2].filter(function(z){return z.status==='ja'}).length;
+    var noten={};res[3].forEach(function(b){noten[b.kriterium+'_'+b.zeitpunkt]=b.wert});
+    var notizen=res[4];
+    var teamRollen=res[5];
+    var natur=k.jahrgang?jugendAusJahrgang(k.jahrgang,KONF.saison):null;
+    var html='<button class="btn geist st st1" id="bZur">'+IC.zurueck+' Kader</button>'+
+    '<div class="karte st st1" style="margin-top:12px"><span class="meta">Spielerbogen · vertraulich, nur Trainerbereich</span>'+
+    '<div class="disp" style="font-size:22px;color:var(--gd);margin-top:6px">'+esc(k.vorname+' '+k.nachname)+(k.rolle==='captain'?' Ⓒ':(k.rolle==='vize'?' Ⓥ':''))+'</div>'+
+    '<div style="font-size:13px;color:var(--grau)">'+(k.jahrgang?'Jahrgang '+k.jahrgang:'')+(natur&&natur!==k.jugend?' · hochgezogen (Jahrgang: '+esc(jInfo(natur).name)+')':'')+'</div>'+
+    '<div class="stat-g" style="margin-top:12px"><div class="stat"><b>'+(q!=null?q+'%':'–')+'</b><span>Anwesenheit</span></div><div class="stat"><b>'+da+'</b><span>Trainings da</span></div><div class="stat"><b>'+zusJa+'</b><span>Zusagen</span></div></div></div>';
+
+    if(captainsErlaubt(kz)){
+      var istCap=k.rolle==='captain',istVize=k.rolle==='vize';
+      html+='<div class="karte st st2"><span class="meta sig">Mannschaftsrat</span><div class="zeile" style="margin-top:9px">'+
+      '<button class="btn '+(istCap?'sig':'geist')+'" id="rCap">Ⓒ Captain</button>'+
+      '<button class="btn '+(istVize?'sig':'geist')+'" id="rVize">Ⓥ Vize</button>'+
+      '<button class="btn geist" id="rKeine">Keine Rolle</button></div></div>';
+    }
+
+    html+='<div class="sec st st3">Bewertung · Skala 1–5</div>'+
+    '<div class="hinweis st st3">1 Einstieg · 2 Im Aufbau · 3 Altersgerecht · 4 Stark · 5 Herausragend. Nur für den Trainerstab sichtbar – Vergleich nur mit sich selbst.</div>'+
+    '<div class="karte st st3"><div class="note-grid" style="margin-bottom:6px;font-weight:700;color:var(--grau);font-size:11px"><span></span>'+TESTPUNKTE.map(function(t){return '<span style="text-align:center">'+t+'</span>'}).join('')+'</div>';
+    KRITERIEN.forEach(function(kr){
+      html+='<div class="note-grid" style="margin-bottom:8px"><span style="font-weight:600">'+kr+'</span>';
+      [1,2,3].forEach(function(z){
+        var w=noten[kr+'_'+z];
+        html+='<input class="note-in" data-kr="'+kr+'" data-z="'+z+'" type="tel" inputmode="numeric" maxlength="1" value="'+(w||'')+'" placeholder="·">';
+      });
+      html+='</div>';
+    });
+    html+='</div>';
+
+    html+='<div class="sec st st4">Notiz zu '+esc(k.vorname)+'</div><div class="karte st st4">'+
+    '<textarea id="nT" rows="2" placeholder="Beobachtung, Entwicklung, Gesprächsnotiz …"></textarea>'+
+    '<select id="nK" style="margin-top:8px"><option value="">Kategorie …</option>'+KRITERIEN.concat(['Taktik / Struktur','Gespräch']).map(function(x){return '<option>'+x+'</option>'}).join('')+'</select>'+
+    '<button class="btn voll" id="nSp" style="margin-top:10px">Notiz speichern</button></div>';
+    html+='<div class="sec st st5">Alle Notizen · '+notizen.length+'</div>';
+    if(!notizen.length)html+='<div class="karte" style="color:var(--grau);font-size:13.5px">Noch keine Notizen – aus Terminen oder hier direkt anlegen.</div>';
+    notizen.forEach(function(n){
+      var wo=n.termine?(' · '+typName(n.termine.typ)+' '+fmtDat(n.termine.datum)):'';
+      html+='<div class="karte"><div style="display:flex;justify-content:space-between;gap:8px"><div>'+(n.kategorie?'<span class="meta sig">'+esc(n.kategorie)+'</span>':'<span class="meta">Notiz</span>')+'<span style="font-size:11.5px;color:var(--grau)">'+wo+(n.trainer_name?' · von '+esc(n.trainer_name):'')+'</span></div>'+
+      '<button class="nWeg" data-nid="'+n.id+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div>'+
+      '<p style="font-size:14px;margin-top:8px">'+esc(n.text)+'</p></div>';
+    });
+    html+='<button class="btn gefahr voll" id="kWeg">Spieler aus dem Kader entfernen</button>';
+    h.innerHTML=html;
+    $('#bZur').onclick=function(){tTeam()};
+    async function rolleSetzen(rolle){
+      try{
+        if(rolle==='captain'){
+          var alterCap=teamRollen.find(function(x){return x.rolle==='captain'&&x.id!==id});
+          if(alterCap&&!confirm('Es gibt schon einen Captain – Rolle übertragen?'))return;
+          if(alterCap)await api('kinder?id=eq.'+alterCap.id,{method:'PATCH',body:{rolle:null}});
+        }
+        if(rolle==='vize'){
+          var vizes=teamRollen.filter(function(x){return x.rolle==='vize'&&x.id!==id});
+          if(vizes.length>=2){toast('Es sind schon 2 Vize-Captains vergeben.');return}
+        }
+        await api('kinder?id=eq.'+id,{method:'PATCH',body:{rolle:rolle}});
+        toast('Gespeichert.');kindDetail(id);
+      }catch(e){toast('Nicht gespeichert.')}
+    }
+    if($('#rCap'))$('#rCap').onclick=function(){rolleSetzen('captain')};
+    if($('#rVize'))$('#rVize').onclick=function(){rolleSetzen('vize')};
+    if($('#rKeine'))$('#rKeine').onclick=function(){rolleSetzen(null)};
+    $$('.note-in').forEach(function(inp){
+      inp.onchange=async function(){
+        var w=parseInt(inp.value,10);
+        var kr=inp.getAttribute('data-kr'),z=parseInt(inp.getAttribute('data-z'),10);
+        try{
+          if(isNaN(w)||w<1||w>5){inp.value='';await api('bewertungen?kind_id=eq.'+id+'&kriterium=eq.'+encodeURIComponent(kr)+'&zeitpunkt=eq.'+z,{method:'DELETE'});return}
+          await api('bewertungen?on_conflict=kind_id,kriterium,zeitpunkt',{method:'POST',prefer:'resolution=merge-duplicates',body:{kind_id:id,kriterium:kr,zeitpunkt:z,wert:w}});
+        }catch(e){toast('Bewertung nicht gespeichert.')}
+      };
+    });
+    $('#nSp').onclick=async function(){
+      var txt=$('#nT').value.trim();if(!txt){toast('Bitte erst Text eintragen.');return}
+      try{await api('notizen',{method:'POST',body:{kind_id:id,text:txt,kategorie:$('#nK').value||null,trainer_name:S.trainerName}});toast('Notiz gespeichert.');kindDetail(id)}catch(e){toast('Nicht gespeichert.')}
+    };
+    $$('.nWeg').forEach(function(b){b.onclick=async function(){if(!confirm('Notiz löschen?'))return;try{await api('notizen?id=eq.'+b.getAttribute('data-nid'),{method:'DELETE'});kindDetail(id)}catch(e){toast('Fehler.')}}});
+    $('#kWeg').onclick=async function(){
+      if(!confirm(k.vorname+' '+k.nachname+' wirklich entfernen? Alle Zusagen, Anwesenheiten, Bewertungen und Notizen werden mitgelöscht.'))return;
+      try{await api('kinder?id=eq.'+id,{method:'DELETE'});toast('Spieler entfernt.');tTeam()}catch(e){toast('Fehler beim Löschen.')}
+    };
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Spielerbogen konnte nicht geladen werden.</div>'}
+}
+
+/* ---------- Trainer: Übungen + Kompass + PDF-Analyse ---------- */
+async function tUebungen(){
+  var h=$('#thalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  var kz=S.trainerJugend;
+  try{
+    var res=await Promise.all([
+      api('uebungen?select=*&order=created_at.desc'),
+      api('termin_uebungen?select=termin_id,uebung_id,uebungen(kategorien)'),
+      api('termine?select=*'),
+      api('notizen?select=text,kategorie,created_at&order=created_at.desc&limit=60')
+    ]);
+    var uebungen=res[0];
+    var meineTermine=termineFuer(res[2],kz);
+    var meineIds={};meineTermine.forEach(function(t){meineIds[t.id]=true});
+    var nutz={};res[1].forEach(function(r){if(meineIds[r.termin_id])nutz[r.uebung_id]=(nutz[r.uebung_id]||0)+1});
+    var kompass=trainingsKompass(meineTermine,res[1],res[3]);
+    var zaehler=kompass.zaehler,maxZ=kompass.max;
+
+    var html='<div class="karte dunkel st st1"><span class="meta sig">Advance Football → App</span>'+
+    '<div class="disp" style="font-size:17px;margin-top:8px">Übungs-PDF hochladen &amp; automatisch auswerten</div>'+
+    '<p style="font-size:13px;color:rgba(255,255,255,.75);margin-top:6px">Die App liest Ablauf, Coaching-Punkte, Variationen und Anpassungen aus der PDF, erkennt Kategorien und speichert alles fürs ganze Trainerteam – jugendübergreifend. Neue Trainer sehen so sofort, was sich bewährt hat.</p>'+
+    '<label class="btn sig voll" style="margin-top:12px;position:relative;overflow:hidden" id="upLbl">PDF auswählen'+
+    '<input type="file" id="pdfIn" accept="application/pdf" style="position:absolute;inset:0;opacity:0"></label>'+
+    '<button class="btn voll" id="manuellBtn" style="margin-top:8px;background:rgba(255,255,255,.1);color:#fff">Übung von Hand anlegen</button></div>';
+
+    if(kompass.tipps.length){
+      html+='<div class="sec st st2">Kompass · Vorschläge für die nächsten Wochen</div><div class="karte st st2">'+
+      kompass.tipps.slice(0,4).map(function(t){
+        var passende=uebungen.filter(function(u){return (u.kategorien||[]).indexOf(t.kat)>=0}).slice(0,2);
+        return '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:8px"><b style="font-size:14px">'+esc(t.kat)+'</b><span class="meta '+(t.stufe==='hoch'?'rot':'warn')+'">'+(t.stufe==='hoch'?'Priorität':'Empfohlen')+'</span></div>'+
+        '<div style="font-size:12.5px;color:var(--grau)">'+esc(t.grund)+'</div>'+
+        (passende.length?'<div style="font-size:12.5px;margin-top:4px">Aus der Bibliothek: '+passende.map(function(u){return '<b>'+esc(u.name)+'</b>'}).join(' · ')+'</div>':'<div style="font-size:12.5px;margin-top:4px;color:var(--amber)">Noch keine passende Übung in der Bibliothek – lohnt ein Upload.</div>')+'</div>';
+      }).join('')+'</div>';
+    }
+
+    html+='<div class="sec st st3">Trainingsabdeckung · '+esc(jInfo(kz).name)+'</div><div class="karte st st3">';
+    var hatDaten=Object.keys(zaehler).some(function(k){return zaehler[k]>0});
+    if(!hatDaten)html+='<div style="color:var(--grau);font-size:13.5px">Sobald Übungen in Trainings eingeplant sind, siehst du hier automatisch: Was haben wir viel trainiert, was zu wenig?</div>';
+    else Object.keys(zaehler).sort(function(a,b){return zaehler[b]-zaehler[a]}).forEach(function(k){
+      html+='<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px"><span style="font-weight:600">'+esc(k)+'</span><span style="color:var(--grau)">'+zaehler[k]+'×</span></div>'+
+      '<div class="balken-w"><div class="balken" style="width:'+(zaehler[k]/maxZ*100)+'%'+(zaehler[k]===0?';background:var(--amber)':'')+'"></div></div></div>';
+    });
+    html+='</div>';
+
+    html+='<div class="sec st st4">Bibliothek · '+uebungen.length+' Übungen (vereinsweit)</div>';
+    if(!uebungen.length)html+='<div class="karte leer st st4"><div class="disp">Bibliothek ist leer</div>Lade oben deine erste Advance-Football-PDF hoch.</div>';
+    uebungen.forEach(function(u){
+      html+='<div class="karte"><div style="display:flex;justify-content:space-between;gap:8px"><div class="disp" style="font-size:15.5px;color:var(--gd)">'+esc(u.name)+'</div>'+
+      '<button class="uWeg" data-uid="'+u.id+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div>'+
+      '<div style="margin-top:6px">'+(u.kategorien||[]).map(function(k){return '<span class="meta" style="margin-right:5px">'+esc(k)+'</span>'}).join('')+
+      '<span class="meta sig">'+(nutz[u.id]||0)+'× bei euch</span>'+(u.jugend?' '+jBadge(u.jugend):'')+'</div>'+
+      (u.trainer_name?'<div style="font-size:11px;color:var(--grau);margin-top:4px">Hochgeladen von '+esc(u.trainer_name)+'</div>':'')+
+      (u.beschreibung?'<p style="font-size:13.5px;margin-top:8px;color:var(--grau)">'+esc(u.beschreibung)+'</p>':'')+
+      ((u.schwerpunkte||[]).length?'<ul style="list-style:none;margin-top:6px">'+u.schwerpunkte.map(function(s){return '<li style="padding:2px 0 2px 16px;position:relative;font-size:13px"><span style="position:absolute;left:0;color:var(--rasen);font-weight:800">›</span>'+esc(s)+'</li>'}).join('')+'</ul>':'')+
+      (u.pdf_pfad?'<a class="btn hell" style="margin-top:10px;text-decoration:none" href="'+SUPA+'/storage/v1/object/public/dateien/'+u.pdf_pfad+'" target="_blank">Original-PDF öffnen</a>':'')+
+      '</div>';
+    });
+    h.innerHTML=html;
+    $$('.uWeg').forEach(function(b){b.onclick=async function(){if(!confirm('Übung aus der Vereins-Bibliothek löschen?'))return;try{await api('uebungen?id=eq.'+b.getAttribute('data-uid'),{method:'DELETE'});tUebungen()}catch(e){toast('Fehler.')}}});
+    $('#manuellBtn').onclick=function(){ueVorschau({name:'',kategorien:[],beschreibung:'',schwerpunkte:[],ablauf:'',coaching:'',variationen:'',anpassungen:''},null)};
+    $('#pdfIn').onchange=async function(){
+      var file=this.files&&this.files[0];this.value='';if(!file)return;
+      if(!window.pdfjsLib){toast('PDF-Leser konnte nicht geladen werden – bitte Internet prüfen und Seite neu laden.');return}
+      if(file.size>15*1024*1024){toast('PDF ist größer als 15 MB – bitte kleinere Datei.');return}
+      $('#upLbl').innerHTML='<span class="spinner" style="border-color:rgba(14,59,23,.3);border-top-color:var(--gd)"></span> Analysiere PDF …<input type="file" id="pdfIn2" accept="application/pdf" style="display:none">';
+      try{
+        var ergebnis=await pdfAnalysieren(file);
+        ueVorschau(ergebnis,file);
+      }catch(e){
+        console.error(e);
+        toast('Diese PDF konnte nicht automatisch gelesen werden – du kannst sie trotzdem speichern und die Felder von Hand füllen.');
+        ueVorschau({name:file.name.replace(/\.pdf$/i,''),kategorien:[],beschreibung:'',schwerpunkte:[],ablauf:'',coaching:'',variationen:'',anpassungen:''},file);
+      }
+      tUebungen(); /* Tab im Hintergrund frisch rendern - das Pruef-Fenster bleibt offen */
+    };
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Übungen konnten nicht geladen werden.</div>'}
+}
+
+/* PDF im Browser lesen und in Abschnitte zerlegen (Advance-Football-Layout) */
+async function pdfAnalysieren(file){
+  var buf=await file.arrayBuffer();
+  var pdf=await pdfjsLib.getDocument({data:buf}).promise;
+  var seite=await pdf.getPage(1);
+  var tc=await seite.getTextContent();
+  var items=tc.items.map(function(i){return {str:(i.str||'').trim(),x:i.transform[4],y:i.transform[5]}}).filter(function(i){return i.str});
+  items=items.filter(function(i){return !/©|copyright|urheberrecht|vervielfältigung|schadensersatz|abgemahnt|strafbar|urhg|bleiben\s*vorbehalten|advance\.?football gmbh/i.test(i.str)});
+  var SEK=/^(ABLAUF|COACHING|VARIATIONEN|ANPASSUNGEN|ORGANISATION|ZIELE?)$/i;
+  var header=items.filter(function(i){return SEK.test(i.str)});
+  var maxHy=header.length?Math.max.apply(null,header.map(function(h){return h.y})):-1;
+  var titelItems=items.filter(function(i){return i.y>maxHy+2&&!SEK.test(i.str)&&!/advance\.?football/i.test(i.str)});
+  titelItems.sort(function(a,b){return b.y-a.y||a.x-b.x});
+  var titelZeilen=zeilen(titelItems);
+  var name=titelZeilen[0]||file.name.replace(/\.pdf$/i,'');
+  var untertitel=titelZeilen[1]||'';
+  var cluster=[];
+  header.forEach(function(hd){
+    var c=cluster.find(function(c){return Math.abs(c.x-hd.x)<60});
+    if(c){c.h.push(hd)}else{cluster.push({x:hd.x,h:[hd]})}
+  });
+  cluster.sort(function(a,b){return a.x-b.x});
+  var grenzen=cluster.map(function(c,i){
+    var links=i===0?-1e9:(cluster[i-1].x+c.x)/2;
+    var rechts=i===cluster.length-1?1e9:(c.x+cluster[i+1].x)/2;
+    return {links:links,rechts:rechts,c:c};
+  });
+  var sektionen={};
+  items.forEach(function(it){
+    if(SEK.test(it.str))return;
+    var g=grenzen.find(function(g){return it.x>=g.links&&it.x<g.rechts});
+    if(!g)return;
+    var kandidaten=g.c.h.filter(function(hd){return hd.y>it.y});
+    if(!kandidaten.length)return;
+    kandidaten.sort(function(a,b){return a.y-b.y});
+    var hd=kandidaten[0];
+    var key=hd.str.toUpperCase();
+    (sektionen[key]=sektionen[key]||[]).push(it);
+  });
+  function zeilen(arr){
+    var out=[];var akt=[];var letztY=null;
+    arr.slice().sort(function(a,b){return b.y-a.y||a.x-b.x}).forEach(function(i){
+      if(letztY===null||Math.abs(i.y-letztY)<4.5){akt.push(i.str)}
+      else{out.push(akt.join(' '));akt=[i.str]}
+      letztY=i.y;
+    });
+    if(akt.length)out.push(akt.join(' '));
+    return out.map(function(z){return z.replace(/\s+/g,' ').trim()}).filter(Boolean);
+  }
+  function block(key){return sektionen[key]?zeilen(sektionen[key]).join('\n'):''}
+  var ablauf=block('ABLAUF'),coaching=block('COACHING'),variationen=block('VARIATIONEN'),anpassungen=block('ANPASSUNGEN');
+  var orga=block('ORGANISATION');if(orga)ablauf=(orga+'\n'+ablauf).trim();
+  var ziele=block('ZIELE')||block('ZIEL');
+  var gesamt=[name,untertitel,ablauf,coaching,variationen,anpassungen,ziele].join('\n');
+  var treffer=[];
+  KEYWORDS.forEach(function(kw){
+    var m=gesamt.match(new RegExp(kw[1].source,'gi'));
+    if(m)treffer.push({k:kw[0],n:m.length});
+  });
+  treffer.sort(function(a,b){return b.n-a.n});
+  var kategorien=treffer.slice(0,3).map(function(t){return t.k});
+  var schwerpunkte=coaching.split('\n').map(function(z){return z.replace(/^[►▶\-–\s]+/,'').trim()}).filter(Boolean).slice(0,4);
+  var beschreibung=(untertitel?untertitel+'. ':'')+(ziele?ziele.split('\n').join(' '):'');
+  return {name:name,kategorien:kategorien,beschreibung:beschreibung.trim(),schwerpunkte:schwerpunkte,ablauf:ablauf,coaching:coaching,variationen:variationen,anpassungen:anpassungen};
+}
+
+/* Vorschau/Bearbeitung vor dem Speichern */
+function ueVorschau(u,file){
+  var m=document.createElement('div');m.className='modal-bg';
+  m.innerHTML='<div class="modal"><div class="griff"></div>'+
+  '<span class="meta sig">'+(file?'Automatisch ausgelesen – bitte kurz prüfen':'Übung von Hand anlegen')+'</span>'+
+  '<label>Name der Übung</label><input id="uN" value="'+esc(u.name)+'">'+
+  '<label>Kategorien (antippen)</label><div id="uK">'+KATEGORIEN.map(function(k){return '<button class="chip'+(u.kategorien.indexOf(k)>=0?' an':'')+'" data-k="'+esc(k)+'">'+esc(k)+'</button>'}).join('')+'</div>'+
+  '<label>Wofür ist die Übung gut? (Beschreibung)</label><textarea id="uB" rows="2">'+esc(u.beschreibung)+'</textarea>'+
+  '<label>Ablauf</label><textarea id="uA" rows="4">'+esc(u.ablauf)+'</textarea>'+
+  '<label>Coaching-Punkte</label><textarea id="uC" rows="3">'+esc(u.coaching)+'</textarea>'+
+  '<div class="zeile"><div><label>Variationen</label><textarea id="uV" rows="3">'+esc(u.variationen)+'</textarea></div><div><label>Anpassungen</label><textarea id="uP" rows="3">'+esc(u.anpassungen)+'</textarea></div></div>'+
+  '<button class="btn voll" id="uSp" style="margin-top:14px">In Bibliothek speichern</button>'+
+  '<button class="btn geist voll" id="uAbbr" style="margin-top:8px">Verwerfen</button></div>';
+  document.body.appendChild(m);
+  var kats=u.kategorien.slice();
+  $$('#uK .chip').forEach(function(c){c.onclick=function(){var k=c.getAttribute('data-k');var i=kats.indexOf(k);if(i>=0){kats.splice(i,1);c.classList.remove('an')}else{kats.push(k);c.classList.add('an')}}});
+  $('#uAbbr').onclick=function(){m.remove()};
+  $('#uSp').onclick=async function(){
+    var name=$('#uN').value.trim();if(!name){toast('Bitte einen Namen eintragen.');return}
+    this.disabled=true;this.innerHTML='<span class="spinner"></span> Speichere …';
+    try{
+      var pfad=null;
+      if(file){
+        pfad='uebungen/'+Date.now()+'-'+Math.random().toString(36).slice(2,8)+'.pdf';
+        var up=await fetch(SUPA+'/storage/v1/object/dateien/'+pfad,{method:'POST',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/pdf','x-upsert':'true'},body:file});
+        if(!up.ok){pfad=null;toast('PDF-Ablage nicht möglich – Übung wird ohne Original gespeichert.')}
+      }
+      await api('uebungen',{method:'POST',body:{
+        name:name,kategorien:kats,beschreibung:$('#uB').value.trim()||null,
+        schwerpunkte:$('#uC').value.split('\n').map(function(z){return z.replace(/^[►▶\-–\s]+/,'').trim()}).filter(Boolean).slice(0,5),
+        ablauf:$('#uA').value.trim()||null,coaching:$('#uC').value.trim()||null,
+        variationen:$('#uV').value.trim()||null,anpassungen:$('#uP').value.trim()||null,pdf_pfad:pfad,
+        jugend:S.trainerJugend||null,trainer_name:S.trainerName||null
+      }});
+      m.remove();toast('Übung ist in der Vereins-Bibliothek. ⚽');tUebungen();
+    }catch(e){console.error(e);toast('Speichern fehlgeschlagen – bitte erneut versuchen.');this.disabled=false;this.textContent='In Bibliothek speichern'}
+  };
+}
+
+/* ================= JUGENDLEITUNG ================= */
+function sJLPin(){
+  var m=document.createElement('div');m.className='modal-bg';
+  m.innerHTML='<div class="modal"><div class="griff"></div><div class="disp" style="font-size:18px;color:var(--gd)">PIN Jugendleitung</div>'+
+    '<input id="pinEin" type="password" inputmode="numeric" style="margin-top:14px;font-size:22px;text-align:center;letter-spacing:.35em;font-weight:800" placeholder="••••">'+
+    '<div id="pinFehler" style="color:var(--rot);font-size:13px;margin-top:8px;display:none">PIN falsch.</div>'+
+    '<button class="btn voll" id="pinOk" style="margin-top:12px">Anmelden</button>'+
+    '<button class="btn geist voll" id="pinAbbr" style="margin-top:8px">Abbrechen</button></div>';
+  document.body.appendChild(m);$('#pinEin').focus();
+  $('#pinAbbr').onclick=function(){m.remove()};m.onclick=function(e){if(e.target===m)m.remove()};
+  $('#pinOk').onclick=async function(){
+    var hash=await sha256($('#pinEin').value);
+    if(hash!==KONF.pins.JL){$('#pinFehler').style.display='block';return}
+    lsSet('jz_rolle','jl');S.rolle='jl';S.jlTab='kalender';m.remove();zeige(sJL);
+  };
+}
+function sJL(){
+  $('#app').innerHTML=
+  '<div class="screen"><header class="kopf"><div class="kopf-in"><img src="'+LOGO+'"><div class="tt"><div class="ey">Spvgg 1910 Warmbronn · Saison '+saisonName(KONF.saison)+'</div><h1>Jugendleitung</h1></div><button class="kbtn" id="bAb">Abmelden</button></div></header>'+
+  '<main class="inhalt"><img class="wasser" src="'+LOGO+'"><div id="jlhalt"></div></main>'+
+  '<nav class="tabbar"><div class="tabbar-in">'+
+    '<button class="tab" data-t="kalender">'+IC.kal+'Kalender<span class="pille"></span></button>'+
+    '<button class="tab" data-t="events">'+IC.stern+'Events<span class="pille"></span></button>'+
+    '<button class="tab" data-t="jugenden">'+IC.team+'Jugenden<span class="pille"></span></button>'+
+    '<button class="tab" data-t="verwaltung">'+IC.chart+'Verwaltung<span class="pille"></span></button>'+
+  '</div></nav></div>';
+  $('#bAb').onclick=function(){abmelden()};
+  $$('.tab').forEach(function(b){b.onclick=function(){S.jlTab=b.getAttribute('data-t');akt();rend()}});
+  function akt(){$$('.tab').forEach(function(b){b.classList.toggle('aktiv',b.getAttribute('data-t')===S.jlTab)})}
+  function rend(){if(S.jlTab==='kalender')jlKalender();else if(S.jlTab==='events')jlEvents();else if(S.jlTab==='jugenden')jlJugenden();else jlVerwaltung()}
+  akt();rend();
+}
+/* Übersichtskalender über alle Jugenden */
+async function jlKalender(){
+  var h=$('#jlhalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  try{
+    var termine=await api('termine?select=*&datum=gte.'+heute()+'&order=datum.asc,uhrzeit.asc');
+    var filter=S.jlFilter||'alle';
+    var html='<div id="jlFilter" style="margin-bottom:4px"><button class="chip'+(filter==='alle'?' an':'')+'" data-f="alle">Alle</button>'+JUGENDEN.map(function(j){
+      return '<button class="chip'+(filter===j.kz?' an':'')+'" data-f="'+j.kz+'">'+esc(j.kz==='G'?'Bambini':j.name)+'</button>';
+    }).join('')+'</div>';
+    var sicht=termine.filter(function(t){
+      if(filter==='alle')return true;
+      return t.jugend===filter||(t.typ==='event'&&!t.jugend&&Array.isArray(t.jugenden)&&t.jugenden.indexOf(filter)>=0);
+    });
+    if(!sicht.length)html+='<div class="karte leer"><div class="disp">Nichts geplant</div>Für diese Auswahl stehen keine Termine an.</div>';
+    var letzterMonat='';
+    sicht.forEach(function(t){
+      var mon=fmtMonat(t.datum);
+      if(mon!==letzterMonat){html+='<div class="monat">'+esc(mon)+'</div>';letzterMonat=mon}
+      var badges=t.jugend?jBadge(t.jugend):(Array.isArray(t.jugenden)?t.jugenden.map(jBadge).join(' '):'');
+      var fer=inFerien(t.datum);
+      html+='<div class="karte" style="padding:12px 16px"><div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">'+badges+'<span class="meta typ-'+t.typ+'">'+typName(t.typ)+'</span><span class="meta">'+fmtDat(t.datum)+(t.uhrzeit?' · '+esc(t.uhrzeit):'')+'</span>'+(fer?'<span class="ferienchip">'+esc(fer)+'</span>':'')+'</div>'+
+      '<b style="font-size:14.5px;display:block;margin-top:5px">'+esc(terminTitel(t))+'</b>'+(t.ort?'<span style="font-size:12.5px;color:var(--grau)">📍 '+esc(t.ort)+'</span>':'')+'</div>';
+    });
+    h.innerHTML=html;
+    $$('#jlFilter .chip').forEach(function(c){c.onclick=function(){S.jlFilter=c.getAttribute('data-f');jlKalender()}});
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Kalender konnte nicht geladen werden.</div>'}
+}
+/* Vereinsweite Events mit Jugend-Auswahl */
+async function jlEvents(){
+  var h=$('#jlhalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  try{
+    var events=(await api('termine?select=*&typ=eq.event&order=datum.asc')).filter(function(t){return !t.jugend});
+    var html='<div class="hinweis st st1">Events der Jugendleitung – z. B. Jugendabteilungsversammlung oder vereinsweite Turniere. Sie erscheinen automatisch im Kalender der ausgewählten Jugenden, und deren Eltern können zusagen.</div>'+
+    '<div class="karte st st1"><label>Titel</label><input id="evT" placeholder="z. B. Jugendabteilungsversammlung">'+
+    '<div class="zeile"><div><label>Datum</label><input id="evD" type="date" value="'+heute()+'"></div><div><label>Uhrzeit</label><input id="evU" type="time" value="19:00"></div></div>'+
+    '<label>Ort</label><input id="evO" placeholder="Vereinsheim">'+
+    '<label>Betrifft diese Jugenden</label><div id="evJ">'+JUGENDEN.map(function(j){return '<button class="chip an" data-kz="'+j.kz+'">'+esc(j.kz==='G'?'Bambini':j.name)+'</button>'}).join('')+'</div>'+
+    '<button class="btn voll" id="evOk" style="margin-top:12px">Event anlegen</button></div>';
+    html+='<div class="sec st st2">Geplante Events · '+events.length+'</div>';
+    if(!events.length)html+='<div class="karte leer st st2"><div class="disp">Noch keine Events</div>Lege oben das erste vereinsweite Event an.</div>';
+    events.forEach(function(t){
+      html+='<div class="karte"><div style="display:flex;justify-content:space-between;gap:8px"><div style="display:flex;gap:5px;flex-wrap:wrap">'+(t.jugenden||[]).map(jBadge).join(' ')+'</div>'+
+      '<button class="evWeg" data-id="'+t.id+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div>'+
+      '<b style="font-size:15px;display:block;margin-top:6px">'+esc(t.titel||'Event')+'</b>'+
+      '<span style="font-size:12.5px;color:var(--grau)">'+fmtDat(t.datum)+(t.uhrzeit?' · '+esc(t.uhrzeit):'')+(t.ort?' · 📍 '+esc(t.ort):'')+'</span></div>';
+    });
+    h.innerHTML=html;
+    var gewaehlt={};JUGENDEN.forEach(function(j){gewaehlt[j.kz]=true});
+    $$('#evJ .chip').forEach(function(c){c.onclick=function(){var kz=c.getAttribute('data-kz');gewaehlt[kz]=!gewaehlt[kz];c.classList.toggle('an',gewaehlt[kz])}});
+    $('#evOk').onclick=async function(){
+      var titel=$('#evT').value.trim();if(!titel){toast('Bitte Titel eintragen.');return}
+      var jz=JUGENDEN.map(function(j){return j.kz}).filter(function(kz){return gewaehlt[kz]});
+      if(!jz.length){toast('Mindestens eine Jugend auswählen.');return}
+      this.disabled=true;
+      try{
+        await api('termine',{method:'POST',body:{typ:'event',titel:titel,datum:$('#evD').value,uhrzeit:$('#evU').value,ort:$('#evO').value.trim()||null,jugend:null,jugenden:jz,trainer_name:'Jugendleitung'}});
+        toast('Event angelegt.');jlEvents();
+      }catch(e){console.error(e);toast('Anlegen fehlgeschlagen.');this.disabled=false}
+    };
+    $$('.evWeg').forEach(function(b){b.onclick=async function(){if(!confirm('Event löschen?'))return;try{await api('termine?id=eq.'+b.getAttribute('data-id'),{method:'DELETE'});jlEvents()}catch(e){toast('Fehler.')}}});
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Events konnten nicht geladen werden.</div>'}
+}
+/* Übersicht Jugenden */
+async function jlJugenden(){
+  var h=$('#jlhalt');h.innerHTML='<div class="leer"><span class="spinner gruen"></span></div>';
+  try{
+    var res=await Promise.all([api('kinder?select=id,jugend,jahrgang'),api('trainer?select=id,name,jugend&order=name'),api('termine?select=id,jugend,typ,datum&datum=gte.'+heute())]);
+    var html='<div class="hinweis st st1">Jahrgänge der Saison '+saisonName(KONF.saison)+': A '+(KONF.saison-18)+'/'+(KONF.saison-17)+' · B '+(KONF.saison-16)+'/'+(KONF.saison-15)+' · C '+(KONF.saison-14)+'/'+(KONF.saison-13)+' · D '+(KONF.saison-12)+'/'+(KONF.saison-11)+' · E '+(KONF.saison-10)+'/'+(KONF.saison-9)+' · F '+(KONF.saison-8)+'/'+(KONF.saison-7)+' · Bambini ab '+(KONF.saison-6)+'</div>';
+    JUGENDEN.forEach(function(j){
+      var kk=res[0].filter(function(k){return k.jugend===j.kz});
+      var tt=res[1].filter(function(t){return t.jugend===j.kz});
+      var te=res[2].filter(function(t){return t.jugend===j.kz});
+      var wechsel=kk.filter(function(k){return k.jahrgang&&jugendAusJahrgang(k.jahrgang,KONF.saison)!==j.kz}).length;
+      html+='<div class="karte"><div style="display:flex;align-items:center;gap:9px">'+jBadge(j.kz)+'<b style="font-size:15px">'+esc(j.name)+'</b></div>'+
+      '<div style="font-size:13px;color:var(--grau);margin-top:6px">'+kk.length+' Spieler · '+tt.length+' Trainer'+(tt.length?' ('+tt.map(function(t){return esc(t.name)}).join(', ')+')':'')+' · '+te.length+' kommende Termine'+(wechsel?' · <span style="color:var(--amber);font-weight:700">'+wechsel+' Saisonwechsel offen</span>':'')+'</div></div>';
+    });
+    h.innerHTML=html;
+  }catch(e){console.error(e);h.innerHTML='<div class="karte leer">Übersicht konnte nicht geladen werden.</div>'}
+}
+/* Verwaltung: Saison, Ferien, Codes */
+async function jlVerwaltung(){
+  var h=$('#jlhalt');
+  var html='<div class="sec st st1">Saison</div><div class="karte st st1">'+
+  '<div class="lz"><span>Aktuelle Saison</span><b>'+saisonName(KONF.saison)+'</b></div>'+
+  '<button class="btn voll" id="bSaison" style="margin-top:8px">Neue Saison '+saisonName(KONF.saison+1)+' starten</button>'+
+  '<div style="font-size:12px;color:var(--grau);margin-top:8px">Zum Saisonwechsel (Ende Juli) starten. Danach sehen die Trainer in ihrer Jugend automatisch den Assistenten „geht hoch / bleibt“ für jedes betroffene Kind.</div></div>';
+
+  html+='<div class="sec st st2">Ferien Baden-Württemberg</div><div class="karte st st2" id="ferBox">';
+  KONF.ferien.forEach(function(f,i){
+    html+='<div class="lz"><span style="font-size:13.5px"><b>'+esc(f.name)+'</b><br><span style="font-size:12px;color:var(--grau)">'+fmtDat(f.von)+' – '+fmtDat(f.bis)+'</span></span><button class="ferWeg" data-i="'+i+'" style="background:none;border:none;color:var(--rot);font-size:12px;font-weight:700">Löschen</button></div>';
+  });
+  html+='<label>Neue Ferien</label><input id="ferN" placeholder="Name, z. B. Herbstferien 2027">'+
+  '<div class="zeile"><div><label>Von</label><input id="ferV" type="date"></div><div><label>Bis</label><input id="ferB" type="date"></div></div>'+
+  '<button class="btn hell voll" id="ferAdd" style="margin-top:10px">Ferien hinzufügen</button>'+
+  '<div style="font-size:12px;color:var(--grau);margin-top:8px">Trainings-Serien überspringen diese Zeiträume automatisch. Bitte Termine einmal jährlich mit dem offiziellen Ferienkalender abgleichen.</div></div>';
+
+  html+='<div class="sec st st3">Team-Codes &amp; PINs</div><div class="karte st st3">'+
+  '<div style="font-size:13px;color:var(--grau);margin-bottom:6px">Mit dem Team-Code legen neue Trainer ihren persönlichen Zugang an. Standard: 1910.</div>'+
+  '<div class="zeile"><div><label>Jugend</label><select id="cJ">'+JUGENDEN.map(function(j){return '<option value="'+j.kz+'">'+esc(j.name)+'</option>'}).join('')+'<option value="JL">Jugendleitung (PIN)</option></select></div>'+
+  '<div><label>Neuer Code</label><input id="cC" type="password" inputmode="numeric"></div></div>'+
+  '<button class="btn voll" id="cOk" style="margin-top:10px">Code speichern</button></div>';
+
+  html+='<div class="karte st st4" style="border-left:4px solid var(--amber)"><b style="font-size:13.5px">Datenschutz-Grundsatz</b><p style="font-size:12.5px;color:var(--grau);margin-top:4px">Die App speichert bewusst nur das Nötigste: Vorname, Nachname, Jahrgang. Keine Adressen, keine Telefonnummern, keine Geburtsdaten. Trainer-Notizen und Bewertungen sind nur im PIN-geschützten Trainerbereich sichtbar. Die Seite ist für Suchmaschinen gesperrt – bitte den Link nur intern weitergeben.</p></div>';
+  h.innerHTML=html;
+
+  $('#bSaison').onclick=async function(){
+    if(!confirm('Neue Saison '+saisonName(KONF.saison+1)+' wirklich starten? Die Jahrgangs-Zuordnung aller Jugenden verschiebt sich.'))return;
+    try{KONF.saison=KONF.saison+1;await konfSpeichern('saison',{startjahr:KONF.saison});toast('Saison '+saisonName(KONF.saison)+' gestartet.');jlVerwaltung()}catch(e){toast('Fehler beim Speichern.')}
+  };
+  $$('.ferWeg').forEach(function(b){b.onclick=async function(){
+    var i=parseInt(b.getAttribute('data-i'),10);
+    if(!confirm(KONF.ferien[i].name+' löschen?'))return;
+    KONF.ferien.splice(i,1);
+    try{await konfSpeichern('ferien',KONF.ferien);jlVerwaltung()}catch(e){toast('Fehler.')}
+  }});
+  $('#ferAdd').onclick=async function(){
+    var n=$('#ferN').value.trim(),v=$('#ferV').value,b=$('#ferB').value;
+    if(!n||!v||!b||v>b){toast('Bitte Name und gültigen Zeitraum angeben.');return}
+    KONF.ferien.push({name:n,von:v,bis:b});
+    KONF.ferien.sort(function(a,c){return a.von<c.von?-1:1});
+    try{await konfSpeichern('ferien',KONF.ferien);toast('Ferien gespeichert.');jlVerwaltung()}catch(e){toast('Fehler.')}
+  };
+  $('#cOk').onclick=async function(){
+    var kz=$('#cJ').value,code=$('#cC').value;
+    if(code.length<4){toast('Mindestens 4 Zeichen.');return}
+    try{KONF.pins[kz]=await sha256(code);await konfSpeichern('pins',KONF.pins);toast('Code gespeichert.');$('#cC').value=''}catch(e){toast('Fehler.')}
+  };
+}
+
+boot();
+</script>
+</body>
+</html>
