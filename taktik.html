@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f6b3a" />
+  <title>Oscars Taktik-Menü – animierte Fußball-Spielzüge</title>
+  <style>
+    :root {
+      --brand: #0f6b3a;
+      --brand-dark: #084d2a;
+      --brand-soft: #e8f5ee;
+      --ink: #17211b;
+      --muted: #627069;
+      --line: #d9e2dc;
+      --panel: #ffffff;
+      --bg: #edf2ef;
+      --danger: #b42318;
+      --warning: #b54708;
+      --shadow: 0 14px 35px rgba(21, 61, 39, 0.12);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15,107,58,.09), transparent 32rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .app-shell { min-height: 100vh; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      color: white;
+      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+      box-shadow: 0 8px 25px rgba(5, 55, 28, .22);
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+    .brand-title { font-weight: 850; line-height: 1.08; letter-spacing: -.02em; }
+    .brand-sub { margin-top: 3px; font-size: 12px; opacity: .78; }
+    .top-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 11px;
+      min-height: 40px;
+      padding: 9px 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 750;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn.primary { color: white; background: var(--brand); box-shadow: 0 7px 16px rgba(15,107,58,.2); }
+    .btn.primary:hover { background: var(--brand-dark); }
+    .btn.secondary { color: var(--ink); background: white; border-color: var(--line); }
+    .btn.ghost { color: white; background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.18); }
+    .btn.soft { color: var(--brand-dark); background: var(--brand-soft); border-color: #cde7d8; }
+    .btn.danger { color: var(--danger); background: #fff1f0; border-color: #ffd2cf; }
+    .btn.small { min-height: 34px; padding: 7px 10px; font-size: 13px; }
+    .btn.icon-only { width: 40px; padding-inline: 0; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(250px, 310px) minmax(440px, 1fr) minmax(280px, 350px);
+      gap: 14px;
+      padding: 14px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(23,33,27,.07);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 15px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #fbfdfc);
+    }
+    .panel-title { font-size: 15px; font-weight: 850; }
+    .panel-body { padding: 14px; }
+    .side-panel { position: sticky; top: 80px; max-height: calc(100vh - 94px); overflow: auto; }
+
+    .section + .section { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; }
+    .section-title { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .055em; color: var(--muted); font-weight: 850; }
+    .field { display: grid; gap: 6px; margin-bottom: 11px; }
+    .field label { font-size: 12px; color: var(--muted); font-weight: 750; }
+    .input, select, textarea {
+      width: 100%;
+      border: 1px solid #cfd9d2;
+      border-radius: 10px;
+      background: white;
+      color: var(--ink);
+      padding: 10px 11px;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .input:focus, select:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(15,107,58,.12); }
+    textarea { min-height: 78px; resize: vertical; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .button-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+    .button-grid .btn { white-space: normal; line-height: 1.15; }
+    .preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .preset {
+      border: 1px solid var(--line);
+      background: #fbfdfc;
+      border-radius: 10px;
+      padding: 9px 5px;
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--ink);
+    }
+    .preset:hover { border-color: var(--brand); color: var(--brand-dark); background: var(--brand-soft); }
+
+    .color-row { display: flex; align-items: center; gap: 8px; }
+    input[type="color"] { width: 44px; height: 38px; padding: 3px; border-radius: 9px; border: 1px solid var(--line); background: white; }
+    input[type="range"] { width: 100%; accent-color: var(--brand); }
+    .muted { color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .hint {
+      background: #f5faf7;
+      border: 1px solid #d9ece1;
+      color: #315c44;
+      border-radius: 11px;
+      padding: 10px 11px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .stage-panel { overflow: visible; }
+    .stage-wrap { padding: 12px; }
+    .canvas-frame {
+      position: relative;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #148f3d;
+      box-shadow: 0 18px 45px rgba(8, 76, 37, .2);
+      border: 1px solid rgba(0,0,0,.1);
+      touch-action: none;
+    }
+    #pitchCanvas { width: 100%; height: auto; display: block; aspect-ratio: 720 / 1100; touch-action: none; }
+    .canvas-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      z-index: 2;
+      padding: 7px 9px;
+      border-radius: 9px;
+      background: rgba(8,37,20,.72);
+      color: white;
+      font-size: 12px;
+      font-weight: 750;
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+    .canvas-status {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      z-index: 2;
+      padding: 7px 9px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.88);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      pointer-events: none;
+    }
+    .playbar {
+      display: grid;
+      grid-template-columns: auto auto minmax(130px,1fr) auto;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: white;
+    }
+    .time-readout { min-width: 72px; text-align: right; font-variant-numeric: tabular-nums; font-size: 12px; font-weight: 800; color: var(--muted); }
+    .stage-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+
+    .timeline {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+      scroll-snap-type: x proximity;
+    }
+    .step-card {
+      min-width: 126px;
+      max-width: 126px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fbfdfc;
+      text-align: left;
+      padding: 0;
+      scroll-snap-align: start;
+    }
+    .step-card.active { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(15,107,58,.11); }
+    .step-thumb { display: block; width: 100%; aspect-ratio: 1.35; background: #13933e; object-fit: cover; }
+    .step-meta { padding: 8px; }
+    .step-number { font-size: 11px; color: var(--muted); font-weight: 800; }
+    .step-name { margin-top: 2px; font-size: 12px; font-weight: 850; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .selected-card {
+      border: 1px solid #cfe4d7;
+      background: #f5faf7;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .selected-row { display: flex; align-items: center; gap: 10px; }
+    .selected-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+    .selected-name { font-weight: 850; font-size: 13px; }
+    .selected-type { color: var(--muted); font-size: 11px; }
+
+    .action-editor {
+      margin-top: 12px;
+      padding: 13px;
+      border: 1px solid #cfe4d7;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f8fcfa, #eef8f2);
+    }
+    .action-editor-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    .action-editor-title { font-weight: 900; font-size: 14px; }
+    .action-editor-sub { color: var(--muted); font-size: 11px; line-height: 1.35; margin-top: 2px; }
+    .action-grid { display:grid; grid-template-columns: 1.2fr 1.25fr .75fr .8fr; gap:8px; align-items:end; }
+    .action-grid .field { margin-bottom:0; }
+    .action-buttons { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .action-status { margin-top:9px; padding:8px 10px; border-radius:10px; background:white; border:1px solid var(--line); color:#315c44; font-size:12px; line-height:1.4; }
+    .possession-chip { display:inline-flex; align-items:center; gap:6px; padding:5px 8px; border-radius:999px; background:#fff6c7; color:#604d00; border:1px solid #f1d85b; font-size:11px; font-weight:850; }
+    .video-preview { width:100%; max-height:60vh; border-radius:12px; background:#102118; display:block; }
+    .video-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 8px;
+    }
+    .metric { padding: 8px; border-radius: 10px; border: 1px solid var(--line); background: white; text-align: center; }
+    .metric strong { display: block; font-size: 13px; }
+    .metric span { color: var(--muted); font-size: 10px; }
+
+    .empty-state { text-align: center; color: var(--muted); padding: 18px 6px; font-size: 13px; line-height: 1.5; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 100;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      background: #13231a;
+      color: white;
+      padding: 11px 15px;
+      border-radius: 11px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.24);
+      font-size: 13px;
+      transition: opacity .2s, transform .2s;
+      max-width: min(90vw, 520px);
+      text-align: center;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(5,20,12,.58);
+      display: none;
+      place-items: center;
+      padding: 18px;
+    }
+    .modal-backdrop.open { display: grid; }
+    .modal {
+      width: min(680px, 100%);
+      max-height: min(780px, 92vh);
+      overflow: auto;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+    .modal-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+    .modal-body { padding: 18px; }
+    .guide-step { display: grid; grid-template-columns: 34px 1fr; gap: 11px; margin-bottom: 15px; }
+    .guide-num { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--brand); color: white; font-weight: 900; }
+    .guide-step strong { display: block; margin-bottom: 3px; }
+    .guide-step p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    .mobile-tabs { display: none; }
+    .hidden-file { display: none; }
+
+    @media (max-width: 1180px) {
+      .workspace { grid-template-columns: 250px minmax(420px,1fr); }
+      .right-panel { grid-column: 1 / -1; position: static; max-height: none; }
+      .right-panel .panel-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); gap: 16px; }
+      .right-panel .section + .section { margin-top: 0; padding-top: 0; border-top: 0; border-left: 1px solid var(--line); padding-left: 16px; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar { position: static; align-items: flex-start; padding: 11px 12px; }
+      .brand-sub { display: none; }
+      .brand-mark { width: 38px; height: 38px; }
+      .top-actions .btn span.label { display: none; }
+      .workspace { display: block; padding: 8px 8px 96px; }
+      .side-panel { position: static; max-height: none; }
+      .left-panel, .right-panel { display: none; }
+      body[data-tab="setup"] .left-panel { display: block; }
+      body[data-tab="field"] .stage-panel { display: block; }
+      body[data-tab="steps"] .right-panel { display: block; }
+      body:not([data-tab="field"]) .stage-panel { display: none; }
+      .right-panel .panel-body { display: block; }
+      .right-panel .section + .section { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; margin-top: 16px; }
+      .canvas-frame { border-radius: 13px; }
+      .stage-wrap { padding: 7px; }
+      .playbar { grid-template-columns: auto auto 1fr; }
+      .time-readout { grid-column: 1 / -1; width: 100%; text-align: center; }
+      .mobile-tabs {
+        display: grid;
+        position: sticky;
+        bottom: 0;
+        z-index: 30;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        background: rgba(237,242,239,.94);
+        backdrop-filter: blur(10px);
+        padding: 8px max(8px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+        border-top: 1px solid var(--line);
+      }
+      .tab-btn { border: 1px solid var(--line); background: white; color: var(--muted); border-radius: 11px; padding: 9px 6px; font-size: 12px; font-weight: 800; }
+      .tab-btn.active { color: white; background: var(--brand); border-color: var(--brand); }
+      .stage-actions .btn { flex: 1 1 45%; }
+      .action-grid { grid-template-columns: 1fr 1fr; }
+      .action-buttons .btn { flex:1 1 44%; }
+    }
+
+    @media print {
+      .topbar, .workspace, .mobile-tabs, .toast, .modal-backdrop { display: none !important; }
+    }
+  </style>
+</head>
+<body data-tab="field">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">⚽</div>
+        <div>
+          <div class="brand-title">Oscars Taktik-Menü</div>
+          <div class="brand-sub">Spielzüge planen · Aktionen festlegen · Video und Ein-Seiten-PDF</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn ghost small" id="helpBtn" title="Kurzanleitung">❔ <span class="label">Anleitung</span></button>
+        <button class="btn ghost small" id="saveJsonBtn" title="Projektdatei speichern">💾 <span class="label">Projekt</span></button>
+        <button class="btn ghost small" id="loadJsonBtn" title="Projektdatei laden">📂 <span class="label">Öffnen</span></button>
+        <button class="btn ghost small" id="resetBtn" title="Neues Projekt">↺ <span class="label">Neu</span></button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel side-panel left-panel">
+        <div class="panel-head">
+          <div class="panel-title">1. Aufbau & Elemente</div>
+        </div>
+        <div class="panel-body">
+          <section class="section">
+            <div class="field">
+              <label for="projectTitle">Name des Spielzugs</label>
+              <input id="projectTitle" class="input" value="Spielaufbau vom Torwart" maxlength="80" />
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="ageGroup">Mannschaft / Jugend</label>
+                <input id="ageGroup" class="input" value="E-Jugend" maxlength="40" />
+              </div>
+              <div class="field">
+                <label for="fieldMode">Spielfeld</label>
+                <select id="fieldMode">
+                  <option value="full">Ganzfeld</option>
+                  <option value="half">Halbfeld</option>
+                  <option value="funino">Funino / 3 gegen 3</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Schnellaufstellung</h3>
+            <div class="preset-grid">
+              <button class="preset" data-preset="3v3">3 gegen 3</button>
+              <button class="preset" data-preset="4v4">4 gegen 4</button>
+              <button class="preset" data-preset="7v7">6 + 1</button>
+              <button class="preset" data-preset="9v9">8 + 1</button>
+              <button class="preset" data-preset="11v11">11 gegen 11</button>
+              <button class="preset" data-preset="clear">Leeren</button>
+            </div>
+            <div class="muted" style="margin-top:8px">Die Vorlage setzt beide Teams. Danach kannst du jeden Spieler frei verschieben.</div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Element hinzufügen</h3>
+            <div class="button-grid">
+              <button class="btn secondary small" data-add="teamA">🔵 Spieler Team A</button>
+              <button class="btn secondary small" data-add="teamB">⚫ Gegner</button>
+              <button class="btn secondary small" data-add="goalkeeper">🧤 Torwart</button>
+              <button class="btn secondary small" data-add="ball">⚽ Ball</button>
+              <button class="btn secondary small" data-add="cone">🔺 Hütchen</button>
+              <button class="btn secondary small" data-add="zone">▧ Zone</button>
+            </div>
+          </section>
+
+          <section class="section" id="selectedSection">
+            <h3 class="section-title">Ausgewähltes Element</h3>
+            <div id="selectedEmpty" class="empty-state">Tippe auf einen Spieler, Gegner, Ball oder ein Hütchen.</div>
+            <div id="selectedControls" hidden>
+              <div class="selected-card">
+                <div class="selected-row">
+                  <div class="selected-dot" id="selectedDot"></div>
+                  <div>
+                    <div class="selected-name" id="selectedName">Spieler</div>
+                    <div class="selected-type" id="selectedType">Team A</div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="field">
+                  <label for="objectLabel">Bezeichnung</label>
+                  <input id="objectLabel" class="input" maxlength="24" />
+                </div>
+                <div class="field">
+                  <label for="objectNumber">Nummer</label>
+                  <input id="objectNumber" class="input" type="number" min="0" max="99" />
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="field">
+                  <label for="objectColor">Farbe</label>
+                  <div class="color-row">
+                    <input id="objectColor" type="color" />
+                    <span class="muted">frei wählbar</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="objectSpeed">Standardtempo (m/s)</label>
+                  <input id="objectSpeed" class="input" type="number" min="0.5" max="25" step="0.1" inputmode="decimal" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="objectDelay">Startverzögerung: <span id="delayValue">0,0 s</span></label>
+                <input id="objectDelay" type="range" min="0" max="3" step="0.1" value="0" />
+              </div>
+              <button class="btn danger small" id="deleteObjectBtn" style="width:100%">🗑 Element löschen</button>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="hint"><strong>Grundprinzip:</strong> Stelle zuerst Schritt 1 auf. Füge danach einen neuen Schritt hinzu und verschiebe dort die Spieler sowie den Ball. Die Bewegung zwischen beiden Positionen wird automatisch animiert.</div>
+          </section>
+        </div>
+      </aside>
+
+      <section class="panel stage-panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">2. Spielfeld & Animation</div>
+            <div class="muted" id="currentStepLabel">Schritt 1 von 1</div>
+          </div>
+          <button class="btn soft small" id="togglePathsBtn">↗ Laufwege: an</button>
+        </div>
+        <div class="stage-wrap">
+          <div class="canvas-frame">
+            <div class="canvas-badge" id="canvasTitle">Spielaufbau vom Torwart</div>
+            <div class="canvas-status" id="canvasMode">Bearbeiten</div>
+            <canvas id="pitchCanvas" width="720" height="1100" aria-label="Taktik-Spielfeld"></canvas>
+          </div>
+
+          <div class="playbar">
+            <button class="btn secondary icon-only" id="prevStepBtn" title="Vorheriger Schritt">⏮</button>
+            <button class="btn primary icon-only" id="playBtn" title="Animation abspielen">▶</button>
+            <input id="scrubber" type="range" min="0" max="1000" value="0" aria-label="Animationsposition" />
+            <div class="time-readout" id="timeReadout">0,0 / 0,0 s</div>
+          </div>
+
+          <div class="stage-actions">
+            <button class="btn primary" id="addStepBtn">＋ Nächster Schritt</button>
+            <button class="btn secondary" id="duplicateStepBtn">⧉ Schritt duplizieren</button>
+            <button class="btn secondary" id="recordBtn">🎬 Video erstellen</button>
+            <button class="btn secondary" id="pdfBtn">📄 Ein-Seiten-PDF</button>
+          </div>
+
+          <div class="action-editor">
+            <div class="action-editor-head">
+              <div>
+                <div class="action-editor-title">Aktion für diesen Schritt</div>
+                <div class="action-editor-sub">Gilt für die Bewegung vom vorherigen zum aktuellen Schritt. Spieler wählen, Aktion und Tempo festlegen.</div>
+              </div>
+              <span class="possession-chip" id="possessionChip">⚽ Kein Ballbesitz</span>
+            </div>
+            <div class="action-grid">
+              <div class="field">
+                <label for="actionActor">Spieler / Gegner</label>
+                <select id="actionActor"></select>
+              </div>
+              <div class="field">
+                <label for="actionKind">Aktion</label>
+                <select id="actionKind">
+                  <option value="position_halten">Position halten</option>
+                  <option value="langsam_laufen">Langsam laufen</option>
+                  <option value="laufen" selected>Laufen</option>
+                  <option value="rennen">Rennen</option>
+                  <option value="sprint">Sprinten</option>
+                  <option value="freilaufen">Freilaufen</option>
+                  <option value="gegner_suchen">Gegner suchen / orientieren</option>
+                  <option value="gegner_anlaufen">Gegner anlaufen</option>
+                  <option value="aufdrehen">Aufdrehen</option>
+                  <option value="dribbeln">Dribbeln</option>
+                  <option value="passen">Passen</option>
+                  <option value="klatschen">Klatschen lassen</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="actionSpeed">Tempo m/s</label>
+                <input id="actionSpeed" class="input" type="number" min="0.5" max="30" step="0.1" inputmode="decimal" value="4" />
+              </div>
+              <div class="field">
+                <label for="actionDelay">Start nach s</label>
+                <input id="actionDelay" class="input" type="number" min="0" max="10" step="0.1" inputmode="decimal" value="0" />
+              </div>
+            </div>
+            <div class="grid-2" style="margin-top:8px">
+              <div class="field" style="margin-bottom:0">
+                <label for="actionTarget">Zielspieler / Gegenspieler</label>
+                <select id="actionTarget"></select>
+              </div>
+              <div class="field" style="margin-bottom:0">
+                <label for="actionNote">Kurzer Hinweis (optional)</label>
+                <input id="actionNote" class="input" maxlength="60" placeholder="z. B. Schulterblick, erster Kontakt vorwärts" />
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button class="btn primary small" id="applyActionBtn">✓ Aktion übernehmen</button>
+              <button class="btn soft small" id="assignBallBtn">⚽ Ballbesitz geben</button>
+              <button class="btn secondary small" id="clearActionBtn">Aktion entfernen</button>
+            </div>
+            <div class="action-status" id="actionStatus">Wähle einen Spieler aus. Bei „Passen“ wird der Ball automatisch zum Zielspieler bewegt.</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel side-panel right-panel">
+        <div class="panel-head">
+          <div class="panel-title">3. Schritte & Erklärung</div>
+        </div>
+        <div class="panel-body">
+          <section class="section">
+            <h3 class="section-title">Ablauf</h3>
+            <div id="timeline" class="timeline"></div>
+            <div class="grid-2" style="margin-top:10px">
+              <button class="btn secondary small" id="moveStepLeftBtn">← Verschieben</button>
+              <button class="btn danger small" id="deleteStepBtn">Schritt löschen</button>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3 class="section-title">Kurze Zusatzbeschreibung (optional)</h3>
+            <div class="field">
+              <label for="stepTitle">Überschrift</label>
+              <input id="stepTitle" class="input" maxlength="70" />
+            </div>
+            <div class="field">
+              <label for="stepAction">Kurz: Was passiert?</label>
+              <textarea id="stepAction" placeholder="Beispiel: Der Torwart spielt flach auf den rechten Innenverteidiger."></textarea>
+            </div>
+            <div class="field">
+              <label for="stepOpponent">Gegnerverhalten – kurz</label>
+              <textarea id="stepOpponent" placeholder="Beispiel: Der erste Stürmer läuft den Innenverteidiger von innen nach außen an."></textarea>
+            </div>
+            <div class="field">
+              <label for="stepCoaching">Coachingpunkte – kurz</label>
+              <textarea id="stepCoaching" placeholder="Beispiel: Offene Stellung, erster Kontakt nach vorne, Passschärfe beachten."></textarea>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="stepPause">Pause danach</label>
+                <select id="stepPause">
+                  <option value="0">keine</option>
+                  <option value="0.5">0,5 Sekunden</option>
+                  <option value="1" selected>1 Sekunde</option>
+                  <option value="1.5">1,5 Sekunden</option>
+                  <option value="2">2 Sekunden</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Berechnete Bewegung</label>
+                <div class="input" id="transitionInfo" style="background:#f8faf9">Startbild</div>
+              </div>
+            </div>
+            <div id="stepMetrics" class="metrics"></div>
+          </section>
+        </div>
+      </aside>
+    </main>
+
+    <nav class="mobile-tabs" aria-label="Mobile Navigation">
+      <button class="tab-btn" data-tab-target="setup">1. Aufbau</button>
+      <button class="tab-btn active" data-tab-target="field">2. Spielfeld</button>
+      <button class="tab-btn" data-tab-target="steps">3. Schritte</button>
+    </nav>
+  </div>
+
+  <input id="jsonFileInput" class="hidden-file" type="file" accept="application/json,.json" />
+  <div class="toast" id="toast"></div>
+
+  <div class="modal-backdrop" id="helpModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="modal-head">
+        <div class="panel-title" id="helpTitle">So erstellst du einen animierten Spielzug</div>
+        <button class="btn secondary icon-only" id="closeHelpBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="guide-step"><div class="guide-num">1</div><div><strong>Grundaufstellung wählen</strong><p>Nutze eine Vorlage wie 6 + 1 oder füge Spieler, Gegner, Torwart und Ball einzeln hinzu. Ziehe jedes Element mit dem Finger oder der Maus auf seine Startposition.</p></div></div>
+        <div class="guide-step"><div class="guide-num">2</div><div><strong>Nächsten Schritt anlegen</strong><p>Drücke „Nächster Schritt“. Die aktuelle Anordnung wird übernommen. Verschiebe jetzt alle Spieler und den Ball auf ihre nächste Position.</p></div></div>
+        <div class="guide-step"><div class="guide-num">3</div><div><strong>Tempo und Reaktion festlegen</strong><p>Tippe ein Element an. Wähle unten am Spielfeld für jeden Spieler eine Aktion wie Laufen, Passen, Aufdrehen oder Gegner anlaufen. Tempo und Startverzögerung gelten nur für diesen Schritt.</p></div></div>
+        <div class="guide-step"><div class="guide-num">4</div><div><strong>Schritt erklären</strong><p>Ergänze nur kurze Stichpunkte. Die PDF fasst alle Schritte automatisch auf einer einzigen A4-Seite zusammen.</p></div></div>
+        <div class="guide-step"><div class="guide-num">5</div><div><strong>Ausgeben</strong><p>„Video erstellen“ öffnet nach der Aufnahme eine Vorschau mit „Speichern“ und „Teilen“. „Ein-Seiten-PDF“ fasst den kompletten Ablauf kompakt auf einer A4-Seite zusammen.</p></div></div>
+        <div class="hint"><strong>Hinweis:</strong> Das Projekt wird automatisch im Browser gespeichert. Über „Projekt“ kannst du zusätzlich eine JSON-Datei sichern und später wieder öffnen.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="videoModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="videoTitle">
+      <div class="modal-head">
+        <div>
+          <div class="panel-title" id="videoTitle">Video ist fertig</div>
+          <div class="muted">Über „Teilen / sichern“ kannst du die Datei auf Android direkt in Dateien, Drive oder WhatsApp speichern.</div>
+        </div>
+        <button class="btn secondary icon-only" id="closeVideoBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <video id="videoPreview" class="video-preview" controls playsinline></video>
+        <div class="video-actions">
+          <button class="btn primary" id="videoSaveBtn">⬇ Video speichern</button>
+          <button class="btn secondary" id="videoShareBtn">↗ Teilen / auf Handy sichern</button>
+        </div>
+        <div class="hint" id="videoFormatHint" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const canvas = document.getElementById('pitchCanvas');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      const FIELD = { x: 54, y: 45, w: 612, h: 1010 };
+      const STORAGE_KEY = 'oscarsTaktikMenueProjectV1';
+
+      const $ = (id) => document.getElementById(id);
+      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+      const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+      const de = (n, digits = 1) => Number(n || 0).toLocaleString('de-DE', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
+      const ACTION_DEFS = {
+        position_halten: { label:'Position halten', speed:.5 },
+        langsam_laufen: { label:'Langsam laufen', speed:2.5 },
+        laufen: { label:'Laufen', speed:4 },
+        rennen: { label:'Rennen', speed:6 },
+        sprint: { label:'Sprinten', speed:7.5 },
+        freilaufen: { label:'Freilaufen', speed:4.5 },
+        gegner_suchen: { label:'Gegner suchen', speed:3 },
+        gegner_anlaufen: { label:'Gegner anlaufen', speed:6 },
+        aufdrehen: { label:'Aufdrehen', speed:3.5, ball:true },
+        dribbeln: { label:'Dribbeln', speed:4, ball:true },
+        passen: { label:'Passen', speed:13, pass:true },
+        klatschen: { label:'Klatschen lassen', speed:15, pass:true }
+      };
+
+      const defaultProject = () => ({
+        version: 2,
+        title: 'Spielaufbau vom Torwart',
+        ageGroup: 'E-Jugend',
+        fieldMode: 'full',
+        showPaths: true,
+        objects: [],
+        steps: [{
+          id: uid(),
+          title: 'Grundaufstellung',
+          action: 'Die Mannschaft nimmt die Ausgangspositionen für den Spielaufbau ein.',
+          opponent: 'Der Gegner steht in seiner Pressingordnung.',
+          coaching: 'Breite und Tiefe herstellen. Alle Spieler sind anspielbar und orientieren sich vor.',
+          pause: 1,
+          ballOwnerId: null,
+          playerActions: {},
+          states: {}
+        }]
+      });
+
+      let project = defaultProject();
+      let currentStepIndex = 0;
+      let selectedId = null;
+      let dragging = null;
+      let isPlaying = false;
+      let playbackStart = 0;
+      let playbackTime = 0;
+      let playbackRAF = null;
+      let recording = null;
+      let actionActorId = null;
+      let lastVideoBlob = null;
+      let lastVideoUrl = null;
+      let lastVideoFilename = '';
+      let toastTimer = null;
+      let thumbnailsPending = false;
+
+      function toast(message) {
+        const el = $('toast');
+        el.textContent = message;
+        el.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+      }
+
+      function saveLocal() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(project));
+        } catch (_) {}
+      }
+
+      function loadLocal() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return false;
+          const parsed = JSON.parse(raw);
+          if (!parsed || !Array.isArray(parsed.steps) || !Array.isArray(parsed.objects)) return false;
+          project = parsed;
+          normalizeProject();
+          return true;
+        } catch (_) { return false; }
+      }
+
+      function normalizeProject() {
+        project.version = 2;
+        project.title ||= 'Neuer Spielzug';
+        project.ageGroup ||= '';
+        project.fieldMode ||= 'full';
+        project.showPaths = project.showPaths !== false;
+        project.objects ||= [];
+        project.steps ||= [];
+        if (!project.steps.length) project.steps.push(defaultProject().steps[0]);
+        project.steps.forEach((step, i) => {
+          step.id ||= uid();
+          step.title ||= i === 0 ? 'Grundaufstellung' : `Schritt ${i + 1}`;
+          step.action ||= '';
+          step.opponent ||= '';
+          step.coaching ||= '';
+          step.pause = Number.isFinite(Number(step.pause)) ? Number(step.pause) : 1;
+          step.ballOwnerId = step.ballOwnerId || null;
+          step.playerActions ||= {};
+          step.states ||= {};
+          project.objects.forEach(obj => {
+            if (!step.states[obj.id]) step.states[obj.id] = { x: .5, y: .5, visible: i === 0 };
+          });
+        });
+        project.objects.forEach((obj, i) => {
+          obj.id ||= uid();
+          obj.type ||= 'player';
+          obj.team ||= 'A';
+          obj.color ||= obj.team === 'B' ? '#5c625f' : '#2563eb';
+          obj.label ||= obj.type === 'ball' ? 'Ball' : `Spieler ${i + 1}`;
+          obj.number = obj.number ?? '';
+          obj.speed = Number(obj.speed) || (obj.type === 'ball' ? 14 : 5.5);
+          obj.delay = Number(obj.delay) || 0;
+        });
+        project.steps.forEach(step => {
+          if (!step.ballOwnerId) step.ballOwnerId = inferBallOwner(step);
+          if (step.ballOwnerId && !project.objects.some(o => o.id === step.ballOwnerId)) step.ballOwnerId = null;
+        });
+      }
+
+      function currentStep() { return project.steps[currentStepIndex]; }
+      function getObject(id) { return project.objects.find(o => o.id === id); }
+      function getState(stepIndex, id) { return project.steps[stepIndex]?.states?.[id]; }
+      function setState(stepIndex, id, state) { project.steps[stepIndex].states[id] = state; }
+      function isPlayer(obj) { return !!obj && ['player','goalkeeper'].includes(obj.type); }
+      function getPlayers() { return project.objects.filter(isPlayer); }
+      function getBall() { return project.objects.find(o => o.type === 'ball'); }
+      function inferBallOwner(step) {
+        const ball = getBall();
+        const bs = ball && step?.states?.[ball.id];
+        if (!bs?.visible) return null;
+        let best = null, bestD = Infinity;
+        getPlayers().forEach(obj => {
+          const ps = step.states[obj.id];
+          if (!ps?.visible) return;
+          const d = Math.hypot(ps.x-bs.x, (ps.y-bs.y)*1.55);
+          if (d < bestD) { bestD=d; best=obj.id; }
+        });
+        return bestD < .075 ? best : null;
+      }
+      function placeBallAtOwner(stepIndex, ownerId) {
+        const ball = getBall();
+        const step = project.steps[stepIndex];
+        const ownerState = step?.states?.[ownerId];
+        if (!ball || !ownerState?.visible) return;
+        step.states[ball.id] = { x:clamp(ownerState.x+.025,0,1), y:clamp(ownerState.y+.018,0,1), visible:true };
+      }
+      function getPlayerAction(stepIndex, objId) {
+        return project.steps[stepIndex]?.playerActions?.[objId] || null;
+      }
+      function motionProfile(stepIndex, obj) {
+        const step = project.steps[stepIndex];
+        if (obj.type === 'ball') {
+          const passer = Object.values(step?.playerActions || {}).find(a => a && ACTION_DEFS[a.kind]?.pass);
+          if (passer) return { speed:Number(passer.speed)||ACTION_DEFS[passer.kind].speed, delay:Number(passer.delay)||0, action:passer };
+        }
+        const action = step?.playerActions?.[obj.id];
+        return {
+          speed:Math.max(.5, Number(action?.speed) || Number(obj.speed) || (obj.type==='ball'?14:5.5)),
+          delay:Math.max(0, Number(action?.delay) || Number(obj.delay) || 0),
+          action
+        };
+      }
+      function actionLabel(kind) { return ACTION_DEFS[kind]?.label || 'Laufen'; }
+      function actionSentence(actor, action) {
+        if (!actor || !action) return '';
+        const target = getObject(action.targetId);
+        let text = `${actor.label || typeLabel(actor)}: ${actionLabel(action.kind)}`;
+        if (target) text += ` → ${target.label || typeLabel(target)}`;
+        if (action.note) text += ` · ${action.note}`;
+        return text;
+      }
+
+      function fieldDimensions() {
+        if (project.fieldMode === 'funino') return { width: 40, height: 28 };
+        if (project.fieldMode === 'half') return { width: 68, height: 52.5 };
+        return { width: 68, height: 105 };
+      }
+
+      function normalizedToCanvas(x, y) {
+        return { x: FIELD.x + x * FIELD.w, y: FIELD.y + y * FIELD.h };
+      }
+      function canvasToNormalized(x, y) {
+        return { x: clamp((x - FIELD.x) / FIELD.w, 0, 1), y: clamp((y - FIELD.y) / FIELD.h, 0, 1) };
+      }
+
+      function drawPitch(targetCtx = ctx, mode = project.fieldMode) {
+        const g = targetCtx.createLinearGradient(0, FIELD.y, 0, FIELD.y + FIELD.h);
+        g.addColorStop(0, '#21a349');
+        g.addColorStop(1, '#11843a');
+        targetCtx.fillStyle = '#0d7432';
+        targetCtx.fillRect(0, 0, W, H);
+        targetCtx.fillStyle = g;
+        roundedRect(targetCtx, FIELD.x, FIELD.y, FIELD.w, FIELD.h, 4, true, false);
+
+        targetCtx.save();
+        targetCtx.beginPath();
+        targetCtx.rect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
+        targetCtx.clip();
+        const stripeCount = 12;
+        for (let i = 0; i < stripeCount; i++) {
+          if (i % 2 === 0) {
+            targetCtx.fillStyle = 'rgba(255,255,255,.035)';
+            targetCtx.fillRect(FIELD.x, FIELD.y + i * FIELD.h / stripeCount, FIELD.w, FIELD.h / stripeCount);
+          }
+        }
+        targetCtx.restore();
+
+        targetCtx.strokeStyle = 'rgba(255,255,255,.95)';
+        targetCtx.lineWidth = 3;
+        targetCtx.lineJoin = 'round';
+        targetCtx.lineCap = 'round';
+
+        if (mode === 'funino') {
+          targetCtx.strokeRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
+          targetCtx.beginPath();
+          targetCtx.moveTo(FIELD.x, FIELD.y + FIELD.h / 2);
+          targetCtx.lineTo(FIELD.x + FIELD.w, FIELD.y + FIELD.h / 2);
+          targetCtx.stroke();
+          drawMiniGoals(targetCtx);
+          drawCornerZones(targetCtx);
+          return;
+        }
+
+        targetCtx.strokeRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
+        if (mode === 'full') {
+          targetCtx.beginPath();
+          targetCtx.moveTo(FIELD.x, FIELD.y + FIELD.h / 2);
+          targetCtx.lineTo(FIELD.x + FIELD.w, FIELD.y + FIELD.h / 2);
+          targetCtx.stroke();
+          targetCtx.beginPath();
+          targetCtx.arc(FIELD.x + FIELD.w / 2, FIELD.y + FIELD.h / 2, FIELD.w * .135, 0, Math.PI * 2);
+          targetCtx.stroke();
+          fillSpot(targetCtx, FIELD.x + FIELD.w / 2, FIELD.y + FIELD.h / 2);
+          drawPenaltyArea(targetCtx, 'top');
+          drawPenaltyArea(targetCtx, 'bottom');
+        } else {
+          drawPenaltyArea(targetCtx, 'bottom');
+          targetCtx.beginPath();
+          targetCtx.moveTo(FIELD.x, FIELD.y);
+          targetCtx.lineTo(FIELD.x + FIELD.w, FIELD.y);
+          targetCtx.stroke();
+          targetCtx.beginPath();
+          targetCtx.arc(FIELD.x + FIELD.w / 2, FIELD.y, FIELD.w * .135, 0, Math.PI);
+          targetCtx.stroke();
+        }
+      }
+
+      function drawPenaltyArea(c, side) {
+        const top = side === 'top';
+        const y = top ? FIELD.y : FIELD.y + FIELD.h;
+        const dir = top ? 1 : -1;
+        const goalW = FIELD.w * .24;
+        const goalDepth = FIELD.h * .025;
+        const boxW = FIELD.w * .58;
+        const boxD = FIELD.h * .16;
+        const sixW = FIELD.w * .30;
+        const sixD = FIELD.h * .06;
+        c.strokeRect(FIELD.x + (FIELD.w - boxW) / 2, y, boxW, dir * boxD);
+        c.strokeRect(FIELD.x + (FIELD.w - sixW) / 2, y, sixW, dir * sixD);
+        c.strokeRect(FIELD.x + (FIELD.w - goalW) / 2, y - (top ? goalDepth : 0), goalW, goalDepth);
+        const spotY = y + dir * boxD * .68;
+        fillSpot(c, FIELD.x + FIELD.w / 2, spotY);
+        c.beginPath();
+        const arcR = FIELD.w * .135;
+        if (top) c.arc(FIELD.x + FIELD.w / 2, spotY, arcR, .22 * Math.PI, .78 * Math.PI);
+        else c.arc(FIELD.x + FIELD.w / 2, spotY, arcR, 1.22 * Math.PI, 1.78 * Math.PI);
+        c.stroke();
+      }
+
+      function drawMiniGoals(c) {
+        const goalW = FIELD.w * .16;
+        const depth = 13;
+        [FIELD.x + FIELD.w * .20, FIELD.x + FIELD.w * .80 - goalW].forEach(x => {
+          c.strokeRect(x, FIELD.y - depth, goalW, depth);
+          c.strokeRect(x, FIELD.y + FIELD.h, goalW, depth);
+        });
+      }
+
+      function drawCornerZones(c) {
+        c.setLineDash([8,8]);
+        c.strokeStyle = 'rgba(255,255,255,.7)';
+        const z = FIELD.h * .18;
+        c.strokeRect(FIELD.x, FIELD.y, FIELD.w, z);
+        c.strokeRect(FIELD.x, FIELD.y + FIELD.h - z, FIELD.w, z);
+        c.setLineDash([]);
+      }
+
+      function fillSpot(c, x, y) {
+        c.save();
+        c.fillStyle = 'white';
+        c.beginPath(); c.arc(x, y, 3.4, 0, Math.PI * 2); c.fill();
+        c.restore();
+      }
+
+      function roundedRect(c, x, y, w, h, r, fill, stroke) {
+        if (w < 2 * r) r = w / 2;
+        if (h < 2 * r) r = h / 2;
+        c.beginPath();
+        c.moveTo(x + r, y);
+        c.arcTo(x + w, y, x + w, y + h, r);
+        c.arcTo(x + w, y + h, x, y + h, r);
+        c.arcTo(x, y + h, x, y, r);
+        c.arcTo(x, y, x + w, y, r);
+        c.closePath();
+        if (fill) c.fill();
+        if (stroke) c.stroke();
+      }
+
+      function drawArrow(c, from, to, color, dashed = false, width = 4) {
+        const dx = to.x - from.x;
+        const dy = to.y - from.y;
+        const len = Math.hypot(dx, dy);
+        if (len < 8) return;
+        const ux = dx / len, uy = dy / len;
+        const start = { x: from.x + ux * 22, y: from.y + uy * 22 };
+        const end = { x: to.x - ux * 24, y: to.y - uy * 24 };
+        c.save();
+        c.strokeStyle = color;
+        c.fillStyle = color;
+        c.globalAlpha = .82;
+        c.lineWidth = width;
+        c.lineCap = 'round';
+        if (dashed) c.setLineDash([10, 8]);
+        c.beginPath(); c.moveTo(start.x, start.y); c.lineTo(end.x, end.y); c.stroke();
+        c.setLineDash([]);
+        const a = Math.atan2(end.y - start.y, end.x - start.x);
+        c.beginPath();
+        c.moveTo(end.x, end.y);
+        c.lineTo(end.x - 15 * Math.cos(a - Math.PI / 6), end.y - 15 * Math.sin(a - Math.PI / 6));
+        c.lineTo(end.x - 15 * Math.cos(a + Math.PI / 6), end.y - 15 * Math.sin(a + Math.PI / 6));
+        c.closePath(); c.fill();
+        c.restore();
+      }
+
+      function drawZone(c, p, obj, selected) {
+        const width = obj.width || .2;
+        const height = obj.height || .12;
+        const pxW = FIELD.w * width;
+        const pxH = FIELD.h * height;
+        c.save();
+        c.fillStyle = hexToRgba(obj.color || '#f59e0b', .18);
+        c.strokeStyle = obj.color || '#f59e0b';
+        c.lineWidth = selected ? 5 : 3;
+        c.setLineDash([10,8]);
+        c.fillRect(p.x - pxW/2, p.y - pxH/2, pxW, pxH);
+        c.strokeRect(p.x - pxW/2, p.y - pxH/2, pxW, pxH);
+        c.setLineDash([]);
+        c.fillStyle = 'rgba(0,0,0,.72)';
+        c.font = '700 15px system-ui';
+        c.textAlign = 'center';
+        c.fillText(obj.label || 'Zone', p.x, p.y + 5);
+        c.restore();
+      }
+
+      function drawObject(c, obj, state, selected = false, alpha = 1, hasBall = false) {
+        if (!state?.visible) return;
+        const p = normalizedToCanvas(state.x, state.y);
+        c.save();
+        c.globalAlpha = alpha;
+        if (obj.type === 'zone') { drawZone(c, p, obj, selected); c.restore(); return; }
+        if (obj.type === 'ball') {
+          if (selected) { c.strokeStyle = '#ffd54f'; c.lineWidth = 6; c.beginPath(); c.arc(p.x, p.y, 22, 0, Math.PI*2); c.stroke(); }
+          c.fillStyle = 'white'; c.strokeStyle = '#1e2521'; c.lineWidth = 2.5;
+          c.beginPath(); c.arc(p.x, p.y, 14, 0, Math.PI*2); c.fill(); c.stroke();
+          c.fillStyle = '#1d2420';
+          c.beginPath(); c.arc(p.x, p.y, 4.5, 0, Math.PI*2); c.fill();
+          for (let i = 0; i < 5; i++) {
+            const a = i * Math.PI * 2 / 5 - Math.PI / 2;
+            c.beginPath(); c.arc(p.x + Math.cos(a)*8.5, p.y + Math.sin(a)*8.5, 2.2, 0, Math.PI*2); c.fill();
+          }
+          c.restore(); return;
+        }
+        if (obj.type === 'cone') {
+          if (selected) { c.strokeStyle = '#ffd54f'; c.lineWidth = 5; c.beginPath(); c.arc(p.x, p.y, 23, 0, Math.PI*2); c.stroke(); }
+          c.fillStyle = obj.color || '#ff8a00';
+          c.beginPath(); c.moveTo(p.x, p.y-17); c.lineTo(p.x-16, p.y+14); c.lineTo(p.x+16,p.y+14); c.closePath(); c.fill();
+          c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(p.x-11,p.y+2,22,4);
+          c.restore(); return;
+        }
+
+        const isGK = obj.type === 'goalkeeper';
+        const scale = isGK ? 1.06 : 1;
+        if (hasBall) {
+          c.save();
+          c.shadowColor = 'rgba(255,220,55,.85)';
+          c.shadowBlur = 18;
+          c.strokeStyle = '#ffe066';
+          c.lineWidth = 8;
+          c.beginPath(); c.arc(p.x, p.y, 35*scale, 0, Math.PI*2); c.stroke();
+          c.shadowColor = 'transparent';
+          c.fillStyle = 'rgba(20,31,24,.90)';
+          roundedRect(c, p.x-29, p.y-50, 58, 18, 8, true, false);
+          c.fillStyle = '#fff3a3'; c.font = '900 10px system-ui'; c.textAlign='center'; c.textBaseline='middle';
+          c.fillText('⚽ AM BALL', p.x, p.y-41);
+          c.restore();
+        }
+        if (selected) {
+          c.strokeStyle = '#ffd54f'; c.lineWidth = 6;
+          c.beginPath(); c.arc(p.x, p.y, 30 * scale, 0, Math.PI * 2); c.stroke();
+        }
+        c.shadowColor = 'rgba(0,0,0,.28)';
+        c.shadowBlur = 7;
+        c.shadowOffsetY = 3;
+        c.fillStyle = obj.color || '#2563eb';
+        c.strokeStyle = 'rgba(255,255,255,.82)';
+        c.lineWidth = 2;
+        c.beginPath();
+        c.moveTo(p.x - 13*scale, p.y - 17*scale);
+        c.lineTo(p.x - 28*scale, p.y - 9*scale);
+        c.lineTo(p.x - 22*scale, p.y + 3*scale);
+        c.lineTo(p.x - 15*scale, p.y);
+        c.lineTo(p.x - 15*scale, p.y + 22*scale);
+        c.lineTo(p.x + 15*scale, p.y + 22*scale);
+        c.lineTo(p.x + 15*scale, p.y);
+        c.lineTo(p.x + 22*scale, p.y + 3*scale);
+        c.lineTo(p.x + 28*scale, p.y - 9*scale);
+        c.lineTo(p.x + 13*scale, p.y - 17*scale);
+        c.quadraticCurveTo(p.x, p.y - 8*scale, p.x - 13*scale, p.y - 17*scale);
+        c.closePath(); c.fill(); c.stroke();
+        c.shadowColor = 'transparent';
+        c.fillStyle = contrastColor(obj.color || '#2563eb');
+        c.font = `900 ${isGK ? 18 : 17}px system-ui`;
+        c.textAlign = 'center'; c.textBaseline = 'middle';
+        c.fillText(String(obj.number ?? ''), p.x, p.y + 5);
+        c.font = '800 14px system-ui';
+        c.fillStyle = 'white';
+        c.strokeStyle = 'rgba(0,0,0,.5)'; c.lineWidth = 4;
+        c.strokeText(obj.label || '', p.x, p.y + 42);
+        c.fillText(obj.label || '', p.x, p.y + 42);
+        c.restore();
+      }
+
+      function contrastColor(hex) {
+        const c = parseHex(hex);
+        const lum = (c.r * 299 + c.g * 587 + c.b * 114) / 1000;
+        return lum > 155 ? '#152019' : '#ffffff';
+      }
+      function parseHex(hex) {
+        const h = String(hex).replace('#','');
+        const full = h.length === 3 ? h.split('').map(x => x+x).join('') : h.padEnd(6,'0');
+        return { r: parseInt(full.slice(0,2),16), g: parseInt(full.slice(2,4),16), b: parseInt(full.slice(4,6),16) };
+      }
+      function hexToRgba(hex, a) { const c = parseHex(hex); return `rgba(${c.r},${c.g},${c.b},${a})`; }
+
+      function drawActionTag(c, p, text) {
+        c.save();
+        c.font='800 11px system-ui';
+        const w=Math.min(118,c.measureText(text).width+16);
+        c.fillStyle='rgba(12,31,20,.82)';
+        roundedRect(c,p.x-w/2,p.y-10,w,20,8,true,false);
+        c.fillStyle='white'; c.textAlign='center'; c.textBaseline='middle';
+        c.fillText(text.length>18?text.slice(0,17)+'…':text,p.x,p.y);
+        c.restore();
+      }
+
+      function drawStaticStep(stepIndex, targetCtx = ctx, options = {}) {
+        drawPitch(targetCtx, project.fieldMode);
+        const step = project.steps[stepIndex];
+        const prev = project.steps[stepIndex - 1];
+        if (project.showPaths && options.showPaths !== false && prev) {
+          project.objects.forEach(obj => {
+            if (obj.type === 'zone' || obj.type === 'cone') return;
+            const a = prev.states[obj.id], b = step.states[obj.id];
+            if (!a?.visible || !b?.visible) return;
+            const p1 = normalizedToCanvas(a.x,a.y), p2 = normalizedToCanvas(b.x,b.y);
+            if (Math.hypot(p2.x-p1.x,p2.y-p1.y) < 10) return;
+            drawArrow(targetCtx, p1, p2, obj.type === 'ball' ? '#fff7a8' : hexToRgba(obj.color, .95), obj.type === 'ball', obj.type === 'ball' ? 5 : 4);
+            const action = obj.type === 'ball' ? Object.values(step.playerActions || {}).find(a => a && ACTION_DEFS[a.kind]?.pass) : step.playerActions?.[obj.id];
+            if (action) drawActionTag(targetCtx, {x:(p1.x+p2.x)/2,y:(p1.y+p2.y)/2}, actionLabel(action.kind));
+          });
+        }
+        const sorted = [...project.objects].sort((a,b) => zOrder(a)-zOrder(b));
+        sorted.forEach(obj => drawObject(targetCtx, obj, step.states[obj.id], obj.id === selectedId && options.select !== false, 1, step.ballOwnerId === obj.id));
+      }
+
+      function zOrder(obj) {
+        if (obj.type === 'zone') return 0;
+        if (obj.type === 'cone') return 1;
+        if (obj.type === 'ball') return 4;
+        return 2;
+      }
+
+      function getTransitionData(index) {
+        if (index <= 0 || index >= project.steps.length) return { duration: 0, movers: [], distance: 0 };
+        const from = project.steps[index - 1];
+        const to = project.steps[index];
+        const dims = fieldDimensions();
+        let duration = 0;
+        let totalDistance = 0;
+        const movers = [];
+        project.objects.forEach(obj => {
+          const a = from.states[obj.id], b = to.states[obj.id];
+          if (!a?.visible || !b?.visible || obj.type === 'zone' || obj.type === 'cone') return;
+          const dx = (b.x - a.x) * dims.width;
+          const dy = (b.y - a.y) * dims.height;
+          const distance = Math.hypot(dx,dy);
+          if (distance < .15) return;
+          const profile = motionProfile(index, obj);
+          const speed = profile.speed;
+          const ownDuration = profile.delay + distance / speed;
+          duration = Math.max(duration, ownDuration);
+          totalDistance += distance;
+          movers.push({ obj, distance, duration: ownDuration, delay: profile.delay, speed, action:profile.action });
+        });
+        duration = Math.max(.7, duration);
+        return { duration, movers, distance: totalDistance };
+      }
+
+      function buildTimelineMap() {
+        let cursor = 0;
+        const segments = [];
+        if (project.steps.length === 1) return { segments, total: Number(project.steps[0].pause || 1) };
+        for (let i = 1; i < project.steps.length; i++) {
+          const t = getTransitionData(i);
+          segments.push({ type: 'move', from: i - 1, to: i, start: cursor, end: cursor + t.duration, duration: t.duration });
+          cursor += t.duration;
+          const pause = Number(project.steps[i].pause || 0);
+          if (pause > 0) {
+            segments.push({ type: 'pause', step: i, start: cursor, end: cursor + pause, duration: pause });
+            cursor += pause;
+          }
+        }
+        return { segments, total: Math.max(.1,cursor) };
+      }
+
+      function ease(t) { return t < .5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
+
+      function drawAnimationAt(time, targetCtx = ctx, select = false) {
+        const map = buildTimelineMap();
+        if (!map.segments.length) { drawStaticStep(0, targetCtx, { select }); return; }
+        const t = clamp(time, 0, map.total);
+        let segment = map.segments.find(s => t >= s.start && t <= s.end) || map.segments[map.segments.length - 1];
+        if (segment.type === 'pause') {
+          drawStaticStep(segment.step, targetCtx, { showPaths: false, select });
+          return;
+        }
+        drawPitch(targetCtx, project.fieldMode);
+        const from = project.steps[segment.from];
+        const to = project.steps[segment.to];
+        const localTime = t - segment.start;
+        const sorted = [...project.objects].sort((a,b) => zOrder(a)-zOrder(b));
+        sorted.forEach(obj => {
+          const a = from.states[obj.id], b = to.states[obj.id];
+          if (!a && !b) return;
+          if (!a?.visible && !b?.visible) return;
+          if (!a?.visible && b?.visible) { drawObject(targetCtx, obj, b, false, clamp(localTime / .25,0,1), to.ballOwnerId===obj.id); return; }
+          if (a?.visible && !b?.visible) { drawObject(targetCtx, obj, a, false, 1-clamp(localTime / .25,0,1), from.ballOwnerId===obj.id); return; }
+          if (obj.type === 'zone' || obj.type === 'cone') { drawObject(targetCtx, obj, b, false, 1, to.ballOwnerId===obj.id); return; }
+          const dims = fieldDimensions();
+          const distance = Math.hypot((b.x-a.x)*dims.width,(b.y-a.y)*dims.height);
+          if (distance < .01) { drawObject(targetCtx,obj,b,false,1,to.ballOwnerId===obj.id); return; }
+          const profile = motionProfile(segment.to, obj);
+          const delay = profile.delay;
+          const ownDuration = Math.max(.2, distance / profile.speed);
+          const p = ease(clamp((localTime-delay)/ownDuration,0,1));
+          const ownerId = p < .82 ? from.ballOwnerId : to.ballOwnerId;
+          drawObject(targetCtx, obj, { x: a.x + (b.x-a.x)*p, y: a.y + (b.y-a.y)*p, visible: true }, false, 1, ownerId===obj.id);
+        });
+      }
+
+      function render() {
+        if (!isPlaying) drawStaticStep(currentStepIndex);
+        updateCanvasLabels();
+      }
+
+      function updateCanvasLabels() {
+        $('canvasTitle').textContent = project.title || 'Neuer Spielzug';
+        $('currentStepLabel').textContent = `Schritt ${currentStepIndex + 1} von ${project.steps.length}`;
+        $('togglePathsBtn').textContent = `↗ Laufwege: ${project.showPaths ? 'an' : 'aus'}`;
+      }
+
+      function eventCanvasPoint(e) {
+        const r = canvas.getBoundingClientRect();
+        return { x: (e.clientX-r.left) * W/r.width, y: (e.clientY-r.top) * H/r.height };
+      }
+
+      function hitTest(point) {
+        const step = currentStep();
+        const objects = [...project.objects].sort((a,b) => zOrder(b)-zOrder(a));
+        for (const obj of objects) {
+          const s = step.states[obj.id];
+          if (!s?.visible) continue;
+          const p = normalizedToCanvas(s.x,s.y);
+          if (obj.type === 'zone') {
+            const w = FIELD.w*(obj.width||.2), h = FIELD.h*(obj.height||.12);
+            if (Math.abs(point.x-p.x)<w/2 && Math.abs(point.y-p.y)<h/2) return obj.id;
+          } else {
+            const radius = obj.type === 'ball' ? 23 : 36;
+            if (Math.hypot(point.x-p.x,point.y-p.y) <= radius) return obj.id;
+          }
+        }
+        return null;
+      }
+
+      canvas.addEventListener('pointerdown', (e) => {
+        if (isPlaying) return;
+        canvas.setPointerCapture?.(e.pointerId);
+        const point = eventCanvasPoint(e);
+        const id = hitTest(point);
+        selectObject(id);
+        if (id) {
+          const s = currentStep().states[id];
+          const p = normalizedToCanvas(s.x,s.y);
+          dragging = { id, dx: point.x-p.x, dy: point.y-p.y };
+        }
+      });
+      canvas.addEventListener('pointermove', (e) => {
+        if (!dragging || isPlaying) return;
+        e.preventDefault();
+        const point = eventCanvasPoint(e);
+        const n = canvasToNormalized(point.x-dragging.dx, point.y-dragging.dy);
+        const s = currentStep().states[dragging.id];
+        s.x = n.x; s.y = n.y;
+        render();
+      }, { passive: false });
+      const stopDrag = () => { if (dragging) { dragging = null; afterEdit(); } };
+      canvas.addEventListener('pointerup', stopDrag);
+      canvas.addEventListener('pointercancel', stopDrag);
+
+      function selectObject(id) {
+        selectedId = id;
+        const obj = getObject(id);
+        if (isPlayer(obj)) actionActorId = obj.id;
+        updateSelectedPanel();
+        updateActionEditor();
+        render();
+      }
+
+      function updateSelectedPanel() {
+        const obj = getObject(selectedId);
+        $('selectedEmpty').hidden = !!obj;
+        $('selectedControls').hidden = !obj;
+        if (!obj) return;
+        $('selectedDot').style.background = obj.color || '#999';
+        $('selectedName').textContent = obj.label || typeLabel(obj);
+        $('selectedType').textContent = typeLabel(obj);
+        $('objectLabel').value = obj.label || '';
+        $('objectNumber').value = obj.number ?? '';
+        $('objectNumber').disabled = ['ball','cone','zone'].includes(obj.type);
+        $('objectColor').value = obj.color || '#777777';
+        $('objectSpeed').value = String(Number(obj.speed)||5.5);
+        $('objectDelay').value = String(obj.delay || 0);
+        $('delayValue').textContent = `${de(obj.delay || 0)} s`;
+      }
+
+      function typeLabel(obj) {
+        if (obj.type === 'ball') return 'Ball';
+        if (obj.type === 'cone') return 'Hütchen';
+        if (obj.type === 'zone') return 'Markierungszone';
+        if (obj.type === 'goalkeeper') return 'Torwart';
+        return obj.team === 'B' ? 'Gegner' : 'Spieler Team A';
+      }
+
+
+      function afterEdit({ timeline = true } = {}) {
+        saveLocal();
+        updateStepEditor();
+        if (timeline) scheduleTimelineRender();
+        render();
+      }
+
+      function addObject(kind, opts = {}) {
+        const numberBase = project.objects.filter(o => ['player','goalkeeper'].includes(o.type) && o.team === (kind==='teamB'?'B':'A')).length + 1;
+        let obj;
+        if (kind === 'ball') obj = { id:uid(), type:'ball', team:'N', label:'Ball', number:'', color:'#ffffff', speed:14, delay:0 };
+        else if (kind === 'cone') obj = { id:uid(), type:'cone', team:'N', label:'Hütchen', number:'', color:'#ff8a00', speed:1, delay:0 };
+        else if (kind === 'zone') obj = { id:uid(), type:'zone', team:'N', label:'Zone', number:'', color:'#f59e0b', speed:1, delay:0, width:.22, height:.12 };
+        else if (kind === 'goalkeeper') obj = { id:uid(), type:'goalkeeper', team: opts.team || 'A', label: opts.label || 'Torwart', number: opts.number ?? 1, color: opts.color || '#f59e0b', speed:5, delay:0 };
+        else {
+          const team = kind === 'teamB' ? 'B' : 'A';
+          obj = { id:uid(), type:'player', team, label: opts.label || (team==='B'?`Gegner ${numberBase}`:`Spieler ${numberBase}`), number: opts.number ?? numberBase, color: opts.color || (team==='B'?'#59615d':'#2563eb'), speed:5.5, delay:0 };
+        }
+        Object.assign(obj, opts.object || {});
+        project.objects.push(obj);
+        project.steps.forEach((step,i) => {
+          step.states[obj.id] = { x: opts.x ?? .5, y: opts.y ?? .5, visible: i >= currentStepIndex };
+        });
+        selectObject(obj.id);
+        afterEdit();
+        return obj;
+      }
+
+      function deleteSelectedObject() {
+        if (!selectedId) return;
+        project.objects = project.objects.filter(o => o.id !== selectedId);
+        project.steps.forEach(s => {
+          delete s.states[selectedId];
+          delete s.playerActions?.[selectedId];
+          if (s.ballOwnerId === selectedId) s.ballOwnerId = null;
+        });
+        selectedId = null;
+        updateSelectedPanel();
+        afterEdit();
+        toast('Element gelöscht.');
+      }
+
+      function clearObjects() {
+        project.objects = [];
+        project.steps.forEach(s => s.states = {});
+        selectedId = null;
+        currentStepIndex = 0;
+        project.steps = [defaultProject().steps[0]];
+        updateAllUI();
+        afterEdit();
+      }
+
+      function applyPreset(name) {
+        if (name === 'clear') { if (confirm('Alle Spieler und Schritte löschen?')) clearObjects(); return; }
+        project.objects = [];
+        project.steps = [{ id:uid(), title:'Grundaufstellung', action:'Die Mannschaft nimmt die Ausgangspositionen ein.', opponent:'Der Gegner steht in seiner Grundordnung.', coaching:'Breite, Tiefe und klare Abstände herstellen.', pause:1, ballOwnerId:null, playerActions:{}, states:{} }];
+        currentStepIndex = 0;
+        selectedId = null;
+        const configs = {
+          '3v3': { count:3, gk:false, mode:'funino', a:[[.28,.73],[.72,.73],[.5,.56]], b:[[.28,.27],[.72,.27],[.5,.44]] },
+          '4v4': { count:4, gk:false, mode:'funino', a:[[.18,.75],[.82,.75],[.35,.58],[.65,.58]], b:[[.18,.25],[.82,.25],[.35,.42],[.65,.42]] },
+          '7v7': { count:7, gk:true, mode:'full', a:[[.5,.94],[.18,.73],[.5,.78],[.82,.73],[.27,.54],[.73,.54],[.5,.39]], b:[[.5,.06],[.18,.27],[.5,.22],[.82,.27],[.27,.46],[.73,.46],[.5,.61]] },
+          '9v9': { count:9, gk:true, mode:'full', a:[[.5,.95],[.14,.78],[.39,.82],[.61,.82],[.86,.78],[.24,.62],[.5,.67],[.76,.62],[.5,.45]], b:[[.5,.05],[.14,.22],[.39,.18],[.61,.18],[.86,.22],[.24,.38],[.5,.33],[.76,.38],[.5,.55]] },
+          '11v11': { count:11, gk:true, mode:'full', a:[[.5,.96],[.1,.79],[.36,.84],[.64,.84],[.9,.79],[.18,.63],[.42,.67],[.58,.67],[.82,.63],[.35,.45],[.65,.45]], b:[[.5,.04],[.1,.21],[.36,.16],[.64,.16],[.9,.21],[.18,.37],[.42,.33],[.58,.33],[.82,.37],[.35,.55],[.65,.55]] }
+        };
+        const c = configs[name];
+        project.fieldMode = c.mode;
+        c.a.forEach((p,i) => {
+          const isGK = c.gk && i === 0;
+          addObject(isGK?'goalkeeper':'teamA', { x:p[0],y:p[1], team:'A', label:isGK?'TW A':`A${i+1}`, number:i+1, color:isGK?'#f59e0b':'#2563eb' });
+        });
+        c.b.forEach((p,i) => {
+          const isGK = c.gk && i === 0;
+          addObject(isGK?'goalkeeper':'teamB', { x:p[0],y:p[1], team:'B', label:isGK?'TW B':`B${i+1}`, number:i+1, color:isGK?'#d97706':'#606764' });
+        });
+        addObject('ball', { x: c.a[0][0]+.03, y:c.a[0][1]-.02 });
+        const firstOwner = project.objects.find(o => isPlayer(o) && o.team === 'A');
+        if (firstOwner) { project.steps[0].ballOwnerId = firstOwner.id; placeBallAtOwner(0, firstOwner.id); }
+        selectedId = null;
+        updateAllUI();
+        afterEdit();
+        toast('Aufstellung eingefügt. Jetzt Spieler frei verschieben.');
+      }
+
+      function addStep() {
+        const base = deepClone(currentStep());
+        base.id = uid();
+        base.title = `Schritt ${project.steps.length + 1}`;
+        base.action = '';
+        base.opponent = '';
+        base.coaching = '';
+        base.pause = 1;
+        base.playerActions = {};
+        project.steps.splice(currentStepIndex + 1, 0, base);
+        currentStepIndex++;
+        selectedId = null;
+        updateAllUI();
+        afterEdit();
+        toast('Neuer Schritt angelegt. Verschiebe jetzt die Spieler.');
+      }
+
+      function duplicateStep() {
+        const copy = deepClone(currentStep());
+        copy.id = uid();
+        copy.title = `${copy.title} – Kopie`;
+        project.steps.splice(currentStepIndex + 1, 0, copy);
+        currentStepIndex++;
+        updateAllUI();
+        afterEdit();
+      }
+
+      function deleteStep() {
+        if (project.steps.length === 1) { toast('Der erste Schritt kann nicht gelöscht werden.'); return; }
+        project.steps.splice(currentStepIndex, 1);
+        currentStepIndex = clamp(currentStepIndex - 1, 0, project.steps.length - 1);
+        selectedId = null;
+        updateAllUI();
+        afterEdit();
+      }
+
+      function moveStepLeft() {
+        if (currentStepIndex === 0) { toast('Schritt 1 ist bereits ganz vorne.'); return; }
+        const [step] = project.steps.splice(currentStepIndex,1);
+        project.steps.splice(currentStepIndex-1,0,step);
+        currentStepIndex--;
+        updateAllUI();
+        afterEdit();
+      }
+
+      function goToStep(index) {
+        stopPlayback();
+        currentStepIndex = clamp(index,0,project.steps.length-1);
+        selectedId = null;
+        updateAllUI();
+        render();
+      }
+
+      function updateStepEditor() {
+        const s = currentStep();
+        $('stepTitle').value = s.title || '';
+        $('stepAction').value = s.action || '';
+        $('stepOpponent').value = s.opponent || '';
+        $('stepCoaching').value = s.coaching || '';
+        $('stepPause').value = String(s.pause ?? 1);
+        const t = getTransitionData(currentStepIndex);
+        if (currentStepIndex === 0) $('transitionInfo').textContent = 'Startbild';
+        else $('transitionInfo').textContent = `${de(t.duration)} s · ${t.movers.length} Bewegungen`;
+        $('stepMetrics').innerHTML = currentStepIndex === 0 ? '' : `
+          <div class="metric"><strong>${t.movers.length}</strong><span>bewegte Elemente</span></div>
+          <div class="metric"><strong>${de(t.distance)} m</strong><span>Gesamtweg</span></div>
+          <div class="metric"><strong>${de(t.duration)} s</strong><span>Animationszeit</span></div>`;
+        updateActionEditor();
+      }
+
+      function updateActionEditor() {
+        const actors = getPlayers();
+        if (!actors.length) {
+          $('actionActor').innerHTML='<option value="">Keine Spieler vorhanden</option>';
+          $('actionTarget').innerHTML='<option value="">Kein Ziel</option>';
+          $('applyActionBtn').disabled=true; $('assignBallBtn').disabled=true;
+          $('possessionChip').textContent='⚽ Kein Ballbesitz';
+          return;
+        }
+        if (!actionActorId || !actors.some(o=>o.id===actionActorId)) actionActorId = isPlayer(getObject(selectedId)) ? selectedId : actors[0].id;
+        const actorSelect=$('actionActor');
+        actorSelect.innerHTML=actors.map(o=>`<option value="${escapeHTML(o.id)}">${escapeHTML(o.label||typeLabel(o))} · ${escapeHTML(o.team==='B'?'Gegner':'Eigenes Team')}</option>`).join('');
+        actorSelect.value=actionActorId;
+        const targets=actors.filter(o=>o.id!==actionActorId);
+        $('actionTarget').innerHTML='<option value="">– kein Ziel –</option>'+targets.map(o=>`<option value="${escapeHTML(o.id)}">${escapeHTML(o.label||typeLabel(o))}</option>`).join('');
+        const existing=currentStep().playerActions?.[actionActorId];
+        const actor=getObject(actionActorId);
+        const kind=existing?.kind || (currentStepIndex===0?'position_halten':'laufen');
+        $('actionKind').value=kind;
+        $('actionSpeed').value=String(existing?.speed ?? ACTION_DEFS[kind]?.speed ?? actor?.speed ?? 4);
+        $('actionDelay').value=String(existing?.delay ?? 0);
+        $('actionTarget').value=existing?.targetId || '';
+        $('actionNote').value=existing?.note || '';
+        $('actionTarget').disabled=!['passen','klatschen','gegner_suchen','gegner_anlaufen'].includes(kind);
+        $('applyActionBtn').disabled=false; $('assignBallBtn').disabled=false;
+        const owner=getObject(currentStep().ballOwnerId);
+        $('possessionChip').textContent=owner?`⚽ Am Ball: ${owner.label||typeLabel(owner)}`:'⚽ Kein Ballbesitz';
+        if (existing) $('actionStatus').textContent=actionSentence(actor,existing)+` · ${de(existing.speed)} m/s · Start ${de(existing.delay)} s`;
+        else $('actionStatus').textContent=currentStepIndex===0?'Startbild: Ballbesitz festlegen oder den nächsten Schritt anlegen.':'Noch keine Aktion für diesen Spieler hinterlegt.';
+      }
+
+      function applyCurrentAction() {
+        const actorId=$('actionActor').value;
+        const actor=getObject(actorId);
+        if (!isPlayer(actor)) { toast('Bitte einen Spieler oder Gegner wählen.'); return; }
+        const kind=$('actionKind').value;
+        const def=ACTION_DEFS[kind] || ACTION_DEFS.laufen;
+        const targetId=$('actionTarget').value || null;
+        if (def.pass && !targetId) { toast('Für einen Pass bitte einen Zielspieler auswählen.'); return; }
+        currentStep().playerActions ||= {};
+        currentStep().playerActions[actorId]={ kind, speed:Math.max(.5,Number($('actionSpeed').value)||def.speed), delay:Math.max(0,Number($('actionDelay').value)||0), targetId, note:$('actionNote').value.trim() };
+        if (def.pass) { currentStep().ballOwnerId=targetId; placeBallAtOwner(currentStepIndex,targetId); }
+        else if (def.ball) { currentStep().ballOwnerId=actorId; placeBallAtOwner(currentStepIndex,actorId); }
+        actionActorId=actorId;
+        afterEdit();
+        toast('Aktion für diesen Schritt übernommen.');
+      }
+
+      function assignBallToActor() {
+        const actorId=$('actionActor').value;
+        if (!isPlayer(getObject(actorId))) return;
+        currentStep().ballOwnerId=actorId;
+        placeBallAtOwner(currentStepIndex,actorId);
+        actionActorId=actorId;
+        afterEdit();
+        toast('Ballbesitz sichtbar zugewiesen.');
+      }
+
+      function clearCurrentAction() {
+        const actorId=$('actionActor').value;
+        delete currentStep().playerActions?.[actorId];
+        afterEdit();
+        toast('Aktion entfernt.');
+      }
+
+      function updateProjectFields() {
+        $('projectTitle').value = project.title || '';
+        $('ageGroup').value = project.ageGroup || '';
+        $('fieldMode').value = project.fieldMode || 'full';
+      }
+
+      function updateAllUI() {
+        updateProjectFields();
+        updateSelectedPanel();
+        updateStepEditor();
+        updateCanvasLabels();
+        scheduleTimelineRender();
+        updatePlaybackUI(0);
+        render();
+      }
+
+      function scheduleTimelineRender() {
+        if (thumbnailsPending) return;
+        thumbnailsPending = true;
+        requestAnimationFrame(() => { thumbnailsPending = false; renderTimeline(); });
+      }
+
+      function renderTimeline() {
+        const wrap = $('timeline');
+        wrap.innerHTML = '';
+        project.steps.forEach((step, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'step-card' + (i===currentStepIndex?' active':'');
+          btn.type = 'button';
+          const img = document.createElement('img');
+          img.className = 'step-thumb';
+          img.alt = `Vorschau Schritt ${i+1}`;
+          img.src = renderStepImage(i, 270, 200, true);
+          const meta = document.createElement('div');
+          meta.className = 'step-meta';
+          meta.innerHTML = `<div class="step-number">SCHRITT ${i+1}</div><div class="step-name"></div>`;
+          meta.querySelector('.step-name').textContent = step.title || `Schritt ${i+1}`;
+          btn.append(img,meta);
+          btn.addEventListener('click', () => goToStep(i));
+          wrap.appendChild(btn);
+        });
+        wrap.querySelector('.active')?.scrollIntoView({ block:'nearest', inline:'center', behavior:'smooth' });
+      }
+
+      function renderStepImage(index, width = 720, height = 1100, showPaths = true) {
+        const off = document.createElement('canvas');
+        off.width = W; off.height = H;
+        const c = off.getContext('2d');
+        const oldSel = selectedId;
+        selectedId = null;
+        drawStaticStep(index,c,{showPaths,select:false});
+        selectedId = oldSel;
+        if (width === W && height === H) return off.toDataURL('image/png');
+        const scaled = document.createElement('canvas');
+        scaled.width = width; scaled.height = height;
+        scaled.getContext('2d').drawImage(off,0,0,width,height);
+        return scaled.toDataURL('image/jpeg',.86);
+      }
+
+      function updatePlaybackUI(time) {
+        const map = buildTimelineMap();
+        const total = map.total || 0;
+        $('scrubber').value = total ? Math.round(clamp(time/total,0,1)*1000) : 0;
+        $('timeReadout').textContent = `${de(time)} / ${de(total)} s`;
+        $('playBtn').textContent = isPlaying ? '⏸' : '▶';
+        $('canvasMode').textContent = isPlaying ? 'Animation läuft' : 'Bearbeiten';
+      }
+
+      function startPlayback(fromStart = true) {
+        const map = buildTimelineMap();
+        if (!map.segments.length) { toast('Lege mindestens zwei Schritte an.'); return; }
+        if (isPlaying) { stopPlayback(); return; }
+        isPlaying = true;
+        if (fromStart || playbackTime >= map.total-.05) playbackTime = 0;
+        playbackStart = performance.now() - playbackTime*1000;
+        updatePlaybackUI(playbackTime);
+        const tick = (now) => {
+          if (!isPlaying) return;
+          playbackTime = (now-playbackStart)/1000;
+          if (playbackTime >= map.total) {
+            playbackTime = map.total;
+            drawAnimationAt(playbackTime);
+            updatePlaybackUI(playbackTime);
+            stopPlayback(false);
+            if (recording) finishRecording();
+            return;
+          }
+          drawAnimationAt(playbackTime);
+          updatePlaybackUI(playbackTime);
+          playbackRAF = requestAnimationFrame(tick);
+        };
+        playbackRAF = requestAnimationFrame(tick);
+      }
+
+      function stopPlayback(redraw = true) {
+        isPlaying = false;
+        if (playbackRAF) cancelAnimationFrame(playbackRAF);
+        playbackRAF = null;
+        updatePlaybackUI(playbackTime);
+        if (redraw) render();
+      }
+
+      function seekPlayback(value) {
+        stopPlayback(false);
+        const map = buildTimelineMap();
+        playbackTime = map.total * Number(value) / 1000;
+        drawAnimationAt(playbackTime);
+        updatePlaybackUI(playbackTime);
+      }
+
+      function recordVideo() {
+        const map = buildTimelineMap();
+        if (!map.segments.length) { toast('Für ein Video brauchst du mindestens zwei Schritte.'); return; }
+        if (!canvas.captureStream || !window.MediaRecorder) { toast('Videoaufnahme wird in diesem Browser nicht unterstützt. Bitte Chrome oder Edge verwenden.'); return; }
+        stopPlayback(false);
+        const stream = canvas.captureStream(30);
+        const mimeCandidates = [
+          'video/mp4;codecs=avc1.42E01E',
+          'video/webm;codecs=vp9',
+          'video/webm;codecs=vp8',
+          'video/webm'
+        ];
+        const mimeType = mimeCandidates.find(m => { try { return MediaRecorder.isTypeSupported?.(m); } catch (_) { return false; } }) || '';
+        let recorder;
+        try { recorder = new MediaRecorder(stream, mimeType ? { mimeType, videoBitsPerSecond:4_000_000 } : undefined); }
+        catch (_) {
+          try { recorder = new MediaRecorder(stream); }
+          catch (err) { toast('Die Aufnahme konnte nicht gestartet werden.'); return; }
+        }
+        const chunks = [];
+        recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+        recorder.onerror = () => {
+          recording=null; $('recordBtn').disabled=false; $('recordBtn').textContent='🎬 Video erstellen';
+          toast('Bei der Videoaufnahme ist ein Fehler aufgetreten.');
+        };
+        recorder.onstop = () => {
+          const actualType = recorder.mimeType || mimeType || 'video/webm';
+          const blob = new Blob(chunks, { type: actualType });
+          recording = null;
+          $('recordBtn').disabled = false;
+          $('recordBtn').textContent = '🎬 Video erstellen';
+          stream.getTracks().forEach(t=>t.stop());
+          if (!blob.size) { toast('Die Aufnahme war leer. Bitte erneut versuchen oder Chrome verwenden.'); return; }
+          const ext = actualType.includes('mp4') ? 'mp4' : 'webm';
+          openVideoResult(blob, safeName(project.title || 'spielzug') + '.' + ext);
+          toast('Video fertig – jetzt speichern oder teilen.');
+        };
+        recording = recorder;
+        $('recordBtn').disabled = true;
+        $('recordBtn').textContent = '● Aufnahme läuft';
+        drawStaticStep(0);
+        recorder.start(100);
+        playbackTime = 0;
+        setTimeout(() => startPlayback(true), 220);
+      }
+
+      function finishRecording() {
+        setTimeout(() => {
+          if (recording && recording.state !== 'inactive') {
+            try { recording.requestData(); } catch (_) {}
+            setTimeout(()=>{ if (recording && recording.state !== 'inactive') recording.stop(); },140);
+          }
+        }, 180);
+      }
+
+      function openVideoResult(blob, filename) {
+        lastVideoBlob=blob; lastVideoFilename=filename;
+        if (lastVideoUrl) URL.revokeObjectURL(lastVideoUrl);
+        lastVideoUrl=URL.createObjectURL(blob);
+        $('videoPreview').src=lastVideoUrl;
+        $('videoFormatHint').textContent=`Datei: ${filename} · ${(blob.size/1024/1024).toFixed(1).replace('.',',')} MB. Falls der normale Download auf dem Handy nicht reagiert, nutze „Teilen / auf Handy sichern“.`;
+        $('videoModal').classList.add('open');
+      }
+
+      async function shareVideoResult() {
+        if (!lastVideoBlob) return;
+        const file=new File([lastVideoBlob],lastVideoFilename,{type:lastVideoBlob.type||'video/webm'});
+        try {
+          if (navigator.share && (!navigator.canShare || navigator.canShare({files:[file]}))) {
+            await navigator.share({ files:[file], title:project.title||'Spielzug', text:'Animierter Fußball-Spielzug' });
+            return;
+          }
+        } catch (err) {
+          if (err?.name==='AbortError') return;
+        }
+        downloadBlob(lastVideoBlob,lastVideoFilename);
+        toast('Teilen wird nicht unterstützt – Download wurde gestartet.');
+      }
+
+      function generatePDFReport() {
+        if (!project.steps.length) return;
+        const reportWindow = window.open('', '_blank');
+        if (!reportWindow) { toast('Pop-up blockiert. Bitte Pop-ups für diese Datei erlauben.'); return; }
+        const count=project.steps.length;
+        const cols=count<=4?count:(count<=6?3:(count<=10?5:4));
+        const rows=Math.ceil(count/cols);
+        const compact=rows>=3;
+        const cards=project.steps.map((step,i)=>{
+          const image=renderStepImage(i,300,458,true);
+          const actionItems=Object.entries(step.playerActions||{}).map(([id,a])=>actionSentence(getObject(id),a)).filter(Boolean);
+          const actionText=actionItems.length?actionItems.slice(0,3).join(' · '):(step.action||'Positionen einnehmen und nächste Lösung vorbereiten.');
+          const owner=getObject(step.ballOwnerId);
+          return `<article class="step-card-pdf">
+            <div class="step-head-pdf"><span>${i+1}</span><strong>${escapeHTML(step.title||`Schritt ${i+1}`)}</strong></div>
+            <img src="${image}" alt="Schritt ${i+1}">
+            <div class="step-copy">
+              ${owner?`<div class="owner">⚽ Ball: ${escapeHTML(owner.label||typeLabel(owner))}</div>`:''}
+              <p><b>Aktion:</b> ${escapeHTML(shortText(actionText,compact?105:150))}</p>
+              ${step.opponent?`<p><b>Gegner:</b> ${escapeHTML(shortText(step.opponent,compact?75:110))}</p>`:''}
+              ${step.coaching?`<p><b>Coaching:</b> ${escapeHTML(shortText(step.coaching,compact?70:105))}</p>`:''}
+            </div>
+          </article>`;
+        }).join('');
+        reportWindow.document.write(`<!doctype html><html lang="de"><head><meta charset="utf-8"><title>${escapeHTML(project.title)} – Ein-Seiten-PDF</title><style>
+          @page{size:A4 landscape;margin:8mm}*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;color:#17211b;background:#fff}.page{width:281mm;height:194mm;overflow:hidden;display:flex;flex-direction:column}.head{height:18mm;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2.5px solid #0f6b3a;padding-bottom:3mm}.eyebrow{font-size:7.5pt;color:#607068;text-transform:uppercase;letter-spacing:.07em;font-weight:700}.head h1{font-size:18pt;line-height:1;margin:1.5mm 0 0}.meta{text-align:right;color:#315c44;font-size:8pt;font-weight:700}.steps{--cols:${cols};--rows:${rows};display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));grid-template-rows:repeat(var(--rows),minmax(0,1fr));gap:3mm;flex:1;min-height:0;padding-top:4mm}.step-card-pdf{border:1px solid #cedbd3;border-radius:2.8mm;overflow:hidden;background:#fbfdfc;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0}.step-head-pdf{height:9mm;display:flex;align-items:center;gap:2mm;padding:1.5mm 2mm;background:#eef7f1;border-bottom:1px solid #d8e6dd}.step-head-pdf span{width:6mm;height:6mm;border-radius:50%;display:grid;place-items:center;background:#0f6b3a;color:white;font-size:7pt;font-weight:900;flex:0 0 auto}.step-head-pdf strong{font-size:${compact?'7':'8'}pt;line-height:1.1;max-height:2.2em;overflow:hidden}.step-card-pdf img{width:100%;height:100%;min-height:0;object-fit:contain;background:#11843a}.step-copy{padding:${compact?'1.2':'1.8'}mm 2mm;background:white;min-height:${compact?'18':'27'}mm;overflow:hidden}.step-copy p{margin:0 0 1mm;font-size:${compact?'5.7':'6.8'}pt;line-height:1.22}.step-copy p:last-child{margin-bottom:0}.owner{display:inline-block;margin-bottom:1mm;padding:.7mm 1.3mm;border-radius:999px;background:#fff4b8;border:1px solid #ead362;color:#5e4b00;font-size:${compact?'5.7':'6.6'}pt;font-weight:800}.foot{height:5mm;padding-top:1.5mm;border-top:1px solid #dbe5df;margin-top:2mm;font-size:6.5pt;color:#718078;text-align:right}@media screen{body{background:#e8eeea;padding:15px}.page{margin:auto;background:white;padding:8mm;box-shadow:0 12px 40px rgba(0,0,0,.16)}}@media print{.page{width:100%;height:100%}}
+        </style></head><body><main class="page"><header class="head"><div><div class="eyebrow">${escapeHTML(project.ageGroup||'Fußballtraining')} · kompakter Ablaufplan</div><h1>${escapeHTML(project.title||'Spielzug')}</h1></div><div class="meta">${count} Schritte<br>Ballbesitz, Laufwege und Aktionen</div></header><section class="steps">${cards}</section><footer class="foot">Erstellt mit Oscars Taktik-Menü · Im Druckfenster „Als PDF speichern“ wählen.</footer></main><script>window.onload=()=>setTimeout(()=>window.print(),550)<\/script></body></html>`);
+        reportWindow.document.close();
+      }
+
+      function shortText(value,max) {
+        const text=String(value||'').replace(/\s+/g,' ').trim();
+        return text.length>max?text.slice(0,max-1).trim()+'…':text;
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+      }
+      function nl2br(value) { return escapeHTML(value).replace(/\n/g,'<br>'); }
+      function safeName(value) { return String(value).trim().toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'taktikprojekt'; }
+      function downloadBlob(blob, filename) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; a.rel='noopener'; a.style.display='none';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { a.remove(); URL.revokeObjectURL(url); },60000);
+      }
+
+      function saveJSON() {
+        const blob = new Blob([JSON.stringify(project,null,2)], { type:'application/json' });
+        downloadBlob(blob, safeName(project.title)+'.json');
+      }
+
+      function loadJSONFile(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const parsed = JSON.parse(reader.result);
+            if (!parsed || !Array.isArray(parsed.steps) || !Array.isArray(parsed.objects)) throw new Error('Ungültig');
+            project = parsed; normalizeProject(); currentStepIndex = 0; selectedId = null; stopPlayback(); updateAllUI(); saveLocal(); toast('Projekt geladen.');
+          } catch (_) { toast('Die Projektdatei konnte nicht gelesen werden.'); }
+        };
+        reader.readAsText(file);
+      }
+
+
+      function buildDemoSequence() {
+        const find = (label) => project.objects.find(o => o.label === label);
+        const ball = project.objects.find(o => o.type === 'ball');
+        const a2 = find('A2'), a4 = find('A4'), a5 = find('A5'), a6 = find('A6'), a7 = find('A7');
+        const b5 = find('B5'), b6 = find('B6'), b7 = find('B7');
+        if (!ball || !a4 || !a6 || !a7) return;
+
+        const makeStep = (title, action, opponent, coaching, mutate) => {
+          const step = deepClone(project.steps[project.steps.length - 1]);
+          step.id = uid();
+          step.title = title;
+          step.action = action;
+          step.opponent = opponent;
+          step.coaching = coaching;
+          step.pause = 1;
+          step.playerActions = {};
+          mutate(step.states, step);
+          project.steps.push(step);
+        };
+
+        makeStep(
+          '1. Pass auf den rechten Verteidiger',
+          'Der Torwart spielt flach und mit ausreichender Schärfe auf A4. A4 löst sich leicht nach außen und öffnet den Körper zum Feld.',
+          'B5 startet mit kurzer Verzögerung ins Anlaufen und versucht, den Weg nach innen zu schließen.',
+          'Pass in den Vorderfuß. A4 vor der Annahme orientieren lassen. Abstand zur Seitenlinie so wählen, dass ein Anschluss nach vorne und innen möglich bleibt.',
+          (states,step) => {
+            step.playerActions[a4.id]={kind:'freilaufen',speed:4.5,delay:0,targetId:null,note:'offene Stellung'};
+            step.playerActions[project.steps[0].ballOwnerId] ||= {kind:'passen',speed:13,delay:0,targetId:a4.id,note:'flach und scharf'};
+            step.ballOwnerId=a4.id;
+            states[ball.id] = { x:.80, y:.72, visible:true };
+            states[a4.id] = { x:.84, y:.72, visible:true };
+            if (b5) states[b5.id] = { x:.74, y:.50, visible:true };
+            if (a6) states[a6.id] = { x:.68, y:.58, visible:true };
+          }
+        );
+
+        makeStep(
+          '2. Gegner binden und innen lösen',
+          'A4 nimmt nach vorne an und spielt auf A6. A6 kommt dem Ball entgegen, während A7 den Raum hinter dem gegnerischen Mittelfeld besetzt.',
+          'B5 setzt A4 unter Druck. B6 schiebt auf A6 und öffnet dadurch Raum im Zentrum.',
+          'A6 in offener Stellung anbieten. Der Pass erfolgt erst, wenn der Gegner klar gebunden ist. A7 nicht zu früh in den gleichen Raum kommen lassen.',
+          (states,step) => {
+            step.playerActions[a4.id]={kind:'passen',speed:13,delay:.2,targetId:a6.id,note:'Gegner binden'};
+            step.playerActions[a6.id]={kind:'freilaufen',speed:4,delay:0,targetId:null,note:'entgegenkommen'};
+            step.ballOwnerId=a6.id;
+            states[ball.id] = { x:.67, y:.57, visible:true };
+            states[a4.id] = { x:.78, y:.66, visible:true };
+            states[a6.id] = { x:.66, y:.57, visible:true };
+            states[a7.id] = { x:.50, y:.43, visible:true };
+            if (b5) states[b5.id] = { x:.76, y:.59, visible:true };
+            if (b6) states[b6.id] = { x:.61, y:.48, visible:true };
+          }
+        );
+
+        makeStep(
+          '3. Zentrum überspielen',
+          'A6 spielt direkt oder mit zwei Kontakten auf A7. Gleichzeitig schiebt A5 auf der ballfernen Seite nach vorne und A2 gibt weiterhin Tiefe und Breite.',
+          'B6 folgt A6. B7 rückt auf A7 heraus. Die ballferne Seite des Gegners wird dadurch offen.',
+          'A7 vororientieren und möglichst zwischen den Linien stehen. Nach dem Pass sofort in die nächste freie Position nachstarten.',
+          (states,step) => {
+            step.playerActions[a6.id]={kind:'klatschen',speed:15,delay:0,targetId:a7.id,note:'direkt spielen'};
+            step.playerActions[a7.id]={kind:'aufdrehen',speed:3.5,delay:.2,targetId:null,note:'vororientieren'};
+            step.ballOwnerId=a7.id;
+            states[ball.id] = { x:.50, y:.43, visible:true };
+            states[a6.id] = { x:.59, y:.50, visible:true };
+            states[a7.id] = { x:.50, y:.42, visible:true };
+            if (a5) states[a5.id] = { x:.22, y:.50, visible:true };
+            if (a2) states[a2.id] = { x:.13, y:.68, visible:true };
+            if (b6) states[b6.id] = { x:.58, y:.45, visible:true };
+            if (b7) states[b7.id] = { x:.50, y:.51, visible:true };
+          }
+        );
+
+        makeStep(
+          '4. Auf die freie Seite verlagern',
+          'A7 verlagert auf A5. A5 nimmt in Spielrichtung mit und kann anschließend andribbeln oder den tiefen Lauf von A2 einsetzen.',
+          'Der Gegner muss zur neuen Ballseite verschieben. Die zuvor ballfernen Spieler kommen verspätet in den Zugriff.',
+          'Verlagerung nicht in den Rücken, sondern in den Lauf spielen. A5 erster Kontakt nach vorne. A2 Breite halten und den richtigen Moment für den Tiefenlauf wählen.',
+          (states,step) => {
+            step.playerActions[a7.id]={kind:'passen',speed:15,delay:0,targetId:a5?.id||null,note:'verlagern'};
+            if(a5) step.playerActions[a5.id]={kind:'dribbeln',speed:4,delay:.2,targetId:null,note:'erster Kontakt vorwärts'};
+            step.ballOwnerId=a5?.id||a7.id;
+            states[ball.id] = { x:.22, y:.49, visible:true };
+            if (a5) states[a5.id] = { x:.21, y:.49, visible:true };
+            if (a2) states[a2.id] = { x:.10, y:.55, visible:true };
+            states[a7.id] = { x:.44, y:.40, visible:true };
+            if (b7) states[b7.id] = { x:.40, y:.48, visible:true };
+            if (b6) states[b6.id] = { x:.49, y:.44, visible:true };
+          }
+        );
+
+        currentStepIndex = 0;
+        selectedId = null;
+      }
+
+      function bindInputs() {
+        $('projectTitle').addEventListener('input', e => { project.title = e.target.value; afterEdit({timeline:false}); });
+        $('ageGroup').addEventListener('input', e => { project.ageGroup = e.target.value; afterEdit({timeline:false}); });
+        $('fieldMode').addEventListener('change', e => { project.fieldMode = e.target.value; afterEdit(); });
+        document.querySelectorAll('[data-preset]').forEach(btn => btn.addEventListener('click',()=>applyPreset(btn.dataset.preset)));
+        document.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click',()=>addObject(btn.dataset.add)));
+
+        $('objectLabel').addEventListener('input', e => { const o=getObject(selectedId); if(o){o.label=e.target.value; $('selectedName').textContent=o.label||typeLabel(o); afterEdit();} });
+        $('objectNumber').addEventListener('input', e => { const o=getObject(selectedId); if(o){o.number=e.target.value; afterEdit();} });
+        $('objectColor').addEventListener('input', e => { const o=getObject(selectedId); if(o){o.color=e.target.value; $('selectedDot').style.background=o.color; afterEdit();} });
+        $('objectSpeed').addEventListener('input', e => { const o=getObject(selectedId); if(o){o.speed=Math.max(.5,Number(e.target.value)||.5); afterEdit({timeline:false});} });
+        $('objectDelay').addEventListener('input', e => { const o=getObject(selectedId); if(o){o.delay=Number(e.target.value); $('delayValue').textContent=`${de(o.delay)} s`; afterEdit({timeline:false});} });
+        $('deleteObjectBtn').addEventListener('click', deleteSelectedObject);
+
+        $('stepTitle').addEventListener('input', e => { currentStep().title=e.target.value; afterEdit(); });
+        $('stepAction').addEventListener('input', e => { currentStep().action=e.target.value; afterEdit({timeline:false}); });
+        $('stepOpponent').addEventListener('input', e => { currentStep().opponent=e.target.value; afterEdit({timeline:false}); });
+        $('stepCoaching').addEventListener('input', e => { currentStep().coaching=e.target.value; afterEdit({timeline:false}); });
+        $('stepPause').addEventListener('change', e => { currentStep().pause=Number(e.target.value); afterEdit({timeline:false}); updatePlaybackUI(0); });
+
+        $('addStepBtn').addEventListener('click', addStep);
+        $('duplicateStepBtn').addEventListener('click', duplicateStep);
+        $('deleteStepBtn').addEventListener('click', deleteStep);
+        $('moveStepLeftBtn').addEventListener('click', moveStepLeft);
+        $('togglePathsBtn').addEventListener('click', () => { project.showPaths=!project.showPaths; afterEdit(); });
+        $('prevStepBtn').addEventListener('click', () => goToStep(currentStepIndex-1));
+        $('playBtn').addEventListener('click', () => isPlaying ? stopPlayback() : startPlayback(false));
+        $('scrubber').addEventListener('input', e => seekPlayback(e.target.value));
+        $('recordBtn').addEventListener('click', recordVideo);
+        $('pdfBtn').addEventListener('click', generatePDFReport);
+
+        $('actionActor').addEventListener('change', e => { actionActorId=e.target.value; updateActionEditor(); });
+        $('actionKind').addEventListener('change', e => {
+          const def=ACTION_DEFS[e.target.value]||ACTION_DEFS.laufen;
+          $('actionSpeed').value=String(def.speed);
+          $('actionTarget').disabled=!['passen','klatschen','gegner_suchen','gegner_anlaufen'].includes(e.target.value);
+        });
+        $('applyActionBtn').addEventListener('click', applyCurrentAction);
+        $('assignBallBtn').addEventListener('click', assignBallToActor);
+        $('clearActionBtn').addEventListener('click', clearCurrentAction);
+        $('closeVideoBtn').addEventListener('click',()=>{ $('videoModal').classList.remove('open'); $('videoPreview').pause(); });
+        $('videoModal').addEventListener('click',e=>{ if(e.target===$('videoModal')) $('closeVideoBtn').click(); });
+        $('videoSaveBtn').addEventListener('click',()=>{ if(lastVideoBlob){ downloadBlob(lastVideoBlob,lastVideoFilename); toast('Video-Download gestartet.'); } });
+        $('videoShareBtn').addEventListener('click',shareVideoResult);
+
+        $('saveJsonBtn').addEventListener('click', saveJSON);
+        $('loadJsonBtn').addEventListener('click', () => $('jsonFileInput').click());
+        $('jsonFileInput').addEventListener('change', e => { if(e.target.files[0]) loadJSONFile(e.target.files[0]); e.target.value=''; });
+        $('resetBtn').addEventListener('click', () => {
+          if (!confirm('Neues Projekt starten? Das aktuell geöffnete Projekt wird zurückgesetzt.')) return;
+          project=defaultProject(); currentStepIndex=0; selectedId=null; stopPlayback(); updateAllUI(); saveLocal();
+        });
+
+        $('helpBtn').addEventListener('click', () => $('helpModal').classList.add('open'));
+        $('closeHelpBtn').addEventListener('click', () => $('helpModal').classList.remove('open'));
+        $('helpModal').addEventListener('click', e => { if(e.target === $('helpModal')) $('helpModal').classList.remove('open'); });
+
+        document.querySelectorAll('[data-tab-target]').forEach(btn => btn.addEventListener('click', () => {
+          document.body.dataset.tab = btn.dataset.tabTarget;
+          document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b===btn));
+          if(btn.dataset.tabTarget==='field') setTimeout(render,80);
+        }));
+
+        window.addEventListener('keydown', e => {
+          if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='s') { e.preventDefault(); saveJSON(); }
+          if (e.key==='Escape') { selectObject(null); $('helpModal').classList.remove('open'); $('videoModal').classList.remove('open'); }
+          if (e.key==='Delete' && selectedId && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) deleteSelectedObject();
+          if (e.code==='Space' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) { e.preventDefault(); isPlaying?stopPlayback():startPlayback(false); }
+        });
+      }
+
+      bindInputs();
+      if (!loadLocal()) {
+        applyPreset('7v7');
+        project.title = 'Spielaufbau vom Torwart';
+        project.ageGroup = 'E-Jugend';
+        project.steps[0].action = 'Der Torwart eröffnet das Spiel. Die Verteidiger gehen breit, der zentrale Spieler bietet sich vor dem Strafraum an.';
+        project.steps[0].opponent = 'Der Gegner steht kompakt in seiner Pressingordnung und wartet auf den ersten Pass.';
+        project.steps[0].coaching = 'Körper offen zum Feld. Breite und Tiefe herstellen. Vor dem Pass Schulterblick und klare Kommunikation.';
+        buildDemoSequence();
+        saveLocal();
+      }
+      normalizeProject();
+      currentStepIndex = clamp(currentStepIndex,0,project.steps.length-1);
+      updateAllUI();
+    })();
+  </script>
+</body>
+</html>
